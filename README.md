@@ -4,4 +4,3 @@
 [![Build Status](https://img.shields.io/travis/funivan/gallery/master.svg?style=flat-square)](https://travis-ci.org/funivan/gallery)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/funivan/gallery.svg?style=flat-square)](https://scrutinizer-ci.com/g/funivan/gallery/code-structure)
 [![Quality Score](https://img.shields.io/scrutinizer/g/funivan/gallery.svg?style=flat-square)](https://scrutinizer-ci.com/g/funivan/gallery)
-[![Total Downloads](https://img.shields.io/packagist/dt/funivan/php-tokenizer.svg?style=flat-square)](https://packagist.org/packages/funivan/php-tokenizer)
