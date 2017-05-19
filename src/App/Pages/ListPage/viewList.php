@@ -5,6 +5,7 @@
   /** @var \Funivan\Gallery\FileStorage\PathInterface[] $directories */
 
   use Funivan\Gallery\App\Pages\Actions\Favourite\FavouriteUrl;
+  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\App\Pages\ThumbPage\ThumbUrl;
@@ -60,6 +61,11 @@
                   <i class="material-icons">star</i>
                   <i class="material-icons" style="color:gray">star</i>
                 </a>
+
+                <a href="<?= (new ImageRotateRightUrl($filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
+                  <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
+                </a>
+
 
               </div>
             </div>

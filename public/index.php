@@ -7,6 +7,8 @@
   use Funivan\Gallery\App\Pages\Actions\ActionRouteMatch;
   use Funivan\Gallery\App\Pages\Actions\Favourite\FavouriteRemoveAction;
   use Funivan\Gallery\App\Pages\Actions\Favourite\FavouriteSetAction;
+  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightAction;
+  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
   use Funivan\Gallery\App\Pages\Actions\Visibility\VisibilityRemoveAction;
   use Funivan\Gallery\App\Pages\Actions\Visibility\VisibilitySetAction;
   use Funivan\Gallery\App\Pages\Auth\LoginPage\LoginController;
@@ -93,7 +95,7 @@
           # This technique can be used for groups
           # Also we check authentication and authorization of the user
           new Route(
-            new RegexRouteMatch('/action/change/(?<type>[a-z]+)/(?<state>(on|off))/'),
+            new RegexRouteMatch('/action/change/(?<type>[a-z-]+)/(?<state>(on|off))/'),
             new AuthenticationDispatcher(
               $authComponent,
               new LoginUrl(),
@@ -128,6 +130,10 @@
           new Route(
             new RegexRouteMatch(ListUrl::REGEX),
             new ListController($imagesFs)
+          ),
+          new Route(
+            new PathRouteMatch(ImageRotateRightUrl::PREFIX),
+            new ActionDispatcher(new ImageRotateRightAction(), $imagesFs)
           ),
           new Route(
             new RegexRouteMatch(LoginUrl::PREFIX),

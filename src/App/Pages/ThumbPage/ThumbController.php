@@ -54,10 +54,10 @@
       } else {
         $thumbUid = new ThumbUid($original);
         $thumb = File::create($thumbUid->path(), $this->cacheFs);
-        $extension = $thumb->meta('extension');
         if (!$thumb->exists()) {
           $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
           $img = $manager->make($original->read());
+          $extension = $thumb->meta('extension');
           $thumb->write(
             (string) $img->fit(300, 300)->encode($extension)
           );

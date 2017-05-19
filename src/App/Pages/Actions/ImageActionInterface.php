@@ -11,11 +11,6 @@
    */
   interface ImageActionInterface {
 
-    /**
-     * @return string
-     */
-    public function id(): string;
-
 
     /**
      * @param FileInterface $image

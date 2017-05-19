@@ -14,17 +14,10 @@
 
     /**
      * @param FileInterface $image
+     * @return void
      */
     public final function execute(FileInterface $image) {
 
-    }
-
-
-    /**
-     * @return string
-     */
-    public final function id(): string {
-      return 'visibility_remove';
     }
 
   }
