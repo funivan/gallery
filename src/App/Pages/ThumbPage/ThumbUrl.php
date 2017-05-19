@@ -6,12 +6,12 @@
 
   use Funivan\Gallery\FileStorage\PathInterface;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteBuild;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
 
   /**
    *
    */
-  final class ThumbUrl extends PathRouteBuild {
+  final class ThumbUrl extends PathUrl {
 
     const PREFIX = '/img/';
 

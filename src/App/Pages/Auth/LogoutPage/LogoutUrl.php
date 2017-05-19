@@ -5,12 +5,12 @@
   namespace Funivan\Gallery\App\Pages\Auth\LogoutPage;
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteBuild;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
 
   /**
    *
    */
-  final class LogoutUrl extends PathRouteBuild {
+  final class LogoutUrl extends PathUrl {
 
     const PREFIX = '/logout/';
 

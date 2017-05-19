@@ -5,13 +5,12 @@
   namespace Funivan\Gallery\Framework\Router;
 
   /**
-   * @todo maybe we should rename this class to the "UrlBuildInterface"
+   * Represent url to the resource.
+   * Can be absolute and relative
    */
-  interface RouteBuildInterface {
+  interface UrlInterface {
 
     /**
-     * Create url from the parameters
-     *
      * @return string
      */
     public function build(): string;

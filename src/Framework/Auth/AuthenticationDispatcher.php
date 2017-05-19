@@ -8,7 +8,7 @@
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
-  use Funivan\Gallery\Framework\Router\RouteBuildInterface;
+  use Funivan\Gallery\Framework\Router\UrlInterface;
 
   /**
    * Check if client is authenticated and execute next dispatcher
@@ -27,17 +27,17 @@
     private $authComponent;
 
     /**
-     * @var RouteBuildInterface
+     * @var UrlInterface
      */
     private $loginRoute;
 
 
     /**
      * @param AuthComponentInterface $authComponent
-     * @param RouteBuildInterface $loginRoute
+     * @param UrlInterface $loginRoute
      * @param DispatcherInterface $original
      */
-    public function __construct(AuthComponentInterface $authComponent, RouteBuildInterface $loginRoute, DispatcherInterface $original) {
+    public function __construct(AuthComponentInterface $authComponent, UrlInterface $loginRoute, DispatcherInterface $original) {
       $this->original = $original;
       $this->authComponent = $authComponent;
       $this->loginRoute = $loginRoute;

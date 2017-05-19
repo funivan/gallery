@@ -5,12 +5,12 @@
   namespace Funivan\Gallery\Framework\Router\PathRoute;
 
   use Funivan\Gallery\Framework\Http\Request\ParametersInterface;
-  use Funivan\Gallery\Framework\Router\RouteBuildInterface;
+  use Funivan\Gallery\Framework\Router\UrlInterface;
 
   /**
    *
    */
-  class PathRouteBuild implements RouteBuildInterface {
+  class PathUrl implements UrlInterface {
 
     /**
      * @var string

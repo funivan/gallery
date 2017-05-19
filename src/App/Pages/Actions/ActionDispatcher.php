@@ -2,7 +2,7 @@
 
   namespace Funivan\Gallery\App\Pages\Actions;
 
-  use Funivan\Gallery\App\Image\Image;
+  use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
@@ -42,8 +42,8 @@
      */
     public final function handle(RequestInterface $request): ResponseInterface {
       $path = new LocalPath(urldecode($request->get()->value('path')));
-      $original = new Image($path, $this->storage);
-      if (!$original->stored()) {
+      $original = File::create($path, $this->storage);
+      if (!$original->exists()) {
         $response = PlainResponse::create('{error:"image not found"}');
       } else {
         $this->action->execute($original);

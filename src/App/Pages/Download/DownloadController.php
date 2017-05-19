@@ -4,13 +4,13 @@
 
   namespace Funivan\Gallery\App\Pages\Download;
 
-  use Funivan\Gallery\App\Image\Image;
-  use Funivan\Gallery\App\Image\ImageResponse;
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
+  use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
+  use Funivan\Gallery\Framework\Http\Response\FileResponse\FileResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
 
   /**
@@ -38,11 +38,11 @@
      */
     public final function handle(RequestInterface $request): ResponseInterface {
       $path = new LocalPath(urldecode($request->get()->value('path')));
-      $original = new Image($path, $this->storage);
-      if (!$original->stored()) {
+      $original = File::create($path, $this->storage);
+      if (!$original->exists()) {
         $response = ErrorResponse::create('Invalid image path', 404);
       } else {
-        $response = ImageResponse::createDownloadable($original);
+        $response = FileResponse::createDownloadable($original);
       }
       return $response;
     }

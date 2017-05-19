@@ -12,7 +12,7 @@
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
   use Funivan\Gallery\Framework\Http\Response\Status\ResponseStatus;
   use Funivan\Gallery\Framework\Http\Response\StatusInterface;
-  use Funivan\Gallery\Framework\Router\RouteBuildInterface;
+  use Funivan\Gallery\Framework\Router\UrlInterface;
 
   /**
    *
@@ -20,7 +20,7 @@
   class RedirectResponse implements ResponseInterface {
 
     /**
-     * @var RouteBuildInterface
+     * @var UrlInterface
      */
     private $url;
 
@@ -31,10 +31,10 @@
 
 
     /**
-     * @param RouteBuildInterface $url
+     * @param UrlInterface $url
      * @param int $code
      */
-    public function __construct(RouteBuildInterface $url, int $code) {
+    public function __construct(UrlInterface $url, int $code) {
       $this->url = $url;
       $this->code = $code;
     }

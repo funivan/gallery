@@ -2,8 +2,9 @@
 
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Image;
+  namespace Funivan\Gallery\Framework\Http\Response\FileResponse;
 
+  use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\Framework\Http\Response\Body\BodyInterface;
   use Funivan\Gallery\Framework\Http\Response\Headers\Field;
   use Funivan\Gallery\Framework\Http\Response\Headers\Headers;
@@ -16,12 +17,12 @@
   /**
    *
    */
-  class ImageResponse implements ResponseInterface {
+  class FileResponse implements ResponseInterface {
 
     /**
-     * @var Image
+     * @var FileInterface
      */
-    private $image;
+    private $file;
 
     /**
      * @var HeadersInterface
@@ -30,29 +31,29 @@
 
 
     /**
-     * @param Image $image
+     * @param FileInterface $file
      * @param HeadersInterface $headers
      */
-    private function __construct(Image $image, HeadersInterface $headers) {
-      $this->image = $image;
+    private function __construct(FileInterface $file, HeadersInterface $headers) {
+      $this->file = $file;
       $this->headers = $headers;
     }
 
 
     /**
-     * @param Image $image
+     * @param FileInterface $image
      * @return ResponseInterface
      */
-    public static function createViewable(Image $image): ResponseInterface {
+    public static function createViewable(FileInterface $image): ResponseInterface {
       return new self($image, new Headers([]));
     }
 
 
     /**
-     * @param Image $image
+     * @param FileInterface $image
      * @return ResponseInterface
      */
-    public static function createDownloadable(Image $image): ResponseInterface {
+    public static function createDownloadable(FileInterface $image): ResponseInterface {
       $headers = new Headers([
         new Field('Content-Disposition', 'attachment; filename=' . basename($image->path()->assemble())),
         new Field('Content-Description', ' File Transfer'),
@@ -79,7 +80,7 @@
      */
     public final function headers(): HeadersInterface {
       return (new Headers([
-        new Field('Content-Type', (string) (new \Mimey\MimeTypes)->getMimeType($this->image->extension())),
+        new Field('Content-Type', (string) (new \Mimey\MimeTypes)->getMimeType($this->file->meta('extension'))),
       ]))->merge($this->headers);
     }
 
@@ -90,7 +91,7 @@
      * @return BodyInterface
      */
     public final function body(): BodyInterface {
-      return new PlainBody($this->image->read());
+      return new PlainBody($this->file->read());
     }
 
   }

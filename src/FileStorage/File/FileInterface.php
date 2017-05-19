@@ -4,6 +4,8 @@
 
   namespace Funivan\Gallery\FileStorage\File;
 
+  use Funivan\Gallery\FileStorage\PathInterface;
+
   /**
    *
    */
@@ -38,5 +40,19 @@
      * @return void
      */
     public function remove();
+
+
+    /**
+     * @param string $type
+     * @return string
+     */
+    public function meta(string $type): string;
+
+
+    /**
+     * @return PathInterface
+     */
+    public function path(): PathInterface;
+
 
   }

@@ -4,6 +4,7 @@
 
   namespace Funivan\Gallery\App\Image;
 
+  use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\PathInterface;
 
@@ -13,15 +14,15 @@
   class ThumbUid {
 
     /**
-     * @var Image
+     * @var FileInterface
      */
     private $image;
 
 
     /**
-     * @param Image $image
+     * @param FileInterface $image
      */
-    public function __construct(Image $image) {
+    public function __construct(FileInterface $image) {
       $this->image = $image;
     }
 
@@ -35,7 +36,7 @@
         ->next(
           (new LocalPath(substr($hash, 2, 2)))
             ->next(
-              new LocalPath($hash . '.' . $this->image->extension())
+              new LocalPath($hash . '.' . $this->image->meta('extension'))
             )
         );
       return $path;

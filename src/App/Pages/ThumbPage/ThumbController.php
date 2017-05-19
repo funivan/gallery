@@ -4,14 +4,14 @@
 
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
-  use Funivan\Gallery\App\Image\Image;
-  use Funivan\Gallery\App\Image\ImageResponse;
   use Funivan\Gallery\App\Image\ThumbUid;
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
+  use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
+  use Funivan\Gallery\Framework\Http\Response\FileResponse\FileResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
 
   /**
@@ -48,21 +48,21 @@
      */
     public final function handle(RequestInterface $request): ResponseInterface {
       $path = new LocalPath(urldecode($request->get()->value('path')));
-      $original = new Image($path, $this->imageFs);
-      if (!$original->stored()) {
+      $original = File::create($path, $this->imageFs);
+      if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);
       } else {
         $thumbUid = new ThumbUid($original);
-        $thumb = new Image($thumbUid->path(), $this->cacheFs);
-        $extension = $thumb->extension();
-        if (!$thumb->stored()) {
+        $thumb = File::create($thumbUid->path(), $this->cacheFs);
+        $extension = $thumb->meta('extension');
+        if (!$thumb->exists()) {
           $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
           $img = $manager->make($original->read());
           $thumb->write(
             (string) $img->fit(300, 300)->encode($extension)
           );
         }
-        $response = ImageResponse::createViewable($thumb);
+        $response = FileResponse::createViewable($thumb);
       }
       return $response;
     }

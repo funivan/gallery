@@ -5,12 +5,12 @@
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage;
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteBuild;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
 
   /**
    *
    */
-  final class LoginUrl extends PathRouteBuild {
+  final class LoginUrl extends PathUrl {
 
     const PREFIX = '/login/';
 

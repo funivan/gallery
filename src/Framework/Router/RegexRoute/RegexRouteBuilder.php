@@ -5,12 +5,12 @@
   namespace Funivan\Gallery\Framework\Router\RegexRoute;
 
   use Funivan\Gallery\Framework\Http\Request\ParametersInterface;
-  use Funivan\Gallery\Framework\Router\RouteBuildInterface;
+  use Funivan\Gallery\Framework\Router\UrlInterface;
 
   /**
    *
    */
-  class RegexRouteBuilder implements RouteBuildInterface {
+  class RegexRouteBuilder implements UrlInterface {
 
     /**
      * @var string

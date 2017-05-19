@@ -4,8 +4,8 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\Visibility;
 
-  use Funivan\Gallery\App\Image\Image;
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
+  use Funivan\Gallery\FileStorage\File\FileInterface;
 
   /**
    *
@@ -13,9 +13,9 @@
   class VisibilitySetAction implements ImageActionInterface {
 
     /**
-     * @param Image $image
+     * @param FileInterface $image
      */
-    public final function execute(Image $image) {
+    public final function execute(FileInterface $image) {
 
     }
 

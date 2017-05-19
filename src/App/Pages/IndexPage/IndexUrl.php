@@ -5,12 +5,12 @@
   namespace Funivan\Gallery\App\Pages\IndexPage;
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteBuild;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
 
   /**
    *
    */
-  final class IndexUrl extends PathRouteBuild {
+  final class IndexUrl extends PathUrl {
 
     const PREFIX = '/';
 

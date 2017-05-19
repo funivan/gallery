@@ -4,6 +4,7 @@
 
   namespace Funivan\Gallery\FileStorage\File;
 
+  use Funivan\Gallery\FileStorage\PathInterface;
   use Funivan\Gallery\Framework\DataStructures\String\BufferedString;
   use Funivan\Gallery\Framework\DataStructures\String\BufferedStringInterface;
 
@@ -71,6 +72,23 @@
     public final function write(string $content) {
       $this->original->write($content);
       $this->content->clear()->append($content);
+    }
+
+
+    /**
+     * @param string $type
+     * @return string
+     */
+    public function meta(string $type): string {
+      return $this->original->meta($type);
+    }
+
+
+    /**
+     * @return PathInterface
+     */
+    public function path(): PathInterface {
+      return $this->original->path();
     }
 
   }

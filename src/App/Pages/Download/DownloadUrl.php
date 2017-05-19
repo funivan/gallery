@@ -7,12 +7,12 @@
 
   use Funivan\Gallery\FileStorage\PathInterface;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteBuild;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
 
   /**
    *
    */
-  final class DownloadUrl extends PathRouteBuild {
+  final class DownloadUrl extends PathUrl {
 
     const PREFIX = '/download/';
 

@@ -98,4 +98,22 @@
       $this->storage->write($this->path, $content);
     }
 
+
+    /**
+     * @param string $type
+     * @return string
+     */
+    public final function meta(string $type): string {
+      return $this->storage->meta($this->path, $type);
+    }
+
+
+    /**
+     * @return PathInterface
+     */
+    public function path(): PathInterface {
+      return $this->path;
+    }
+
+
   }

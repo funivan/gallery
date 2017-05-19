@@ -4,13 +4,13 @@
 
   use Funivan\Gallery\FileStorage\PathInterface;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteBuild;
-  use Funivan\Gallery\Framework\Router\RouteBuildInterface;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
+  use Funivan\Gallery\Framework\Router\UrlInterface;
 
   /**
    *
    */
-  class FavouriteUrl implements RouteBuildInterface {
+  class FavouriteUrl implements UrlInterface {
 
     const PREFIX = '/action/change/favourite';
 
@@ -42,7 +42,7 @@
      */
     public final function build(): string {
       $parameters = new Parameters(['path' => $this->path->assemble()]);
-      return (new PathRouteBuild(self::PREFIX . '/' . $this->type . '/', $parameters))->build();
+      return (new PathUrl(self::PREFIX . '/' . $this->type . '/', $parameters))->build();
     }
 
   }
