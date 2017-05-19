@@ -49,14 +49,9 @@
     public final function write(PathInterface $path, string $data) {
       $filePath = $this->basePath->next($path);
       $directory = $filePath->previous()->assemble();
-      $validDirectory = true;
       if (self::ALLOW_DIRECTORY_CREATION === $this->option) {
-        $validDirectory = @mkdir($directory, 0777, true);
-      }
-      if (!$validDirectory or !is_writable($this->basePath->assemble())) {
-        throw new WriteException(
-          sprintf('Directory is not writable: %s', $this->basePath->assemble())
-        );
+        /** @noinspection UsageOfSilenceOperatorInspection No need to test is_directory. Anyway can be invalid state */
+        @mkdir($directory, 0777, true);
       }
       $result = file_put_contents($filePath->assemble(), $data);
       if (false === $result) {
