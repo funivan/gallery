@@ -1,0 +1,16 @@
+Classes :: Interface Implementation
+
+Class can not implement multiple interface. We should have composite interface.
+
+1. Bad
+<code>
+  class AuthorInterface implements UserInterface, IdentityInterface {
+  }
+</code>
+2. Good
+<code>
+  interface AuthorInterface extends UserInterface, IdentityInterface {
+  }
+  class Author implements AuthorInterface {
+  }
+</code>

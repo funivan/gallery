@@ -1,0 +1,28 @@
+Architecture :: Single assert in tests
+Recommendation!
+
+This can be a good practice to use only one assertion
+in the Unit Tests
+
+1. Bad
+<code>
+  public function testUrlBuild(){
+    $url = new Url('userName')
+    self::assertSame('/url/userName', $url->build())
+    self::assertCount(0, $url->parameters())
+  }
+</code>
+
+2. Good
+<code>
+  public function testUrlBuildToString(){
+    $url = new Url('userName')
+    self::assertSame('/url/userName', $url->build())
+  }
+
+  public function testUrlParameters(){
+    $url = new Url('userName')
+    self::assertCount(0, $url->parameters())
+  }
+</code>
+

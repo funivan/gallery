@@ -1,0 +1,27 @@
+Class :: Named Constructors
+
+Named constructors are static methods that begins with the word "create"
+and always return new instance of the class.
+
+There can be several named constructors.
+
+We should make __construct method private when we add at least one named constructor.
+
+Named constructors should have return type declaration which correspond to the interface of this class
+
+For example:
+<code>
+  class User implements UserInterface {
+    private $name;
+    private function __construct(string $name) {
+      $this->name = $name;
+    }
+    public static function createFromData(array $data) : UserInterface{
+      return new self($data['name']);
+    }
+    public static function createFromFile(FileInterface $file) : UserInterface {
+      return new self(trim($file->read());
+    }
+    // ...
+  }
+</code>

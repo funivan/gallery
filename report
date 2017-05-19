@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+data=$(./vendor/bin/phploc src --count-tests --exclude=Tests/)
+echo "$data"
+if [[ "$1" == "-s" ]] ; then
+  echo "$data" > docs/report.txt
+fi

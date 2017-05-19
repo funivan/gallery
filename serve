@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+ip="$(ifconfig | awk -F: '/inet addr/ {gsub(/ .*/,"",$2); print $2}' | head -1)"
+port="8081"
+php -S $ip:$port -t public

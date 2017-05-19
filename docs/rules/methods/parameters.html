@@ -1,0 +1,11 @@
+Method :: parameters
+
+Parameter that can accept and object should have "Interface"  as declared type
+1. Bad
+<code>
+  public function read(File $file);
+</code>
+2. Good
+<code>
+  public function read(FileInterface $file);
+</code>

@@ -1,0 +1,10 @@
+{
+  "users": {
+    "ivan": {
+      "pass": 123,
+      "rules": [
+        "favourite_set"
+      ]
+    }
+  }
+}
