@@ -10,7 +10,6 @@
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
   use Funivan\Gallery\Framework\Http\Response\Status\ResponseStatus;
   use Funivan\Gallery\Framework\Http\Response\StatusInterface;
-  use Funivan\Gallery\Framework\Templating\View;
   use Funivan\Gallery\Framework\Templating\ViewInterface;
 
   /**
@@ -19,7 +18,7 @@
   class ViewResponse implements ResponseInterface {
 
     /**
-     * @var View
+     * @var ViewInterface
      */
     private $view;
 

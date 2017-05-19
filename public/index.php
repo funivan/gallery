@@ -101,25 +101,25 @@
                 new Route(
                   new ActionRouteMatch('favourite', 'on'),
                   new AuthorizationDispatcher('favourite_set', $authComponent
-                    , new ActionDispatcher(new FavouriteSetAction(), $imagesFs, $authComponent)
+                    , new ActionDispatcher(new FavouriteSetAction(), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch('favourite', 'off'),
                   new AuthorizationDispatcher('favourite_remove', $authComponent,
-                    new ActionDispatcher(new FavouriteRemoveAction(), $imagesFs, $authComponent)
+                    new ActionDispatcher(new FavouriteRemoveAction(), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch('visibility', 'on'),
                   new AuthorizationDispatcher('visibility_set', $authComponent,
-                    new ActionDispatcher(new VisibilitySetAction(), $imagesFs, $authComponent)
+                    new ActionDispatcher(new VisibilitySetAction(), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch('visibility', 'off'),
                   new AuthorizationDispatcher('visibility_remove', $authComponent,
-                    new ActionDispatcher(new VisibilityRemoveAction(), $imagesFs, $authComponent)
+                    new ActionDispatcher(new VisibilityRemoveAction(), $imagesFs)
                   )
                 ),
               ])

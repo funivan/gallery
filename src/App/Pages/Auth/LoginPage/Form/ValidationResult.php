@@ -16,7 +16,7 @@
 
 
     /**
-     * @param \string[] $errors
+     * @param string[] $errors
      */
     public function __construct(array $errors) {
       $this->errors = $errors;

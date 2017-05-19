@@ -11,11 +11,11 @@
     <div class="row">
       <h1>Page not found</h1>
       <?= $phrase ?>
-      <? if ('' !== $description) { ?>
+      <?php if ('' !== $description) { ?>
         <p>
           <?= $description ?>
         </p>
-      <? } ?>
+      <?php } ?>
     </div>
   </div>
 </div>
