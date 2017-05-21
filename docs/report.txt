@@ -1,27 +1,27 @@
 phploc 4.0-g8a0b60e by Sebastian Bergmann.
 
 Directories                                         66
-Files                                              137
+Files                                              139
 
 Size
-  Lines of Code (LOC)                             6280
-  Comment Lines of Code (CLOC)                    1946 (30.99%)
-  Non-Comment Lines of Code (NCLOC)               4334 (69.01%)
-  Logical Lines of Code (LLOC)                    1425 (22.69%)
-    Classes                                        652 (45.75%)
+  Lines of Code (LOC)                             6362
+  Comment Lines of Code (CLOC)                    1997 (31.39%)
+  Non-Comment Lines of Code (NCLOC)               4365 (68.61%)
+  Logical Lines of Code (LLOC)                    1432 (22.51%)
+    Classes                                        655 (45.74%)
       Average Class Length                           5
         Minimum Class Length                         0
         Maximum Class Length                        39
       Average Method Length                          1
         Minimum Method Length                        0
         Maximum Method Length                       15
-    Functions                                      139 (9.75%)
+    Functions                                      139 (9.71%)
       Average Function Length                       27
-    Not in classes or functions                    634 (44.49%)
+    Not in classes or functions                    638 (44.55%)
 
 Cyclomatic Complexity
   Average Complexity per LLOC                     0.06
-  Average Complexity per Class                    1.58
+  Average Complexity per Class                    1.57
     Minimum Class Complexity                      1.00
     Maximum Class Complexity                     15.00
   Average Complexity per Method                   1.31
@@ -33,27 +33,27 @@ Dependencies
     Global Constants                                 0 (0.00%)
     Global Variables                                 0 (0.00%)
     Super-Global Variables                           0 (0.00%)
-  Attribute Accesses                               291
-    Non-Static                                     291 (100.00%)
+  Attribute Accesses                               290
+    Non-Static                                     290 (100.00%)
     Static                                           0 (0.00%)
-  Method Calls                                     447
-    Non-Static                                     348 (77.85%)
-    Static                                          99 (22.15%)
+  Method Calls                                     453
+    Non-Static                                     354 (78.15%)
+    Static                                          99 (21.85%)
 
 Structure
   Namespaces                                        66
-  Interfaces                                        28
+  Interfaces                                        29
   Traits                                             0
-  Classes                                           82
+  Classes                                           83
     Abstract Classes                                 0 (0.00%)
-    Concrete Classes                                82 (100.00%)
-  Methods                                          298
+    Concrete Classes                                83 (100.00%)
+  Methods                                          303
     Scope
-      Non-Static Methods                           282 (94.63%)
-      Static Methods                                16 (5.37%)
+      Non-Static Methods                           286 (94.39%)
+      Static Methods                                17 (5.61%)
     Visibility
-      Public Methods                               290 (97.32%)
-      Non-Public Methods                             8 (2.68%)
+      Public Methods                               294 (97.03%)
+      Non-Public Methods                             9 (2.97%)
   Functions                                          5
     Named Functions                                  0 (0.00%)
     Anonymous Functions                              5 (100.00%)

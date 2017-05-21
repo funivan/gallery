@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 data=$(./vendor/bin/phploc src --count-tests)
 echo "$data" > docs/report.txt
+git add docs/report.txt
