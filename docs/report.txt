@@ -36,9 +36,9 @@ Dependencies
   Attribute Accesses                               290
     Non-Static                                     290 (100.00%)
     Static                                           0 (0.00%)
-  Method Calls                                     453
-    Non-Static                                     354 (78.15%)
-    Static                                          99 (21.85%)
+  Method Calls                                     454
+    Non-Static                                     355 (78.19%)
+    Static                                          99 (21.81%)
 
 Structure
   Namespaces                                        66
