@@ -22,5 +22,8 @@
     "psr-4": {
       "Funivan\\Gallery\\": "src/"
     }
+  },
+  "scripts": {
+    "post-install-cmd": "cp ./report ./.git/hooks/pre-commit"
   }
 }
