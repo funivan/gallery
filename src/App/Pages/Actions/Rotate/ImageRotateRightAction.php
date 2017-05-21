@@ -4,12 +4,15 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\Rotate;
 
+  use Funivan\Gallery\App\Image\ImageInterface;
   use Funivan\Gallery\App\Image\Painter\PreviewPainter;
   use Funivan\Gallery\App\Image\Painter\RotatePainter;
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
-  use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
 
+  /**
+   *
+   */
   class ImageRotateRightAction implements ImageActionInterface {
 
     /**
@@ -36,13 +39,12 @@
     /**
      * Rotate image and build new
      *
-     * @param FileInterface $image
+     * @param ImageInterface $image
      * @return void
      */
-    public function execute(FileInterface $image) {
-      (new PreviewPainter($this->previewStorage))->paint(
-        (new RotatePainter($this->angel))->paint($image)
-      );
+    public function execute(ImageInterface $image) {
+      (new RotatePainter($this->angel))->paint($image->original(), $image->original());
+      (new PreviewPainter())->paint($image->original(), $image->preview($this->previewStorage));
     }
 
   }

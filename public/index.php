@@ -22,7 +22,7 @@
   use Funivan\Gallery\App\Pages\ListPage\ListController;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\App\Pages\ThumbPage\PreviewController;
-  use Funivan\Gallery\App\Pages\ThumbPage\ThumbUrl;
+  use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
   use Funivan\Gallery\App\SafeDispatcher;
   use Funivan\Gallery\App\Users\Users;
   use Funivan\Gallery\FileStorage\File\File;
@@ -88,7 +88,7 @@
             new DownloadController($imagesFs)
           ),
           new Route(
-            new PathRouteMatch(ThumbUrl::PREFIX),
+            new PathRouteMatch(PreviewUrl::PREFIX),
             new PreviewController($imagesFs, $cacheFs)
           ),
           # Check path by regex and then, according to the data, check what dispatcher we should call

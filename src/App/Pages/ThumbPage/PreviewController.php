@@ -4,12 +4,10 @@
 
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
+  use Funivan\Gallery\App\Image\Image;
   use Funivan\Gallery\App\Image\Painter\PreviewPainter;
-  use Funivan\Gallery\App\Image\ThumbUid;
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
-  use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\FileResponse\FileResponse;
@@ -48,18 +46,17 @@
      * @return ResponseInterface
      */
     public final function handle(RequestInterface $request): ResponseInterface {
-      $path = new LocalPath(urldecode($request->get()->value('path')));
-      $original = File::create($path, $this->imageFs);
+      $path = urldecode($request->get()->value('path'));
+      $image = Image::createFromRawPath($path, $this->imageFs);
+      $original = $image->original();
       if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);
       } else {
-        $thumbUid = new ThumbUid($original);
-        $thumb = File::create($thumbUid->path(), $this->cacheFs);
-        if (!$thumb->exists()) {
-          $previewPainter = new PreviewPainter($this->cacheFs);
-          $thumb = $previewPainter->paint($original);
+        $preview = $image->preview($this->cacheFs);
+        if (!$preview->exists()) {
+          (new PreviewPainter())->paint($original, $preview);
         }
-        $response = FileResponse::createViewable($thumb);
+        $response = FileResponse::createViewable($preview);
       }
       return $response;
     }

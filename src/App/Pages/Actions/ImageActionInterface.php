@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\Actions;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\Gallery\App\Image\ImageInterface;
 
   /**
    *
@@ -13,10 +13,10 @@
 
 
     /**
-     * @param FileInterface $image
+     * @param ImageInterface $image
      * @return void
      */
-    public function execute(FileInterface $image);
+    public function execute(ImageInterface $image);
 
 
   }

@@ -8,7 +8,7 @@
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
-  use Funivan\Gallery\App\Pages\ThumbPage\ThumbUrl;
+  use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
   use Funivan\Gallery\Framework\Templating\View;
 
 
@@ -40,7 +40,7 @@
             <div class="card-image  waves-effect waves-block waves-light">
               <a href="<?= (new DownloadUrl($filePath))->build() ?>" target="_blank">
                 <div class="valign-wrapper center-align">
-                  <img src='<?= (new ThumbUrl($filePath))->build() ?>' class="img-responsive center-block">
+                  <img src='<?= (new PreviewUrl($filePath))->build() ?>' class="img-responsive center-block">
                 </div>
               </a>
             </div>

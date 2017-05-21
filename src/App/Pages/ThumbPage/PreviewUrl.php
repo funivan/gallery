@@ -11,9 +11,9 @@
   /**
    *
    */
-  final class ThumbUrl extends PathUrl {
+  final class PreviewUrl extends PathUrl {
 
-    const PREFIX = '/img/';
+    const PREFIX = '/preview/';
 
 
     /**

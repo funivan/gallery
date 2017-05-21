@@ -4,8 +4,16 @@
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
 
+  /**
+   *
+   */
   interface PainterInterface {
 
-    public function paint(FileInterface $file): FileInterface;
+    /**
+     * @param FileInterface $source
+     * @param FileInterface $destination
+     * @return void
+     */
+    public function paint(FileInterface $source, FileInterface $destination);
 
   }
