@@ -50,7 +50,7 @@
       $filePath = $this->basePath->next($path);
       $directory = $filePath->previous()->assemble();
       $validDir = true;
-      if (self::ALLOW_DIRECTORY_CREATION === $this->option) {
+      if (self::ALLOW_DIRECTORY_CREATION === $this->option and !is_dir($directory)) {
         $validDir = @mkdir($directory, 0777, true);
       }
       if (!$validDir or !is_dir($directory)) {

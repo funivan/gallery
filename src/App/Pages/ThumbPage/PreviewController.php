@@ -4,6 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
+  use Funivan\Gallery\App\Image\Painter\PreviewPainter;
   use Funivan\Gallery\App\Image\ThumbUid;
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
   use Funivan\Gallery\FileStorage\File\File;
@@ -17,7 +18,7 @@
   /**
    *
    */
-  class ThumbController implements DispatcherInterface {
+  class PreviewController implements DispatcherInterface {
 
     /**
      * @var FileStorageInterface
@@ -55,12 +56,8 @@
         $thumbUid = new ThumbUid($original);
         $thumb = File::create($thumbUid->path(), $this->cacheFs);
         if (!$thumb->exists()) {
-          $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
-          $img = $manager->make($original->read());
-          $extension = $thumb->meta('extension');
-          $thumb->write(
-            (string) $img->fit(300, 300)->encode($extension)
-          );
+          $previewPainter = new PreviewPainter($this->cacheFs);
+          $thumb = $previewPainter->paint($original);
         }
         $response = FileResponse::createViewable($thumb);
       }

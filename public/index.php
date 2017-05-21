@@ -21,7 +21,7 @@
   use Funivan\Gallery\App\Pages\IndexPage\IndexUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListController;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
-  use Funivan\Gallery\App\Pages\ThumbPage\ThumbController;
+  use Funivan\Gallery\App\Pages\ThumbPage\PreviewController;
   use Funivan\Gallery\App\Pages\ThumbPage\ThumbUrl;
   use Funivan\Gallery\App\SafeDispatcher;
   use Funivan\Gallery\App\Users\Users;
@@ -89,7 +89,7 @@
           ),
           new Route(
             new PathRouteMatch(ThumbUrl::PREFIX),
-            new ThumbController($imagesFs, $cacheFs)
+            new PreviewController($imagesFs, $cacheFs)
           ),
           # Check path by regex and then, according to the data, check what dispatcher we should call
           # This technique can be used for groups
@@ -133,7 +133,7 @@
           ),
           new Route(
             new PathRouteMatch(ImageRotateRightUrl::PREFIX),
-            new ActionDispatcher(new ImageRotateRightAction(), $imagesFs)
+            new ActionDispatcher(new ImageRotateRightAction(90, $cacheFs), $imagesFs)
           ),
           new Route(
             new RegexRouteMatch(LoginUrl::PREFIX),
