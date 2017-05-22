@@ -5,7 +5,7 @@
   namespace Funivan\Gallery\App\Photo;
 
   /**
-   *
+   * @todo implement set and remove
    */
   class State implements StateInterface {
 
