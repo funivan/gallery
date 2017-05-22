@@ -46,8 +46,10 @@
      * @return ResponseInterface
      */
     public final function handle(RequestInterface $request): ResponseInterface {
-      $path = urldecode($request->get()->value('path'));
-      $image = Image::createFromRawPath($path, $this->imageFs);
+      $image = Image::createFromRawPath(
+        urldecode($request->get()->value('path')),
+        $this->imageFs
+      );
       $original = $image->original();
       if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);

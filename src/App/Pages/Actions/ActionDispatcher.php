@@ -4,7 +4,6 @@
 
   use Funivan\Gallery\App\Image\Image;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\Plain\PlainResponse;
@@ -41,8 +40,10 @@
      * @return ResponseInterface
      */
     public final function handle(RequestInterface $request): ResponseInterface {
-      $path = new LocalPath(urldecode($request->get()->value('path')));
-      $original = Image::createFromRawPath($path, $this->storage);
+      $original = Image::createFromRawPath(
+        urldecode($request->get()->value('path')),
+        $this->storage
+      );
       if (!$original->original()->exists()) {
         $response = PlainResponse::create('{error:"image not found"}');
       } else {
