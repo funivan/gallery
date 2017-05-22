@@ -14,10 +14,10 @@
 
 
     /**
-     * @param ImageInterface $image
+     * @param ImageInterface $photo
      * @return void
      */
-    public final function execute(ImageInterface $image) {
+    public final function execute(ImageInterface $photo) {
 
     }
 

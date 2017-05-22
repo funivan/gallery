@@ -49,8 +49,8 @@
     public function testWrite() {
       $original = File::createInMemory();
       $file = new CachableFile($original);
-      $file->write("first");
-      $original->write("second");
+      $file->write('first');
+      $original->write('second');
       self::assertSame('first', $file->read());
     }
 

@@ -15,7 +15,7 @@
     public function testMerge() {
       self::assertCount(2,
         (new Headers([new Field('Set-Cookie', 'User=1')]))
-          ->merge(new Headers([new Field('Location', "/")]))
+          ->merge(new Headers([new Field('Location', '/')]))
           ->fields()
       );
     }

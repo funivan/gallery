@@ -2,8 +2,8 @@
 
   namespace Funivan\Gallery\App\Image;
 
+  use Funivan\Gallery\App\Image\Painter\PainterInterface;
   use Funivan\Gallery\FileStorage\File\FileInterface;
-  use Funivan\Gallery\FileStorage\FileStorageInterface;
 
 
   /**
@@ -12,14 +12,15 @@
   interface ImageInterface {
 
     /**
-     * @param FileStorageInterface $storage
-     * @return FileInterface
+     * @param PainterInterface $painter
+     * @return void
      */
-    public function preview(FileStorageInterface $storage): FileInterface;
+    public function paint(PainterInterface $painter);
 
 
     /**
      * @return FileInterface
      */
     public function original(): FileInterface;
+
   }

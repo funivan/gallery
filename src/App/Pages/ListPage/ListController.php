@@ -4,6 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\ListPage;
 
+  use Funivan\Gallery\App\Photo\PhotosList;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\FinderFilter;
   use Funivan\Gallery\FileStorage\FinderFilterInterface;
@@ -49,7 +50,7 @@
       return new ViewResponse(
         new CompositeView(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'List : ' . $currentPath->assemble()],
           new View(__DIR__ . '/viewList.php', [
-            'files' => $files,
+            'photos' => PhotosList::createFromPathList($files, $this->imageFs),
             'currentPath' => $currentPath,
             'directories' => $directories,
           ])

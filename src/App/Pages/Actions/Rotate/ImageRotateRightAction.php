@@ -4,6 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\Rotate;
 
+  use Funivan\Gallery\App\Image\Image;
   use Funivan\Gallery\App\Image\ImageInterface;
   use Funivan\Gallery\App\Image\Painter\PreviewPainter;
   use Funivan\Gallery\App\Image\Painter\RotatePainter;
@@ -37,14 +38,14 @@
 
 
     /**
-     * Rotate image and build new
+     * Rotate image and build new preview
      *
-     * @param ImageInterface $image
+     * @param ImageInterface $photo
      * @return void
      */
-    public function execute(ImageInterface $image) {
-      (new RotatePainter($this->angel))->paint($image->original(), $image->original());
-      (new PreviewPainter())->paint($image->original(), $image->preview($this->previewStorage));
+    public function execute(ImageInterface $photo) {
+      $photo->paint(new RotatePainter($this->angel, $photo));
+      Image::createPreview($photo, $this->previewStorage)->paint(new PreviewPainter($photo));
     }
 
   }

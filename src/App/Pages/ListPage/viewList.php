@@ -2,6 +2,7 @@
 
   /** @var \Funivan\Gallery\FileStorage\PathInterface $currentPath */
   /** @var View $this */
+
   /** @var \Funivan\Gallery\FileStorage\PathInterface[] $directories */
 
   use Funivan\Gallery\App\Pages\Actions\Favourite\FavouriteUrl;
@@ -32,8 +33,9 @@
   </div>
   <div class="col m12 l9">
     <div class="row">
-      <?php /** @var \Funivan\Gallery\FileStorage\PathInterface[] $files */ ?>
-      <?php foreach ($files as $index => $filePath) { ?>
+      <?php /** @var \Funivan\Gallery\App\Photo\PhotosList $photos */ ?>
+      <?php foreach ($photos as $photo) { ?>
+        <?php $filePath = $photo->original()->path() ?>
         <div class="col s12 m6 l4 xl3">
 
           <div class="card">
@@ -58,8 +60,11 @@
 
                 <!--@todo toggle start action -->
                 <a href="<?= (new FavouriteUrl('on', $filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
-                  <i class="material-icons">star</i>
-                  <i class="material-icons" style="color:gray">star</i>
+                  <?php if ($photo->favourite()->enabled()) { ?>
+                    <i class="material-icons">star</i>
+                  <?php } else { ?>
+                    <i class="material-icons" style="color:gray">star</i>
+                  <?php } ?>
                 </a>
 
                 <a href="<?= (new ImageRotateRightUrl($filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">

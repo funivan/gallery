@@ -4,12 +4,14 @@
 
   namespace Funivan\Gallery\App\Image;
 
+  use Funivan\Gallery\App\Image\Painter\PainterInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\Gallery\FileStorage\PathInterface;
 
   /**
+   * Represent image in the system.
    *
    */
   class Image implements ImageInterface {
@@ -29,22 +31,27 @@
 
 
     /**
-     * @param string $path
+     * @param PathInterface $path
      * @param FileStorageInterface $fs
-     * @return Image
+     * @return ImageInterface
      */
-    public static function createFromRawPath(string $path, FileStorageInterface $fs): Image {
-      return new self(File::create(new LocalPath($path), $fs));
+    public static function createFromRawPath(PathInterface $path, FileStorageInterface $fs): ImageInterface {
+      return new self(File::create($path, $fs));
     }
 
 
     /**
-     * @param FileStorageInterface $storage
-     * @return FileInterface
+     * @param ImageInterface $image
+     * @param FileStorageInterface $fs
+     * @return ImageInterface
      */
-    public function preview(FileStorageInterface $storage): FileInterface {
-      $thumbUid = new ThumbUid($this->original());
-      return File::create($thumbUid->path(), $storage);
+    public static function createPreview(ImageInterface $image, FileStorageInterface $fs): ImageInterface {
+      return new self(
+        File::create(
+          (new PreviewLocation($image->original()))->path(),
+          $fs
+        )
+      );
     }
 
 
@@ -53,6 +60,16 @@
      */
     public function original(): FileInterface {
       return $this->file;
+    }
+
+
+    /**
+     * @param PainterInterface $painter
+     * @return void
+     */
+    public function paint(PainterInterface $painter): ImageInterface {
+      $result = $painter->paint();
+      $this->file->write((string) $result->encode($this->file->meta('extension')));
     }
 
   }

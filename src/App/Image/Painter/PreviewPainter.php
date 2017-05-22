@@ -2,7 +2,7 @@
 
   namespace Funivan\Gallery\App\Image\Painter;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\Gallery\App\Image\ImageInterface;
 
   /**
    *
@@ -10,15 +10,26 @@
   class PreviewPainter implements PainterInterface {
 
     /**
-     * @param FileInterface $source
-     * @param FileInterface $destination
+     * @var ImageInterface
      */
-    public function paint(FileInterface $source, FileInterface $destination) {
+    private $image;
+
+
+    /**
+     * @param ImageInterface $image
+     */
+    public function __construct(ImageInterface $image) {
+      $this->image = $image;
+    }
+
+
+    /**
+     * @return \Intervention\Image\Image
+     */
+    public function paint(): \Intervention\Image\Image {
       $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
-      $img = $manager->make($source->read());
-      $destination->write(
-        (string) $img->fit(300, 300)->encode($source->meta('extension'))
-      );
+      $img = $manager->make($this->image->original()->read());
+      return $img->fit(300, 300);
     }
 
   }

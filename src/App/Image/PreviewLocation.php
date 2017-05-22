@@ -11,7 +11,7 @@
   /**
    *
    */
-  class ThumbUid {
+  class PreviewLocation {
 
     /**
      * @var FileInterface
