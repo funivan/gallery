@@ -67,7 +67,7 @@
      * @param PainterInterface $painter
      * @return void
      */
-    public function paint(PainterInterface $painter): ImageInterface {
+    public function paint(PainterInterface $painter) {
       $result = $painter->paint();
       $this->file->write((string) $result->encode($this->file->meta('extension')));
     }
