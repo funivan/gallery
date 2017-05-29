@@ -1,5 +1,5 @@
 filter:
-    excluded_paths: [tests/*]
+    excluded_paths: [vendor/*]
 checks:
     php:
       avoid_usage_of_logical_operators: false
@@ -27,4 +27,3 @@ tools:
         excluded_dirs: [vendor, Tests/]
     php_cpd:
         enabled: true
-excluded_dirs: [vendor, Tests/]
