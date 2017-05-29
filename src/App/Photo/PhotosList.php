@@ -5,7 +5,7 @@
   namespace Funivan\Gallery\App\Photo;
 
 
-  use Funivan\Gallery\App\Image\Image;
+  use Funivan\Gallery\App\Canvas\Canvas;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
 
   /**
@@ -35,7 +35,7 @@
     public static function createFromPathList(array $paths, FileStorageInterface $fs): PhotosList {
       $photos = [];
       foreach ($paths as $path) {
-        $photos[] = new Photo(Image::createFromRawPath($path, $fs));
+        $photos[] = new Photo(Canvas::createFromRawPath($path, $fs));
       }
       return new self($photos);
     }

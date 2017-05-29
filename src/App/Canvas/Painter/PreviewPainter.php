@@ -1,8 +1,8 @@
 <?php
 
-  namespace Funivan\Gallery\App\Image\Painter;
+  namespace Funivan\Gallery\App\Canvas\Painter;
 
-  use Funivan\Gallery\App\Image\ImageInterface;
+  use Funivan\Gallery\App\Canvas\CanvasInterface;
 
   /**
    *
@@ -10,15 +10,15 @@
   class PreviewPainter implements PainterInterface {
 
     /**
-     * @var ImageInterface
+     * @var CanvasInterface
      */
     private $image;
 
 
     /**
-     * @param ImageInterface $image
+     * @param CanvasInterface $image
      */
-    public function __construct(ImageInterface $image) {
+    public function __construct(CanvasInterface $image) {
       $this->image = $image;
     }
 

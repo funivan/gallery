@@ -2,7 +2,7 @@
 
   namespace Funivan\Gallery\App\Pages\Actions;
 
-  use Funivan\Gallery\App\Image\Image;
+  use Funivan\Gallery\App\Canvas\Canvas;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
@@ -41,7 +41,7 @@
      * @return ResponseInterface
      */
     public final function handle(RequestInterface $request): ResponseInterface {
-      $original = Image::createFromRawPath(
+      $original = Canvas::createFromRawPath(
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->storage
       );

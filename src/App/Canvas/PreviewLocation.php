@@ -2,7 +2,7 @@
 
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Image;
+  namespace Funivan\Gallery\App\Canvas;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;

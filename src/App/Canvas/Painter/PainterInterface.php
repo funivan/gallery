@@ -1,6 +1,6 @@
 <?php
 
-  namespace Funivan\Gallery\App\Image\Painter;
+  namespace Funivan\Gallery\App\Canvas\Painter;
 
   /**
    *

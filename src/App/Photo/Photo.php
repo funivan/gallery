@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Photo;
 
-  use Funivan\Gallery\App\Image\ImageInterface;
+  use Funivan\Gallery\App\Canvas\CanvasInterface;
   use Funivan\Gallery\FileStorage\File\FileInterface;
 
   /**
@@ -13,15 +13,15 @@
   class Photo implements PhotoInterface {
 
     /**
-     * @var ImageInterface
+     * @var CanvasInterface
      */
     private $image;
 
 
     /**
-     * @param ImageInterface $image
+     * @param CanvasInterface $image
      */
-    public function __construct(ImageInterface $image) {
+    public function __construct(CanvasInterface $image) {
       $this->image = $image;
     }
 

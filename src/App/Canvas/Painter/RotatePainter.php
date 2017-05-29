@@ -1,9 +1,9 @@
 <?php
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Image\Painter;
+  namespace Funivan\Gallery\App\Canvas\Painter;
 
-  use Funivan\Gallery\App\Image\ImageInterface;
+  use Funivan\Gallery\App\Canvas\CanvasInterface;
 
   /**
    *
@@ -16,16 +16,16 @@
     private $angel;
 
     /**
-     * @var ImageInterface
+     * @var CanvasInterface
      */
     private $image;
 
 
     /**
      * @param int $angel
-     * @param ImageInterface $image
+     * @param CanvasInterface $image
      */
-    public function __construct(int $angel, ImageInterface $image) {
+    public function __construct(int $angel, CanvasInterface $image) {
       $this->angel = $angel;
       $this->image = $image;
     }

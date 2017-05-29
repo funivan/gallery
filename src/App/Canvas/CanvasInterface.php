@@ -1,21 +1,20 @@
 <?php
 
-  namespace Funivan\Gallery\App\Image;
+  namespace Funivan\Gallery\App\Canvas;
 
-  use Funivan\Gallery\App\Image\Painter\PainterInterface;
+  use Funivan\Gallery\App\Canvas\Painter\PainterInterface;
   use Funivan\Gallery\FileStorage\File\FileInterface;
 
 
   /**
    *
    */
-  interface ImageInterface {
+  interface CanvasInterface {
 
     /**
      * @param PainterInterface $painter
-     * @return void
      */
-    public function paint(PainterInterface $painter);
+    public function paint(PainterInterface $painter): void;
 
 
     /**

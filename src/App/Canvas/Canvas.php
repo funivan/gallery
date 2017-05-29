@@ -2,9 +2,9 @@
 
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Image;
+  namespace Funivan\Gallery\App\Canvas;
 
-  use Funivan\Gallery\App\Image\Painter\PainterInterface;
+  use Funivan\Gallery\App\Canvas\Painter\PainterInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
@@ -14,7 +14,7 @@
    * Represent image in the system.
    *
    */
-  class Image implements ImageInterface {
+  class Canvas implements CanvasInterface {
 
     /**
      * @var FileInterface
@@ -33,19 +33,19 @@
     /**
      * @param PathInterface $path
      * @param FileStorageInterface $fs
-     * @return ImageInterface
+     * @return CanvasInterface
      */
-    public static function createFromRawPath(PathInterface $path, FileStorageInterface $fs): ImageInterface {
+    public static function createFromRawPath(PathInterface $path, FileStorageInterface $fs): CanvasInterface {
       return new self(File::create($path, $fs));
     }
 
 
     /**
-     * @param ImageInterface $image
+     * @param CanvasInterface $image
      * @param FileStorageInterface $fs
-     * @return ImageInterface
+     * @return CanvasInterface
      */
-    public static function createPreview(ImageInterface $image, FileStorageInterface $fs): ImageInterface {
+    public static function createPreview(CanvasInterface $image, FileStorageInterface $fs): CanvasInterface {
       return new self(
         File::create(
           (new PreviewLocation($image->original()))->path(),
@@ -65,9 +65,8 @@
 
     /**
      * @param PainterInterface $painter
-     * @return void
      */
-    public function paint(PainterInterface $painter): ImageInterface {
+    public function paint(PainterInterface $painter): void {
       $result = $painter->paint();
       $this->file->write((string) $result->encode($this->file->meta('extension')));
     }

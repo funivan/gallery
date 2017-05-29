@@ -4,8 +4,8 @@
 
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
-  use Funivan\Gallery\App\Image\Image;
-  use Funivan\Gallery\App\Image\Painter\PreviewPainter;
+  use Funivan\Gallery\App\Canvas\Canvas;
+  use Funivan\Gallery\App\Canvas\Painter\PreviewPainter;
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
@@ -45,7 +45,7 @@
      * @return ResponseInterface
      */
     public final function handle(RequestInterface $request): ResponseInterface {
-      $image = Image::createFromRawPath(
+      $image = Canvas::createFromRawPath(
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->imageFs
       );
@@ -53,7 +53,7 @@
       if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);
       } else {
-        $preview = Image::createPreview($image, $this->cacheFs);
+        $preview = Canvas::createPreview($image, $this->cacheFs);
         if (!$preview->original()->exists()) {
           $preview->paint(new PreviewPainter($image));
         }
