@@ -56,4 +56,11 @@
      */
     public function remove(PathInterface $path);
 
+
+    /**
+     * @param PathInterface $old
+     * @param PathInterface $new
+     */
+    public function move(PathInterface $old, PathInterface $new): void;
+
   }

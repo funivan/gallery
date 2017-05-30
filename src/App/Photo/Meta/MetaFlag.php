@@ -2,12 +2,12 @@
 
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Photo;
+  namespace Funivan\Gallery\App\Photo\Meta;
 
   /**
-   * @todo implement set and remove
+   *
    */
-  class State implements StateInterface {
+  class MetaFlag implements MetaFlagInterface {
 
     /**
      * @var bool
@@ -29,7 +29,6 @@
     public function enabled(): bool {
       return $this->enabled;
     }
-
 
 
   }

@@ -2,12 +2,12 @@
 
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Photo;
+  namespace Funivan\Gallery\App\Photo\Meta;
 
   /**
    *
    */
-  interface StateInterface {
+  interface MetaFlagInterface {
 
 
     /**

@@ -55,4 +55,11 @@
     public function path(): PathInterface;
 
 
+    /**
+     * @param PathInterface $path
+     * @return FileInterface
+     */
+    public function move(PathInterface $path): FileInterface;
+
+
   }

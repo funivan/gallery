@@ -35,7 +35,7 @@
     <div class="row">
       <?php /** @var \Funivan\Gallery\App\Photo\PhotosList $photos */ ?>
       <?php foreach ($photos as $photo) { ?>
-        <?php $filePath = $photo->original()->path() ?>
+        <?php $filePath = $photo->file()->path() ?>
         <div class="col s12 m6 l4 xl3">
 
           <div class="card">

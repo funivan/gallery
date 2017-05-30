@@ -20,6 +20,6 @@
     /**
      * @return FileInterface
      */
-    public function original(): FileInterface;
+    public function file(): FileInterface;
 
   }

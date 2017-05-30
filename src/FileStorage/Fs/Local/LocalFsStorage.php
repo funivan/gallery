@@ -167,4 +167,9 @@
       }
     }
 
+
+    public function move(PathInterface $old, PathInterface $new): void {
+      rename($old->assemble(), $new->assemble());
+    }
+
   }

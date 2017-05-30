@@ -49,16 +49,16 @@
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->imageFs
       );
-      $original = $image->original();
+      $original = $image->file();
       if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);
       } else {
         $preview = Canvas::createPreview($image, $this->cacheFs);
-        if (!$preview->original()->exists()) {
+        if (!$preview->file()->exists()) {
           $preview->paint(new PreviewPainter($image));
         }
         $response = FileResponse::createViewable(
-          $preview->original()
+          $preview->file()
         );
       }
       return $response;

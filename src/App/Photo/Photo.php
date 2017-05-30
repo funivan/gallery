@@ -5,6 +5,8 @@
   namespace Funivan\Gallery\App\Photo;
 
   use Funivan\Gallery\App\Canvas\CanvasInterface;
+  use Funivan\Gallery\App\Photo\Meta\MetaFlag;
+  use Funivan\Gallery\App\Photo\Meta\MetaFlagInterface;
   use Funivan\Gallery\FileStorage\File\FileInterface;
 
   /**
@@ -27,31 +29,28 @@
 
 
     /**
-     * @return StateInterface
+     * @return MetaFlagInterface
      */
-    public function favourite(): StateInterface {
-      preg_match('!.*----(?<modifier>[fpd])(\.[a-z]{3,4})$!', $this->image->original()->path()->assemble(), $data);
+    public function favourite(): MetaFlagInterface {
+      preg_match('!.*----(?<modifier>[fpd])(\.[a-z]{3,4})$!', $this->image->file()->path()->assemble(), $data);
       $result = false;
       if (array_key_exists('modifier', $data)) {
         $result = (strpos($data['modifier'], 'f') !== false);
       }
-      return new State($result);
+      return new MetaFlag($result);
     }
 
 
     /**
      * @return FileInterface
      */
-    public function original(): FileInterface {
-      return $this->image->original();
+    public function file(): FileInterface {
+      return $this->image->file();
     }
 
 
-    /**
-     * @return string
-     */
-    public function name(): string {
-      return preg_replace('!.*--([fpd])(\.[a-z]{3,4})$!', '$1', $this->image->original()->path());
+    public function meta(): MetaInformation {
+      return new MetaInformation($this->image->file());
     }
 
 

@@ -1,8 +1,8 @@
 <?php
 
-  namespace Funivan\Gallery\Framework\DataStructures\String\Tests;
+  namespace Funivan\Gallery\Framework\DataStructures\BufferedString\Tests;
 
-  use Funivan\Gallery\Framework\DataStructures\String\BufferedString;
+  use Funivan\Gallery\Framework\DataStructures\BufferedString\BufferedString;
   use PHPUnit\Framework\TestCase;
 
   /**

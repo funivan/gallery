@@ -39,7 +39,7 @@
         throw new \InvalidArgumentException('Invalid angel. Should be between 0...360');
       }
       $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
-      $img = $manager->make($this->image->original()->read());
+      $img = $manager->make($this->image->file()->read());
       return $img->rotate($this->angel);
     }
 

@@ -38,4 +38,14 @@
     }
 
 
+    public function testMove() {
+      $storage = new MemoryStorage();
+      $storage->write(new LocalPath('/path/doc.txt'), 'plain content');
+      $storage->move(new LocalPath('/path/doc.txt'), new LocalPath('/path/test.txt'));
+      self::assertFalse(
+        $storage->file(new LocalPath('/path/test.txt'))
+      );
+    }
+
+
   }

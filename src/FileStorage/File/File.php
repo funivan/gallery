@@ -116,4 +116,14 @@
     }
 
 
+    /**
+     * @param PathInterface $path
+     * @return FileInterface
+     */
+    public function move(PathInterface $path): FileInterface {
+      $this->storage->move($this->path(), $path);
+      return new self($path, $this->storage);
+    }
+
+
   }

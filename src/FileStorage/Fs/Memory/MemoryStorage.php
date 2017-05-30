@@ -90,4 +90,11 @@
       unset($this->files[$path->assemble()]);
     }
 
+
+    public function move(PathInterface $old, PathInterface $new): void {
+      $this->write($new, $this->read($old));
+      $this->remove($old);
+    }
+
+
   }

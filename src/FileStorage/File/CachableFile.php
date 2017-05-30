@@ -5,8 +5,8 @@
   namespace Funivan\Gallery\FileStorage\File;
 
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Funivan\Gallery\Framework\DataStructures\String\BufferedString;
-  use Funivan\Gallery\Framework\DataStructures\String\BufferedStringInterface;
+  use Funivan\Gallery\Framework\DataStructures\BufferedString\BufferedString;
+  use Funivan\Gallery\Framework\DataStructures\BufferedString\BufferedStringInterface;
 
   /**
    *
@@ -89,6 +89,15 @@
      */
     public function path(): PathInterface {
       return $this->original->path();
+    }
+
+
+    /**
+     * @param PathInterface $path
+     * @return FileInterface
+     */
+    public function move(PathInterface $path): FileInterface {
+      return $this->original->move($path);
     }
 
   }

@@ -48,7 +48,7 @@
     public static function createPreview(CanvasInterface $image, FileStorageInterface $fs): CanvasInterface {
       return new self(
         File::create(
-          (new PreviewLocation($image->original()))->path(),
+          (new PreviewLocation($image->file()))->path(),
           $fs
         )
       );
@@ -58,7 +58,7 @@
     /**
      * @return FileInterface
      */
-    public function original(): FileInterface {
+    public function file(): FileInterface {
       return $this->file;
     }
 

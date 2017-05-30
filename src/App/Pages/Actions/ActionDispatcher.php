@@ -45,7 +45,7 @@
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->storage
       );
-      if (!$original->original()->exists()) {
+      if (!$original->file()->exists()) {
         $response = PlainResponse::create('{error:"image not found"}');
       } else {
         $this->action->execute($original);
