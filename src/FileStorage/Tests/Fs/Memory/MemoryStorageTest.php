@@ -38,11 +38,11 @@
     }
 
 
-    public function testMove() {
+    public function testMoveNewFileExists() {
       $storage = new MemoryStorage();
       $storage->write(new LocalPath('/path/doc.txt'), 'plain content');
       $storage->move(new LocalPath('/path/doc.txt'), new LocalPath('/path/test.txt'));
-      self::assertFalse(
+      self::assertTrue(
         $storage->file(new LocalPath('/path/test.txt'))
       );
     }

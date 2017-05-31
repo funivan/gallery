@@ -5,11 +5,13 @@
 
   /** @var \Funivan\Gallery\FileStorage\PathInterface[] $directories */
 
-  use Funivan\Gallery\App\Pages\Actions\Favourite\FavouriteUrl;
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
+  use Funivan\Gallery\App\Pages\Actions\ToggleFlag\ChangeFlagUrl;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
+  use Funivan\Gallery\App\Photo\Flag\Flags;
+  use Funivan\Gallery\App\Photo\Flag\FlagsInterface;
   use Funivan\Gallery\Framework\Templating\View;
 
 
@@ -35,7 +37,8 @@
     <div class="row">
       <?php /** @var \Funivan\Gallery\App\Photo\PhotosList $photos */ ?>
       <?php foreach ($photos as $photo) { ?>
-        <?php $filePath = $photo->file()->path() ?>
+        <?php $file = $photo->file();
+        $filePath = $file->path() ?>
         <div class="col s12 m6 l4 xl3">
 
           <div class="card">
@@ -49,6 +52,7 @@
             <div class="card sticky-action">
               <div class="card-action" data-image-path="<?= $filePath->assemble() ?>">
                 <!--@todo toggle visibility -->
+                <?php $flags = new Flags($file); ?>
                 <a href="#" class="js-toggle" data-url="/toggle/visibility/">
                   <i class="material-icons" style="color:gray">visibility</i>
                   <i class="material-icons">visibility</i>
@@ -59,18 +63,25 @@
                 </a>
 
                 <!--@todo toggle start action -->
-                <a href="<?= (new FavouriteUrl('on', $filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
-                  <?php if ($photo->favourite()->enabled()) { ?>
-                    <i class="material-icons">star</i>
-                  <?php } else { ?>
-                    <i class="material-icons" style="color:gray">star</i>
-                  <?php } ?>
+                <a
+                  href="<?= ChangeFlagUrl::createRemove(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
+                  class="js-toggle <?= $flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                  data-type="toggle-favourite"
+                >
+                  <i class="material-icons">star</i>
+                </a>
+
+                <a
+                  href="<?= ChangeFlagUrl::createSet(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
+                  class="js-toggle <?= !$flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                  data-type="toggle-favourite"
+                >
+                  <i class="material-icons" style="color:gray">star</i>
                 </a>
 
                 <a href="<?= (new ImageRotateRightUrl($filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
                   <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
                 </a>
-
 
               </div>
             </div>
@@ -80,3 +91,29 @@
     </div>
   </div>
 </div>
+<style type="text/css">
+  .js-flag-hidden {
+    display: none;
+  }
+</style>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var $toggleButtons = $('.js-toggle');
+    $toggleButtons.click(function (event) {
+      var $el = $(this);
+      var group = $el.attr('data-type');
+      $.post($el.attr('href'), {}, function (data) {
+        $toggleButtons.each(function () {
+          var $button = $(this);
+          if ($button.attr('data-type') == group) {
+            $button.toggle();
+          }
+        })
+      }).fail(function () {
+        alert("error");
+      });
+      event.preventDefault();
+      return false;
+    })
+  })
+</script>

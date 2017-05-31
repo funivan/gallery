@@ -169,7 +169,15 @@
 
 
     public function move(PathInterface $old, PathInterface $new): void {
-      rename($old->assemble(), $new->assemble());
+      $result = rename(
+        $this->basePath->next($old)->assemble(),
+        $this->basePath->next($new)->assemble()
+      );
+      if (!$result) {
+        throw new WriteException(
+          sprintf('Can not rename file from %s to %s', $old->assemble(), $new->assemble())
+        );
+      }
     }
 
   }

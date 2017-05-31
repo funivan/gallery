@@ -14,6 +14,13 @@
     }
 
 
+    public function testDoesNotHas() {
+      self::assertFalse(
+        (new ParsedString('user', '!(?<name>[a-z]+)(?<end>[;]*)!'))->has('end')
+      );
+    }
+
+
     public function testDoesNot() {
       self::assertFalse(
         (new ParsedString('ab-cd', '!(?<first>[a-z]+)-(?<second>\d+)!'))->has('second')

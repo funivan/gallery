@@ -8,31 +8,32 @@
   use Funivan\Gallery\Framework\Router\Match\MatchResultInterface;
   use Funivan\Gallery\Framework\Router\ParameterRoute\ParameterRoutMatch;
   use Funivan\Gallery\Framework\Router\ParameterRoute\SameParameterConstrain;
+  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteMatch;
   use Funivan\Gallery\Framework\Router\RouteMatchInterface;
 
   /**
    *
    */
-  class ActionRouteMatch implements RouteMatchInterface {
+  final class ActionRouteMatch implements RouteMatchInterface {
 
     /**
      * @var string
      */
-    private $type;
+    private $path;
 
     /**
      * @var string
      */
-    private $state;
+    private $flag;
 
 
     /**
-     * @param string $type
-     * @param string $state
+     * @param string $path
+     * @param string $flag
      */
-    public function __construct(string $type, string $state) {
-      $this->type = $type;
-      $this->state = $state;
+    public function __construct(string $path, string $flag) {
+      $this->path = $path;
+      $this->flag = $flag;
     }
 
 
@@ -40,12 +41,10 @@
      * @param RequestInterface $request
      * @return MatchResultInterface
      */
-    public final function match(RequestInterface $request): MatchResultInterface {
+    public function match(RequestInterface $request): MatchResultInterface {
       return ParameterRoutMatch::createWithNext(
-        'USER', new SameParameterConstrain('type', $this->type),
-        ParameterRoutMatch::create(
-          'USER', new SameParameterConstrain('state', $this->state)
-        )
+        'GET', new SameParameterConstrain('flag', $this->flag),
+        new PathRouteMatch($this->path)
       )->match($request);
     }
 

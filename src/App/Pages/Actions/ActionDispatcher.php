@@ -3,6 +3,7 @@
   namespace Funivan\Gallery\App\Pages\Actions;
 
   use Funivan\Gallery\App\Canvas\Canvas;
+  use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
@@ -13,7 +14,7 @@
   /**
    *
    */
-  class ActionDispatcher implements DispatcherInterface {
+  final class ActionDispatcher implements DispatcherInterface {
 
     /**
      * @var ImageActionInterface
@@ -45,11 +46,12 @@
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->storage
       );
+      $response = ErrorResponse::create('{error:"image not found"}', 500);
       if (!$original->file()->exists()) {
         $response = PlainResponse::create('{error:"image not found"}');
       } else {
-        $this->action->execute($original);
-        $response = PlainResponse::create('{result:"ok"}');
+        //$this->action->execute($original);
+        //$response = PlainResponse::create('{result:"ok"}');
       }
       return $response;
     }

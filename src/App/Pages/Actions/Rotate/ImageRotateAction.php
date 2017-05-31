@@ -14,7 +14,7 @@
   /**
    *
    */
-  class ImageRotateRightAction implements ImageActionInterface {
+  final class ImageRotateAction implements ImageActionInterface {
 
     /**
      * @var int
@@ -43,7 +43,7 @@
      * @param CanvasInterface $photo
      * @return void
      */
-    public function execute(CanvasInterface $photo) {
+    public function execute(CanvasInterface $photo): void {
       $photo->paint(new RotatePainter($this->angel, $photo));
       Canvas::createPreview($photo, $this->previewStorage)->paint(new PreviewPainter($photo));
     }

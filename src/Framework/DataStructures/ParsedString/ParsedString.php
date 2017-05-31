@@ -68,7 +68,7 @@
      */
     public function has(string $token): bool {
       preg_match($this->regexp, $this->input, $data);
-      return array_key_exists($token, $data);
+      return (array_key_exists($token, $data) and '' !== $data[$token]);
     }
 
 

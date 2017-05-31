@@ -16,7 +16,7 @@
      * @param CanvasInterface $photo
      * @return void
      */
-    public function execute(CanvasInterface $photo);
+    public function execute(CanvasInterface $photo) : void;
 
 
   }
