@@ -46,12 +46,11 @@
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->storage
       );
-      $response = ErrorResponse::create('{error:"image not found"}', 500);
       if (!$original->file()->exists()) {
         $response = PlainResponse::create('{error:"image not found"}');
       } else {
-        //$this->action->execute($original);
-        //$response = PlainResponse::create('{result:"ok"}');
+        $this->action->execute($original);
+        $response = PlainResponse::create('{result:"ok"}');
       }
       return $response;
     }

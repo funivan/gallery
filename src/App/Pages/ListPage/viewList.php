@@ -36,13 +36,13 @@
   <div class="col m12 l9">
     <div class="row">
       <?php /** @var \Funivan\Gallery\App\Photo\PhotosList $photos */ ?>
-      <?php foreach ($photos as $photo) { ?>
+      <?php foreach ($photos as $index=>$photo) { ?>
         <?php $file = $photo->file();
         $filePath = $file->path() ?>
         <div class="col s12 m6 l4 xl3">
 
           <div class="card">
-            <div class="card-image  waves-effect waves-block waves-light">
+            <div class="card-image waves-effect waves-block waves-light">
               <a href="<?= (new DownloadUrl($filePath))->build() ?>" target="_blank">
                 <div class="valign-wrapper center-align">
                   <img src='<?= (new PreviewUrl($filePath))->build() ?>' class="img-responsive center-block">
@@ -66,7 +66,7 @@
                 <a
                   href="<?= ChangeFlagUrl::createRemove(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
                   class="js-toggle <?= $flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-favourite"
+                  data-type="toggle-favourite-<?= $index ?>"
                 >
                   <i class="material-icons">star</i>
                 </a>
@@ -74,7 +74,7 @@
                 <a
                   href="<?= ChangeFlagUrl::createSet(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
                   class="js-toggle <?= !$flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-favourite"
+                  data-type="toggle-favourite-<?= $index ?>"
                 >
                   <i class="material-icons" style="color:gray">star</i>
                 </a>
