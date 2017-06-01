@@ -14,9 +14,9 @@
 
     /**
      * @param CanvasInterface $photo
-     * @return void
+     * @return CanvasInterface
      */
-    public function execute(CanvasInterface $photo) : void;
+    public function execute(CanvasInterface $photo) : CanvasInterface;
 
 
   }

@@ -36,7 +36,7 @@
   <div class="col m12 l9">
     <div class="row">
       <?php /** @var \Funivan\Gallery\App\Photo\PhotosList $photos */ ?>
-      <?php foreach ($photos as $index=>$photo) { ?>
+      <?php foreach ($photos as $index => $photo) { ?>
         <?php $file = $photo->file();
         $filePath = $file->path() ?>
         <div class="col s12 m6 l4 xl3">
@@ -53,31 +53,40 @@
               <div class="card-action" data-image-path="<?= $filePath->assemble() ?>">
                 <!--@todo toggle visibility -->
                 <?php $flags = new Flags($file); ?>
-                <a href="#" class="js-toggle" data-url="/toggle/visibility/">
-                  <i class="material-icons" style="color:gray">visibility</i>
-                  <i class="material-icons">visibility</i>
-                </a>
+                <a
+                  href="<?= ChangeFlagUrl::createRemove(FlagsInterface::PRIVATE, $file->path())->build() ?>"
+                  class="js-toggle <?= $flags->has(FlagsInterface::PRIVATE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                  data-type="toggle-visibility-<?= $index ?>"
+                ><i class="material-icons">visibility</i></a>
 
-                <a href="#" class="js-remove-button right" style="margin-right: 0">
-                  <i class="material-icons" style="color:gray">delete</i>
-                </a>
+                <a
+                  href="<?= ChangeFlagUrl::createSet(FlagsInterface::PRIVATE, $file->path())->build() ?>"
+                  class="js-toggle <?= !$flags->has(FlagsInterface::PRIVATE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                  data-type="toggle-visibility-<?= $index ?>"
+                ><i class="material-icons" style="color:gray">visibility</i></a>
+                <a
+                  href="<?= ChangeFlagUrl::createRemove(FlagsInterface::DELETED, $file->path())->build() ?>"
+                  class="js-toggle <?= $flags->has(FlagsInterface::DELETED) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                  data-type="toggle-delete-<?= $index ?>"
+                ><i class="material-icons" style="color:#ffcdd2">delete</i></a>
 
-                <!--@todo toggle start action -->
+                <a
+                  href="<?= ChangeFlagUrl::createSet(FlagsInterface::DELETED, $file->path())->build() ?>"
+                  class="js-toggle <?= !$flags->has(FlagsInterface::DELETED) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                  data-type="toggle-delete-<?= $index ?>"
+                ><i class="material-icons" style="color:gray">delete</i></a>
+
                 <a
                   href="<?= ChangeFlagUrl::createRemove(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
                   class="js-toggle <?= $flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
                   data-type="toggle-favourite-<?= $index ?>"
-                >
-                  <i class="material-icons">star</i>
-                </a>
+                ><i class="material-icons">star</i></a>
 
                 <a
                   href="<?= ChangeFlagUrl::createSet(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
                   class="js-toggle <?= !$flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
                   data-type="toggle-favourite-<?= $index ?>"
-                >
-                  <i class="material-icons" style="color:gray">star</i>
-                </a>
+                ><i class="material-icons" style="color:gray">star</i></a>
 
                 <a href="<?= (new ImageRotateRightUrl($filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
                   <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
@@ -91,6 +100,8 @@
     </div>
   </div>
 </div>
+
+<!--suppress CssUnusedSymbol -->
 <style type="text/css">
   .js-flag-hidden {
     display: none;
@@ -105,7 +116,7 @@
       $.post($el.attr('href'), {}, function (data) {
         $toggleButtons.each(function () {
           var $button = $(this);
-          if ($button.attr('data-type') == group) {
+          if ($button.attr('data-type') === group) {
             $button.toggle();
           }
         })

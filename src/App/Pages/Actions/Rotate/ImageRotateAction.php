@@ -4,11 +4,13 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\Rotate;
 
-  use Funivan\Gallery\App\Canvas\Canvas;
   use Funivan\Gallery\App\Canvas\CanvasInterface;
-  use Funivan\Gallery\App\Canvas\Painter\PreviewPainter;
-  use Funivan\Gallery\App\Canvas\Painter\RotatePainter;
+  use Funivan\Gallery\App\Canvas\Painter\PainterMaster;
+  use Funivan\Gallery\App\Canvas\Painter\PreviewTool;
+  use Funivan\Gallery\App\Canvas\Painter\RotateTool;
+  use Funivan\Gallery\App\Canvas\PreviewLocation;
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
+  use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
 
   /**
@@ -41,11 +43,15 @@
      * Rotate image and build new preview
      *
      * @param CanvasInterface $photo
-     * @return void
+     * @return CanvasInterface
      */
-    public function execute(CanvasInterface $photo): void {
-      $photo->paint(new RotatePainter($this->angel, $photo));
-      Canvas::createPreview($photo, $this->previewStorage)->paint(new PreviewPainter($photo));
+    public function execute(CanvasInterface $photo): CanvasInterface {
+      (new PainterMaster($photo->file()))
+        ->paint(new RotateTool($this->angel, $photo->file()));
+      $preview = File::create((new PreviewLocation($photo->file()))->path(), $this->previewStorage);
+      (new PainterMaster($preview))
+        ->paint(new PreviewTool($photo));
+      return $photo;
     }
 
   }

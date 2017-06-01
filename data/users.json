@@ -4,7 +4,11 @@
       "pass": 123,
       "rules": [
         "favourite_set",
-        "favourite_remove"
+        "favourite_remove",
+        "private_set",
+        "private_remove",
+        "move_to_trash",
+        "restore_from_trash"
       ]
     }
   }

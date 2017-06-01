@@ -42,6 +42,7 @@
      * @return MatchResultInterface
      */
     public function match(RequestInterface $request): MatchResultInterface {
+      //@todo use POST instead of GET
       return ParameterRoutMatch::createWithNext(
         'GET', new SameParameterConstrain('flag', $this->flag),
         new PathRouteMatch($this->path)

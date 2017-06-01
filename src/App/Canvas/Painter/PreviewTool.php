@@ -1,5 +1,4 @@
 <?php
-  declare(strict_types=1);
 
   namespace Funivan\Gallery\App\Canvas\Painter;
 
@@ -8,12 +7,7 @@
   /**
    *
    */
-  class RotatePainter implements PainterInterface {
-
-    /**
-     * @var int
-     */
-    private $angel;
+  class PreviewTool implements PainterInterface {
 
     /**
      * @var CanvasInterface
@@ -22,11 +16,9 @@
 
 
     /**
-     * @param int $angel
      * @param CanvasInterface $image
      */
-    public function __construct(int $angel, CanvasInterface $image) {
-      $this->angel = $angel;
+    public function __construct(CanvasInterface $image) {
       $this->image = $image;
     }
 
@@ -35,12 +27,9 @@
      * @return \Intervention\Image\Image
      */
     public function paint(): \Intervention\Image\Image {
-      if ($this->angel < 0 or $this->angel > 360) {
-        throw new \InvalidArgumentException('Invalid angel. Should be between 0...360');
-      }
       $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
       $img = $manager->make($this->image->file()->read());
-      return $img->rotate($this->angel);
+      return $img->fit(300, 300);
     }
 
   }

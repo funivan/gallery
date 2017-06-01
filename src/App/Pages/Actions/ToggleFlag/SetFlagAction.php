@@ -4,6 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\ToggleFlag;
 
+  use Funivan\Gallery\App\Canvas\Canvas;
   use Funivan\Gallery\App\Canvas\CanvasInterface;
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
   use Funivan\Gallery\App\Photo\Flag\Flags;
@@ -26,10 +27,11 @@
 
     /**
      * @param CanvasInterface $photo
-     * @return void
+     * @return CanvasInterface
      */
-    public function execute(CanvasInterface $photo): void {
-      (new Flags($photo->file()))->set($this->flag);
+    public function execute(CanvasInterface $photo): CanvasInterface {
+      $file = (new Flags($photo->file()))->set($this->flag);
+      return Canvas::create($file);
     }
 
   }

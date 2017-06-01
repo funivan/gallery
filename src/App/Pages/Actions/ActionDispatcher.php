@@ -47,10 +47,15 @@
         $this->storage
       );
       if (!$original->file()->exists()) {
-        $response = PlainResponse::create('{error:"image not found"}');
+        $response = ErrorResponse::create('{error:"image not found"}', 500);
       } else {
-        $this->action->execute($original);
-        $response = PlainResponse::create('{result:"ok"}');
+        $canvas = $this->action->execute($original);
+        $response = PlainResponse::create(
+          json_encode([
+            'result' => 'ok',
+            'path' => $canvas->file()->path()->assemble(),
+          ])
+        );
       }
       return $response;
     }

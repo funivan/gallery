@@ -31,27 +31,21 @@
 
 
     /**
+     * @param FileInterface $file
+     * @return Canvas
+     */
+    public static function create(FileInterface $file): Canvas {
+      return new self($file);
+    }
+
+
+    /**
      * @param PathInterface $path
      * @param FileStorageInterface $fs
      * @return CanvasInterface
      */
     public static function createFromRawPath(PathInterface $path, FileStorageInterface $fs): CanvasInterface {
       return new self(File::create($path, $fs));
-    }
-
-
-    /**
-     * @param CanvasInterface $image
-     * @param FileStorageInterface $fs
-     * @return CanvasInterface
-     */
-    public static function createPreview(CanvasInterface $image, FileStorageInterface $fs): CanvasInterface {
-      return new self(
-        File::create(
-          (new PreviewLocation($image->file()))->path(),
-          $fs
-        )
-      );
     }
 
 

@@ -5,8 +5,11 @@
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
   use Funivan\Gallery\App\Canvas\Canvas;
-  use Funivan\Gallery\App\Canvas\Painter\PreviewPainter;
+  use Funivan\Gallery\App\Canvas\Painter\PainterMaster;
+  use Funivan\Gallery\App\Canvas\Painter\PreviewTool;
+  use Funivan\Gallery\App\Canvas\PreviewLocation;
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
+  use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
@@ -53,13 +56,11 @@
       if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);
       } else {
-        $preview = Canvas::createPreview($image, $this->cacheFs);
-        if (!$preview->file()->exists()) {
-          $preview->paint(new PreviewPainter($image));
+        $preview = File::create((new PreviewLocation($original))->path(), $this->cacheFs);
+        if (!$preview->exists()) {
+          (new PainterMaster($preview))->paint(new PreviewTool($image));
         }
-        $response = FileResponse::createViewable(
-          $preview->file()
-        );
+        $response = FileResponse::createViewable($preview);
       }
       return $response;
     }

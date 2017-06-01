@@ -121,7 +121,7 @@
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::REMOVE_PATH, FlagsInterface::PRIVATE),
                   new AuthorizationDispatcher('private_remove', $authComponent,
-                    new ActionDispatcher(new SetFlagAction(FlagsInterface::PRIVATE), $imagesFs)
+                    new ActionDispatcher(new RemoveFlagAction(FlagsInterface::PRIVATE), $imagesFs)
                   )
                 ),
                 new Route(
@@ -131,9 +131,9 @@
                   )
                 ),
                 new Route(
-                  new ActionRouteMatch(ChangeFlagUrl::SET_PATH, FlagsInterface::DELETED),
+                  new ActionRouteMatch(ChangeFlagUrl::REMOVE_PATH, FlagsInterface::DELETED),
                   new AuthorizationDispatcher('restore_from_trash', $authComponent,
-                    new ActionDispatcher(new SetFlagAction(FlagsInterface::DELETED), $imagesFs)
+                    new ActionDispatcher(new RemoveFlagAction(FlagsInterface::DELETED), $imagesFs)
                   )
                 ),
               ])
