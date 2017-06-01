@@ -55,7 +55,10 @@
      * @return string
      */
     public final function meta(PathInterface $path, string $name): string {
-      throw new \BadMethodCallException('"Meta" operation is not supported by this adapter');
+      if ('extension' === $name) {
+        return pathinfo($path->name(), PATHINFO_EXTENSION);
+      }
+      throw new \InvalidArgumentException('Unsupported meta key');
     }
 
 
