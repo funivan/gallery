@@ -4,7 +4,6 @@
 
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage;
 
-  use Funivan\Gallery\App\Users\Users;
   use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
@@ -27,7 +26,7 @@
 
 
     /**
-     * @var Users
+     * @var UsersInterface
      */
     private $users;
 

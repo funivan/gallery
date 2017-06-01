@@ -4,7 +4,6 @@
 
   namespace Funivan\Gallery\App\Auth;
 
-  use Funivan\Gallery\App\Users\Users;
   use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
@@ -19,7 +18,7 @@
   class AuthComponent implements AuthComponentInterface {
 
     /**
-     * @var Users
+     * @var UsersInterface
      */
     private $users;
 
