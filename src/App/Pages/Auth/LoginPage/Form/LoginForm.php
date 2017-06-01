@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage\Form;
 
-  use Funivan\Gallery\App\Users\Users;
+  use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
 
   /**
@@ -13,15 +13,15 @@
   class LoginForm {
 
     /**
-     * @var Users
+     * @var UsersInterface
      */
     private $users;
 
 
     /**
-     * @param Users $users
+     * @param UsersInterface $users
      */
-    public function __construct(Users $users) {
+    public function __construct(UsersInterface $users) {
       $this->users = $users;
     }
 

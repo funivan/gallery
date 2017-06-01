@@ -5,6 +5,7 @@
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage;
 
   use Funivan\Gallery\App\Users\Users;
+  use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
@@ -33,10 +34,9 @@
 
     /**
      * @param AuthComponentInterface $authComponent
-     * @param Users $users
-     * @internal param Configuration $configuration
+     * @param UsersInterface $users
      */
-    public function __construct(AuthComponentInterface $authComponent, Users $users) {
+    public function __construct(AuthComponentInterface $authComponent, UsersInterface $users) {
       $this->authComponent = $authComponent;
       $this->users = $users;
     }

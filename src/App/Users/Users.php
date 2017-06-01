@@ -5,11 +5,12 @@
   namespace Funivan\Gallery\App\Users;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\Gallery\Framework\Auth\UserInterface;
 
   /**
    *
    */
-  class Users {
+  class Users implements UsersInterface {
 
     /**
      * @var FileInterface
@@ -26,27 +27,27 @@
 
 
     /**
-     * @param string $name
+     * @param string $uid
      * @return bool
      */
-    public final function has(string $name): bool {
+    public final function has(string $uid): bool {
       $rawUsers = json_decode($this->file->read(), true);
-      return array_key_exists($name, $rawUsers['users']);
+      return array_key_exists($uid, $rawUsers['users']);
     }
 
 
     /**
-     * @param string $name
-     * @return User
+     * @param string $uid
+     * @return UserInterface
      */
-    public final function get(string $name): User {
+    public final function get(string $uid): UserInterface {
       $rawUsers = json_decode($this->file->read(), true);
-      if (!array_key_exists($name, $rawUsers['users'])) {
-        throw new \InvalidArgumentException(sprintf('User does not exists :%s', $name));
+      if (!array_key_exists($uid, $rawUsers['users'])) {
+        throw new \InvalidArgumentException(sprintf('User does not exists :%s', $uid));
       }
-      $rawUserData = $rawUsers['users'][$name];
+      $rawUserData = $rawUsers['users'][$uid];
       return new User(
-        $name,
+        $uid,
         (string) $rawUserData['pass'],
         (array) $rawUserData['rules']
       );

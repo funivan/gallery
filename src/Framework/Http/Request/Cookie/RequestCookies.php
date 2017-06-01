@@ -33,7 +33,7 @@
      * @param RequestCookieInterface[] $cookies
      * @return RequestCookiesInterface
      */
-    public static function create(array $cookies = []): RequestCookiesInterface {
+    public static function create(array $cookies): RequestCookiesInterface {
       return new self($cookies);
     }
 

@@ -28,7 +28,7 @@
      *
      * @return void
      */
-    public function logOut();
+    public function logOut(): void;
 
 
     /**
@@ -37,7 +37,7 @@
      * @param UserInterface $user
      * @return void
      */
-    public function logIn(UserInterface $user);
+    public function logIn(UserInterface $user): void;
 
 
   }

@@ -25,4 +25,11 @@
      */
     public function authorized(string $ruleId): bool;
 
+
+    /**
+     * @param string $password
+     * @return bool
+     */
+    public function validatePassword(string $password): bool;
+
   }

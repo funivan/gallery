@@ -5,6 +5,7 @@
   namespace Funivan\Gallery\App\Auth;
 
   use Funivan\Gallery\App\Users\Users;
+  use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
@@ -35,9 +36,9 @@
      *
      * @param RequestCookiesInterface $cookies
      * @param FileStorageInterface $authorizedUserStorage
-     * @param Users $users
+     * @param UsersInterface $users
      */
-    public function __construct(RequestCookiesInterface $cookies, FileStorageInterface $authorizedUserStorage, Users $users) {
+    public function __construct(RequestCookiesInterface $cookies, FileStorageInterface $authorizedUserStorage, UsersInterface $users) {
       if ($cookies->has(UserUidDispatcher::COOKIE_UID_NAME)) {
         $userUid = $cookies->get(UserUidDispatcher::COOKIE_UID_NAME)->value();
         $this->file = File::create(new LocalPath($userUid . '.txt'), $authorizedUserStorage);
@@ -76,7 +77,7 @@
     /**
      * @return void
      */
-    public final function logOut() {
+    public final function logOut(): void {
       $this->file->remove();
     }
 
@@ -85,7 +86,7 @@
      * @param UserInterface $user
      * @return void
      */
-    public final function logIn(UserInterface $user) {
+    public final function logIn(UserInterface $user): void {
       $this->file->write($user->uid());
     }
 
