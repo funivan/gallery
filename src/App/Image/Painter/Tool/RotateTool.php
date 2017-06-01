@@ -1,14 +1,14 @@
 <?php
   declare(strict_types=1);
 
-  namespace Funivan\Gallery\App\Canvas\Painter;
+  namespace Funivan\Gallery\App\Image\Painter\Tool;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
 
   /**
    *
    */
-  class RotateTool implements PainterInterface {
+  class RotateTool implements PainterToolInterface {
 
     /**
      * @var int

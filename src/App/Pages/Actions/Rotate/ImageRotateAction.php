@@ -4,10 +4,10 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\Rotate;
 
-  use Funivan\Gallery\App\Canvas\Painter\PainterMaster;
-  use Funivan\Gallery\App\Canvas\Painter\PreviewTool;
-  use Funivan\Gallery\App\Canvas\Painter\RotateTool;
-  use Funivan\Gallery\App\Canvas\PreviewLocation;
+  use Funivan\Gallery\App\Image\Painter\Painter;
+  use Funivan\Gallery\App\Image\Painter\Tool\PreviewTool;
+  use Funivan\Gallery\App\Image\Painter\Tool\RotateTool;
+  use Funivan\Gallery\App\Image\PreviewLocation;
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\File\FileInterface;
@@ -46,10 +46,10 @@
      * @return FileInterface
      */
     public function execute(FileInterface $photo): FileInterface {
-      (new PainterMaster(
+      (new Painter(
         $photo
       ))->paint(new RotateTool($this->angel, $photo));
-      (new PainterMaster(
+      (new Painter(
         File::create((new PreviewLocation($photo))->path(), $this->previewStorage)
       ))->paint(new PreviewTool($photo));
       return $photo;

@@ -35,10 +35,9 @@
   </div>
   <div class="col m12 l9">
     <div class="row">
-      <?php /** @var \Funivan\Gallery\App\Photo\PhotosList $photos */ ?>
-      <?php foreach ($photos as $index => $photo) { ?>
-        <?php $file = $photo->file();
-        $filePath = $file->path() ?>
+      <?php /** @var \Funivan\Gallery\FileStorage\File\FileInterface[] $photos */ ?>
+      <?php foreach ($photos as $index => $file) { ?>
+        <?php $filePath = $file->path() ?>
         <div class="col s12 m6 l4 xl3">
 
           <div class="card">

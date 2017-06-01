@@ -1,11 +1,11 @@
 <?php
 
-  namespace Funivan\Gallery\App\Canvas\Painter;
+  namespace Funivan\Gallery\App\Image\Painter\Tool;
 
   /**
    *
    */
-  interface PainterInterface {
+  interface PainterToolInterface {
 
     /**
      * @return \Intervention\Image\Image

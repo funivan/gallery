@@ -1,13 +1,13 @@
 <?php
 
-  namespace Funivan\Gallery\App\Canvas\Painter;
+  namespace Funivan\Gallery\App\Image\Painter\Tool;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
 
   /**
    *
    */
-  class PreviewTool implements PainterInterface {
+  class PreviewTool implements PainterToolInterface {
 
     /**
      * @var FileInterface
