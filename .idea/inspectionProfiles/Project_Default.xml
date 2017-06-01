@@ -91,6 +91,9 @@
     <inspection_tool class="PhpUnusedParameterInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Docs" level="WEAK WARNING" enabled="true" />
     </inspection_tool>
+    <inspection_tool class="ReturnTypeCanBeDeclaredInspection" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Tests" level="WEAK WARNING" enabled="false" />
+    </inspection_tool>
     <inspection_tool class="SecurityAdvisoriesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SqlNoDataSourceInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="SqlResolveInspection" enabled="false" level="WARNING" enabled_by_default="false" />
