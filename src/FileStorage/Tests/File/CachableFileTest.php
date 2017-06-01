@@ -13,7 +13,7 @@
    */
   final class CachableFileTest extends TestCase {
 
-    public function testRead() {
+    public function testRead(): void {
       $storage = new MemoryStorage();
       $path = new LocalPath('custom.txt');
       $storage->write($path, 'first content');
@@ -23,7 +23,7 @@
     }
 
 
-    public function testCache() {
+    public function testCache(): void {
       $storage = new MemoryStorage();
       $path = new LocalPath('custom.txt');
       $file = new CachableFile(
@@ -36,7 +36,7 @@
     }
 
 
-    public function testRemove() {
+    public function testRemove(): void {
       $storage = new MemoryStorage();
       $filePath = new LocalPath('custom.txt');
       $storage->write($filePath, 'first content');
@@ -46,7 +46,7 @@
     }
 
 
-    public function testWrite() {
+    public function testWrite(): void {
       $original = File::createInMemory();
       $file = new CachableFile($original);
       $file->write('first');

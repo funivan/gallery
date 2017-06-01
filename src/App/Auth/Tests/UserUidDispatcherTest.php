@@ -20,7 +20,7 @@
   final class UserUidDispatcherTest extends TestCase {
 
 
-    public function testWithoutUidGeneration() {
+    public function testWithoutUidGeneration(): void {
       $request = $this->createRequest(
         RequestCookies::create([new RequestCookie(UserUidDispatcher::COOKIE_UID_NAME, '123')])
       );
@@ -30,7 +30,7 @@
     }
 
 
-    public function testWitUidGeneration() {
+    public function testWitUidGeneration(): void {
       $request = $this->createRequest(RequestCookies::create([]));
       $response = (new UserUidDispatcher($this->createNextDummyDispatcher()))->handle($request);
 

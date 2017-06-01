@@ -91,6 +91,10 @@
     }
 
 
+    /**
+     * @param PathInterface $old
+     * @param PathInterface $new
+     */
     public function move(PathInterface $old, PathInterface $new): void {
       $this->write($new, $this->read($old));
       $this->remove($old);

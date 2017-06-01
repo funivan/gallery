@@ -9,6 +9,9 @@
   use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
   use Funivan\Gallery\Framework\Router\UrlInterface;
 
+  /**
+   *
+   */
   class ChangeFlagUrl implements UrlInterface {
 
     const SET_PATH = '/action/set-flag';
@@ -44,11 +47,21 @@
     }
 
 
+    /**
+     * @param string $flag
+     * @param PathInterface $path
+     * @return UrlInterface
+     */
     public static function createSet(string $flag, PathInterface $path): UrlInterface {
       return new self(self::SET_PATH, $flag, $path);
     }
 
 
+    /**
+     * @param string $flag
+     * @param PathInterface $path
+     * @return UrlInterface
+     */
     public static function createRemove(string $flag, PathInterface $path): UrlInterface {
       return new self(self::REMOVE_PATH, $flag, $path);
     }

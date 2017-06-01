@@ -4,7 +4,6 @@
 
   namespace Funivan\Gallery\App\Canvas;
 
-  use Funivan\Gallery\App\Canvas\Painter\PainterInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
@@ -31,15 +30,6 @@
 
 
     /**
-     * @param FileInterface $file
-     * @return Canvas
-     */
-    public static function create(FileInterface $file): Canvas {
-      return new self($file);
-    }
-
-
-    /**
      * @param PathInterface $path
      * @param FileStorageInterface $fs
      * @return CanvasInterface
@@ -56,13 +46,5 @@
       return $this->file;
     }
 
-
-    /**
-     * @param PainterInterface $painter
-     */
-    public function paint(PainterInterface $painter): void {
-      $result = $painter->paint();
-      $this->file->write((string) $result->encode($this->file->meta('extension')));
-    }
 
   }

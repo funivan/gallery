@@ -12,7 +12,7 @@
   final class HeadersTest extends TestCase {
 
 
-    public function testMerge() {
+    public function testMerge(): void {
       self::assertCount(2,
         (new Headers([new Field('Set-Cookie', 'User=1')]))
           ->merge(new Headers([new Field('Location', '/')]))

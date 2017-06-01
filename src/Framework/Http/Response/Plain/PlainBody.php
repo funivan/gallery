@@ -28,7 +28,7 @@
     /**
      * @return void
      */
-    public final function send() {
+    public final function send(): void {
       echo $this->content;
     }
 

@@ -14,7 +14,7 @@
    */
   final class PlainResponseTest extends TestCase {
 
-    public function testContent() {
+    public function testContent(): void {
       $plainResponse = PlainResponse::create('Test');
       $buffer = new StringStack();
       (new BufferedBody($plainResponse->body(), $buffer))->send();

@@ -26,7 +26,7 @@
     /**
      * @runInSeparateProcess
      */
-    public function testSendResponse() {
+    public function testSendResponse(): void {
       $dispatcher = new class implements DispatcherInterface {
 
         public function handle(RequestInterface $request): ResponseInterface {

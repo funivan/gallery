@@ -14,7 +14,7 @@
   final class CompositeViewTest extends TestCase {
 
 
-    public function testWithSimpleSubView() {
+    public function testWithSimpleSubView(): void {
       $view = new CompositeView(__DIR__ . '/fixtures/viewWrapper.php', [],
         new View(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
       );
@@ -22,7 +22,7 @@
     }
 
 
-    public function testWithMultipleNestedViews() {
+    public function testWithMultipleNestedViews(): void {
       $view =
         new CompositeView(__DIR__ . '/fixtures/viewWrapper.php', [],
           new CompositeView(__DIR__ . '/fixtures/viewWrapper.php', [],
@@ -36,7 +36,7 @@
     /**
      * @expectedException \Funivan\Gallery\Framework\Templating\Exception\OverwriteViewVariableException
      */
-    public function testWithOverwriteData() {
+    public function testWithOverwriteData(): void {
       $view =
         new CompositeView(__DIR__ . '/fixtures/viewWrapper.php', ['content' => 'test mainViewContent'],
           new View(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'title'])

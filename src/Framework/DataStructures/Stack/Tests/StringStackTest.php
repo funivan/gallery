@@ -10,7 +10,7 @@
    */
   final class StringStackTest extends TestCase {
 
-    public function testEmpty() {
+    public function testEmpty(): void {
       $stack = new StringStack();
       self::assertTrue($stack->empty());
       $stack->push('123');
@@ -18,7 +18,7 @@
     }
 
 
-    public function testPop() {
+    public function testPop(): void {
       $stack = new StringStack();
       $stack->push('1');
       $stack->push('2');
@@ -31,7 +31,7 @@
      * @expectedException \RuntimeException
      * @expectedExceptionMessage Stack is empty
      */
-    public function testPopEnd() {
+    public function testPopEnd(): void {
       $stack = new StringStack();
       $stack->push('1');
       self::assertSame('1', $stack->pop());

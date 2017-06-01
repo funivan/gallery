@@ -23,7 +23,7 @@
    */
   final class RouteDispatcherTest extends TestCase {
 
-    public function testPassCustomParametersOnMatch() {
+    public function testPassCustomParametersOnMatch(): void {
       $routeMatch = new class implements RouteMatchInterface {
 
         public function match(RequestInterface $request): MatchResultInterface {

@@ -14,6 +14,6 @@
      *
      * @return void
      */
-    public function send();
+    public function send(): void;
 
   }

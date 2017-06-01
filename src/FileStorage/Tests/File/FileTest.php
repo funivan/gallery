@@ -12,7 +12,7 @@
    */
   final class FileTest extends TestCase {
 
-    public function testSuccessfulContentRead() {
+    public function testSuccessfulContentRead(): void {
       $storage = new MemoryStorage();
       $storage->write(new LocalPath('/test/custom/file.txt'), 'file content');
       $file = File::create(new LocalPath('/test/custom/file.txt'), $storage);

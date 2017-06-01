@@ -2,7 +2,7 @@
 
   namespace Funivan\Gallery\App\Canvas\Painter;
 
-  use Funivan\Gallery\App\Canvas\CanvasInterface;
+  use Funivan\Gallery\FileStorage\File\FileInterface;
 
   /**
    *
@@ -10,15 +10,15 @@
   class PreviewTool implements PainterInterface {
 
     /**
-     * @var CanvasInterface
+     * @var FileInterface
      */
     private $image;
 
 
     /**
-     * @param CanvasInterface $image
+     * @param FileInterface $image
      */
-    public function __construct(CanvasInterface $image) {
+    public function __construct(FileInterface $image) {
       $this->image = $image;
     }
 
@@ -28,7 +28,7 @@
      */
     public function paint(): \Intervention\Image\Image {
       $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
-      $img = $manager->make($this->image->file()->read());
+      $img = $manager->make($this->image->read());
       return $img->fit(300, 300);
     }
 

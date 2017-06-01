@@ -11,7 +11,7 @@
    */
   final class BlackHoleStorageTest extends TestCase {
 
-    public function testDummyWrite() {
+    public function testDummyWrite(): void {
       $storage = new BlackHoleStorage();
       $path = new LocalPath('/test.txt');
       $storage->write($path, 'data');
@@ -19,7 +19,7 @@
     }
 
 
-    public function testDirectory() {
+    public function testDirectory(): void {
       $path = new LocalPath('/test');
       self::assertFalse((new BlackHoleStorage())->directory($path));
     }

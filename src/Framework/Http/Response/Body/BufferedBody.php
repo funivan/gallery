@@ -39,7 +39,7 @@
      *
      * @return void
      */
-    public final function send() {
+    public final function send() : void {
       ob_start();
       $this->original->send();
       $data = (string) ob_get_clean();

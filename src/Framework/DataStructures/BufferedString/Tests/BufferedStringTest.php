@@ -10,12 +10,12 @@
    */
   final class BufferedStringTest extends TestCase {
 
-    public function testEmptyOnInitialization() {
+    public function testEmptyOnInitialization(): void {
       self::assertTrue((new BufferedString())->empty());
     }
 
 
-    public function testAppend() {
+    public function testAppend(): void {
       self::assertFalse(
         (new BufferedString())
           ->append('1')

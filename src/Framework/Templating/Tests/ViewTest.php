@@ -10,7 +10,7 @@
    */
   final class ViewTest extends TestCase {
 
-    public function testSimpleRender() {
+    public function testSimpleRender(): void {
       $view = new View(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'users']);
       self::assertSame('<h1>users</h1>', trim($view->render()));
     }

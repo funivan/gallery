@@ -12,7 +12,7 @@
   class MetaInformationTest extends TestCase {
 
 
-    public function testSet() {
+    public function testSet(): void {
       $file = new File(new LocalPath('/test/user.jpg'), new MemoryStorage());
       $file->write('test');
       $newFile = (new Flags($file))->set(FlagsInterface::DELETED);

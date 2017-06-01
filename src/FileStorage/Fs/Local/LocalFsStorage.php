@@ -168,6 +168,11 @@
     }
 
 
+    /**
+     * @param PathInterface $old
+     * @param PathInterface $new
+     * @throws WriteException
+     */
     public function move(PathInterface $old, PathInterface $new): void {
       $result = rename(
         $this->basePath->next($old)->assemble(),

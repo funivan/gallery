@@ -12,7 +12,7 @@
    */
   final class BufferedBodyTest extends TestCase {
 
-    public function testOutputToStackOnly() {
+    public function testOutputToStackOnly(): void {
       $stack = new StringStack();
       ob_start();
       (new BufferedBody(new PlainBody('user'), $stack))->send();

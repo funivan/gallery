@@ -12,7 +12,7 @@
    */
   final class ResponseWithCookieTest extends TestCase {
 
-    public function testResponseWithCookie() {
+    public function testResponseWithCookie(): void {
       $response = new ResponseWithCookie(
         ResponseCookie::createExpires('new_test', 'user2', new \DateTime(), ['path' => '/']),
         new ResponseWithCookie(

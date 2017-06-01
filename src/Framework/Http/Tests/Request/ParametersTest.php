@@ -10,7 +10,7 @@
    */
   final class ParametersTest extends TestCase {
 
-    public function testHas() {
+    public function testHas(): void {
       $parameters = new Parameters(['user' => '', 'id' => 123]);
       self::assertTrue($parameters->has('user'));
       self::assertTrue($parameters->has('id'));
@@ -18,7 +18,7 @@
     }
 
 
-    public function testValue() {
+    public function testValue(): void {
       $parameters = new Parameters(['user' => '', 'name' => true]);
       self::assertSame('1', $parameters->value('name'));
       self::assertSame('', $parameters->value('user'));
@@ -30,7 +30,7 @@
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Can not fetch parameter: surname
      */
-    public function testInvalidValueAccess() {
+    public function testInvalidValueAccess(): void {
       $parameters = new Parameters(['user' => '', 'name' => 'user name']);
       self::assertSame('user name', $parameters->value('name'));
 

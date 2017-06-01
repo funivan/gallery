@@ -13,7 +13,7 @@
    */
   final class UsersTest extends TestCase {
 
-    public function testValidatePassword() {
+    public function testValidatePassword(): void {
       $file = File::create(new LocalPath('test.json'), new MemoryStorage());
       $file->write(
       /** @lang JSON */

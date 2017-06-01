@@ -12,7 +12,7 @@
   final class MemoryStorageTest extends TestCase {
 
 
-    public function testRead() {
+    public function testRead(): void {
       $storage = new MemoryStorage();
       $path = new LocalPath('users.txt');
       $storage->write($path, 'plain content');
@@ -20,7 +20,7 @@
     }
 
 
-    public function testObjectsStatus() {
+    public function testObjectsStatus(): void {
       $storage = new MemoryStorage();
       $path = new LocalPath('/my/document.doc');
       $storage->write($path, 'plain content');
@@ -28,7 +28,7 @@
     }
 
 
-    public function testRemove() {
+    public function testRemove(): void {
       $storage = new MemoryStorage();
       $path = new LocalPath('custom/file my /path/doc.txt');
       $storage->write($path, 'plain content');
@@ -38,7 +38,7 @@
     }
 
 
-    public function testMoveNewFileExists() {
+    public function testMoveNewFileExists(): void {
       $storage = new MemoryStorage();
       $storage->write(new LocalPath('/path/doc.txt'), 'plain content');
       $storage->move(new LocalPath('/path/doc.txt'), new LocalPath('/path/test.txt'));

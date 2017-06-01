@@ -4,7 +4,6 @@
 
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
-  use Funivan\Gallery\App\Canvas\Canvas;
   use Funivan\Gallery\App\Canvas\Painter\PainterMaster;
   use Funivan\Gallery\App\Canvas\Painter\PreviewTool;
   use Funivan\Gallery\App\Canvas\PreviewLocation;
@@ -48,17 +47,16 @@
      * @return ResponseInterface
      */
     public final function handle(RequestInterface $request): ResponseInterface {
-      $image = Canvas::createFromRawPath(
+      $original = File::create(
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->imageFs
       );
-      $original = $image->file();
       if (!$original->exists()) {
         $response = ErrorResponse::create('The image was not found.', 404);
       } else {
         $preview = File::create((new PreviewLocation($original))->path(), $this->cacheFs);
         if (!$preview->exists()) {
-          (new PainterMaster($preview))->paint(new PreviewTool($image));
+          (new PainterMaster($preview))->paint(new PreviewTool($original));
         }
         $response = FileResponse::createViewable($preview);
       }
