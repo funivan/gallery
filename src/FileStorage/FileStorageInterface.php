@@ -41,7 +41,7 @@
      * @param PathInterface $path
      * @param string $data
      */
-    public function write(PathInterface $path, string $data);
+    public function write(PathInterface $path, string $data): void;
 
 
     /**
@@ -54,7 +54,7 @@
     /**
      * @param PathInterface $path
      */
-    public function remove(PathInterface $path);
+    public function remove(PathInterface $path): void;
 
 
     /**

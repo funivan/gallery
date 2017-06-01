@@ -46,7 +46,7 @@
      * @return void
      * @throws WriteException
      */
-    public final function write(PathInterface $path, string $data) {
+    public final function write(PathInterface $path, string $data): void {
       $filePath = $this->basePath->next($path);
       $directory = $filePath->previous()->assemble();
       $validDir = true;
@@ -153,7 +153,7 @@
      * @param PathInterface $path
      * @throws WriteException
      */
-    public final function remove(PathInterface $path) {
+    public final function remove(PathInterface $path): void {
       $fullPath = $this->basePath->next($path)->assemble();
       if ($this->directory($path)) {
         $result = rmdir($fullPath);

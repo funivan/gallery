@@ -83,7 +83,7 @@
     /**
      * @return void
      */
-    public final function remove() {
+    public final function remove(): void {
       $this->storage->remove($this->path);
     }
 
@@ -94,7 +94,7 @@
      * @param string $content
      * @return void
      */
-    public final function write(string $content) {
+    public final function write(string $content): void {
       $this->storage->write($this->path, $content);
     }
 

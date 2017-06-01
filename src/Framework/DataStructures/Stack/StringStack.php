@@ -19,7 +19,7 @@
     /**
      * @param string $data
      */
-    public final function push(string $data) {
+    public final function push(string $data): void {
       $this->elements[] = $data;
     }
 

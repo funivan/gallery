@@ -15,7 +15,7 @@
      *
      * @param string $data
      */
-    public function push(string $data);
+    public function push(string $data): void;
 
 
     /**

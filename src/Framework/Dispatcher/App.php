@@ -32,7 +32,7 @@
      * @param Request $request
      * @return void
      */
-    public final function run(Request $request) {
+    public final function run(Request $request): void {
       $response = $this->dispatcher->handle($request);
       $reason = $response->status();
       $code = $reason->code();

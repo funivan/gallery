@@ -66,7 +66,7 @@
      * @param PathInterface $path
      * @param string $data
      */
-    public final function write(PathInterface $path, string $data) {
+    public final function write(PathInterface $path, string $data): void {
       $filePath = $path->assemble();
       $this->files[$filePath] = $data;
     }
@@ -89,7 +89,7 @@
     /**
      * @param PathInterface $path
      */
-    public final function remove(PathInterface $path) {
+    public final function remove(PathInterface $path): void {
       unset($this->files[$path->assemble()]);
     }
 

@@ -25,7 +25,7 @@
      * @param string $content
      * @return void
      */
-    public function write(string $content);
+    public function write(string $content): void;
 
 
     /**
@@ -39,7 +39,7 @@
     /**
      * @return void
      */
-    public function remove();
+    public function remove(): void;
 
 
     /**

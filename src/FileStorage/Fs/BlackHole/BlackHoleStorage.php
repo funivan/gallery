@@ -55,7 +55,7 @@
      * @param string $data
      * @return void
      */
-    public final function write(PathInterface $path, string $data) {
+    public final function write(PathInterface $path, string $data): void {
 
     }
 
@@ -72,7 +72,7 @@
     /**
      * @param PathInterface $path
      */
-    public final function remove(PathInterface $path) {
+    public final function remove(PathInterface $path): void {
 
     }
 
