@@ -19,6 +19,19 @@
 
 
     /**
+     * @param string $name
+     * @return bool
+     */
+    public function has(string $name): bool;
+
+
+    /**
+     * @return FieldInterface
+     */
+    public function field(string $name): FieldInterface;
+
+
+    /**
      * @param HeadersInterface $headers
      * @return HeadersInterface
      */

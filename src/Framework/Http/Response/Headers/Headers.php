@@ -56,4 +56,31 @@
     }
 
 
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function has(string $name): bool {
+      $has = false;
+      foreach ($this->fields as $field) {
+        if ($field->name() === $name) {
+          $has = true;
+        }
+      }
+      return $has;
+    }
+
+
+    /**
+     * @return FieldInterface
+     */
+    public function field(string $name): FieldInterface {
+      foreach ($this->fields as $field) {
+        if ($field->name() === $name) {
+          return $field;
+        }
+      }
+      throw new \InvalidArgumentException(sprintf('Field with name "%s" does not exists', $name));
+    }
+
   }

@@ -38,9 +38,9 @@
      * @param DispatcherInterface $original
      */
     public function __construct(AuthComponentInterface $authComponent, UrlInterface $loginRoute, DispatcherInterface $original) {
-      $this->original = $original;
       $this->authComponent = $authComponent;
       $this->loginRoute = $loginRoute;
+      $this->original = $original;
     }
 
 

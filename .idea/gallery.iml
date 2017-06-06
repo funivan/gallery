@@ -8,12 +8,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/App/Users/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/FileStorage/Tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Framework/Auth/Tests" isTestSource="true" packagePrefix="Funivan\Gallery\Framework\Auth\Tests"/>
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Templating/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Router/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Http/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Dispatcher/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/DataStructures/Stack/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/DataStructures/String/Tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Framework/DataStructures/ParsedString/Tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/catfan/medoo" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />

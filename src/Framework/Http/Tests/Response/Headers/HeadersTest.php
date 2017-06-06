@@ -21,4 +21,21 @@
     }
 
 
+    public function testHasFailure() {
+      self::assertFalse((new Headers([]))->has('Set-Cookie'));
+    }
+
+
+    public function testHasSuccess() {
+      self::assertTrue((new Headers([new Field('Location', '/')]))->has('Location'));
+    }
+
+
+    public function testGet() {
+      self::assertSame('/test.com',
+        (new Headers([new Field('Location', '/test.com')]))->field('Location')->value()
+      );
+    }
+
+
   }
