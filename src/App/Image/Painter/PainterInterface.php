@@ -14,6 +14,7 @@
 
     /**
      * @param PainterToolInterface $painter
+     * @return void
      */
     public function paint(PainterToolInterface $painter): void;
 
