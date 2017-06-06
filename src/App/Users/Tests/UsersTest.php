@@ -1,6 +1,6 @@
 <?php
 
-  namespace Funivan\Gallery\App\Tests\Users;
+  namespace Funivan\Gallery\App\Users\Tests;
 
   use Funivan\Gallery\App\Users\Users;
   use Funivan\Gallery\FileStorage\File\File;

@@ -4,20 +4,20 @@ Directories                                         74
 Files                                              150
 
 Size
-  Lines of Code (LOC)                             7097
-  Comment Lines of Code (CLOC)                    2175 (30.65%)
-  Non-Comment Lines of Code (NCLOC)               4922 (69.35%)
-  Logical Lines of Code (LLOC)                    1597 (22.50%)
-    Classes                                        726 (45.46%)
+  Lines of Code (LOC)                             7107
+  Comment Lines of Code (CLOC)                    2175 (30.60%)
+  Non-Comment Lines of Code (NCLOC)               4932 (69.40%)
+  Logical Lines of Code (LLOC)                    1598 (22.48%)
+    Classes                                        726 (45.43%)
       Average Class Length                           5
         Minimum Class Length                         0
         Maximum Class Length                        41
       Average Method Length                          1
         Minimum Method Length                        0
         Maximum Method Length                       15
-    Functions                                      166 (10.39%)
+    Functions                                      167 (10.45%)
       Average Function Length                       33
-    Not in classes or functions                    705 (44.15%)
+    Not in classes or functions                    705 (44.12%)
 
 Cyclomatic Complexity
   Average Complexity per LLOC                     0.06
@@ -36,9 +36,9 @@ Dependencies
   Attribute Accesses                               332
     Non-Static                                     332 (100.00%)
     Static                                           0 (0.00%)
-  Method Calls                                     561
-    Non-Static                                     439 (78.25%)
-    Static                                         122 (21.75%)
+  Method Calls                                     564
+    Non-Static                                     440 (78.01%)
+    Static                                         124 (21.99%)
 
 Structure
   Namespaces                                        74
@@ -63,4 +63,4 @@ Structure
 
 Tests
   Classes                                           26
-  Methods                                           60
+  Methods                                           61

@@ -54,4 +54,14 @@
       self::assertSame('first', $file->read());
     }
 
+
+    public function testForwardMeta() {
+      self::assertSame(
+        'json',
+        (new CachableFile(
+          File::create(new LocalPath('/test.json'), new MemoryStorage())
+        ))->meta('extension')
+      );
+    }
+
   }

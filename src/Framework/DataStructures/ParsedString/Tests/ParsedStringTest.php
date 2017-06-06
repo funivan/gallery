@@ -6,7 +6,7 @@
   use PHPUnit\Framework\TestCase;
 
   /**
-   *
+   * @codeCoverageIgnore
    */
   class ParsedStringTest extends TestCase {
 
