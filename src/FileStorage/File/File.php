@@ -37,10 +37,13 @@
 
 
     /**
+     * @param string $content
      * @return FileInterface
      */
-    public static function createInMemory(): FileInterface {
-      return new self(new LocalPath('/memory.txt'), new MemoryStorage());
+    public static function createInMemory(string $content = ''): FileInterface {
+      $file = new self(new LocalPath('/memory.txt'), new MemoryStorage());
+      $file->write($content);
+      return $file;
     }
 
 

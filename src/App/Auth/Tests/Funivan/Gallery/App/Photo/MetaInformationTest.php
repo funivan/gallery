@@ -9,6 +9,9 @@
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
   use PHPUnit\Framework\TestCase;
 
+  /**
+   * @codeCoverageIgnore
+   */
   class MetaInformationTest extends TestCase {
 
 

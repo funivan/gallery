@@ -3,6 +3,7 @@
   namespace Funivan\Gallery\App\Image\Painter\Tool;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Intervention\Image\ImageManager;
 
   /**
    *
@@ -27,7 +28,7 @@
      * @return \Intervention\Image\Image
      */
     public function paint(): \Intervention\Image\Image {
-      $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
+      $manager = new ImageManager(['driver' => 'imagick']);
       $img = $manager->make($this->image->read());
       return $img->fit(300, 300);
     }

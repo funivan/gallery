@@ -8,6 +8,9 @@
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
   use PHPUnit\Framework\TestCase;
 
+  /**
+   * @codeCoverageIgnore
+   */
   class AuthComponentTest extends TestCase {
 
     /**

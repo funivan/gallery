@@ -4,6 +4,7 @@
   namespace Funivan\Gallery\App\Image\Painter\Tool;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Intervention\Image\ImageManager;
 
   /**
    *
@@ -22,7 +23,7 @@
 
 
     /**
-     * @param int $angel
+     * @param int $angel The rotation angle in degrees to rotate the image clockwise.
      * @param FileInterface $file
      */
     public function __construct(int $angel, FileInterface $file) {
@@ -38,9 +39,9 @@
       if ($this->angel < 0 or $this->angel > 360) {
         throw new \InvalidArgumentException('Invalid angel. Should be between 0...360');
       }
-      $manager = new \Intervention\Image\ImageManager(['driver' => 'imagick']);
+      $manager = new ImageManager(['driver' => 'imagick']);
       $img = $manager->make($this->file->read());
-      return $img->rotate($this->angel);
+      return $img->rotate($this->angel * -1);
     }
 
   }

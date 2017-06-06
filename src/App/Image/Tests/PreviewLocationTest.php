@@ -8,6 +8,9 @@
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
   use PHPUnit\Framework\TestCase;
 
+  /**
+   * @codeCoverageIgnore
+   */
   class PreviewLocationTest extends TestCase {
 
 
