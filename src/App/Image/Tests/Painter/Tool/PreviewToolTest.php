@@ -15,7 +15,7 @@
     public function testSize(): void {
       $tool = new PreviewTool(
         File::createInMemory(
-          (string) (new ImageManager(['driver' => 'imagick']))
+          (string) (new ImageManager(['driver' => 'gd']))
             ->canvas(500, 500)->encode('png')
         )
       );

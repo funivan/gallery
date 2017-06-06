@@ -39,7 +39,7 @@
       if ($this->angel < 0 or $this->angel > 360) {
         throw new \InvalidArgumentException('Invalid angel. Should be between 0...360');
       }
-      $manager = new ImageManager(['driver' => 'imagick']);
+      $manager = new ImageManager(['driver' => 'gd']);
       $img = $manager->make($this->file->read());
       return $img->rotate($this->angel * -1);
     }

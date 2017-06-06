@@ -35,7 +35,7 @@
      * @return Image
      */
     public function paint(): Image {
-      return (new ImageManager(['driver' => 'imagick']))
+      return (new ImageManager(['driver' => 'gd']))
         ->canvas($this->width, $this->height)
         ->encode('png');
     }

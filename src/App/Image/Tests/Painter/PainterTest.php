@@ -19,7 +19,7 @@
       $file = File::create(new LocalPath('/image.png'), new MemoryStorage());
       (new Painter($file))->paint(new CanvasPaintTool(500, 400));
       $file->read();
-      $output = (new ImageManager(['driver' => 'imagick']))
+      $output = (new ImageManager(['driver' => 'gd']))
         ->make($file->read());
       static::assertEquals([500, 400], [$output->getWidth(), $output->getHeight()]);
     }

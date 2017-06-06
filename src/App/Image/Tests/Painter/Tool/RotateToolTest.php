@@ -24,7 +24,7 @@
     public function testSize(): void {
       $tool = new RotateTool(90,
         File::createInMemory(
-          (string) (new ImageManager(['driver' => 'imagick']))
+          (string) (new ImageManager(['driver' => 'gd']))
             ->canvas(10, 10)
             ->fill('#000')
             ->pixel('#ffffff', 0, 0)

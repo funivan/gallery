@@ -28,7 +28,7 @@
      * @return \Intervention\Image\Image
      */
     public function paint(): \Intervention\Image\Image {
-      $manager = new ImageManager(['driver' => 'imagick']);
+      $manager = new ImageManager(['driver' => 'gd']);
       $img = $manager->make($this->image->read());
       return $img->fit(300, 300);
     }
