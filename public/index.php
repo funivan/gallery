@@ -48,7 +48,7 @@
 
   $serverData = $_SERVER;
   if (!array_key_exists('PATH_INFO', $serverData)) {
-    $serverData['PATH_INFO'] = '/';//PHP WAT
+    $serverData['PATH_INFO'] = '/'; //PHP WAT
   }
 
   $request = new Request(
