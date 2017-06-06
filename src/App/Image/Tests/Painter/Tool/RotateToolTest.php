@@ -25,7 +25,7 @@
       $tool = new RotateTool(90,
         File::createInMemory(
           (string) (new ImageManager(['driver' => 'gd']))
-            ->canvas(10, 10)
+            ->canvas(4, 4)
             ->fill('#000')
             ->pixel('#ffffff', 0, 0)
             ->encode('png')
@@ -33,7 +33,7 @@
       );
       static::assertEquals(
         '#ffffff',
-        $tool->paint()->pickColor(10, 0, 'hex')
+        $tool->paint()->pickColor(3, 0, 'hex')
       );
     }
 
