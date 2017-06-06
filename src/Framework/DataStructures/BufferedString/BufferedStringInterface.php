@@ -1,6 +1,6 @@
 <?php
 
-  declare(strict_types=1);
+  declare(strict_types = 1);
 
   namespace Funivan\Gallery\Framework\DataStructures\BufferedString;
 
@@ -19,13 +19,13 @@
      * @param string $string
      * @return self
      */
-    public function append(string $string) : BufferedStringInterface;
+    public function append(string $string): BufferedStringInterface;
 
 
     /**
      * @return self
      */
-    public function clear() : BufferedStringInterface;
+    public function clear(): BufferedStringInterface;
 
 
     /**

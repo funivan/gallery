@@ -1,6 +1,6 @@
 <?php
 
-  declare(strict_types=1);
+  declare(strict_types = 1);
 
   namespace Funivan\Gallery\Framework\Http\Response\Redirect;
 
@@ -67,7 +67,8 @@
      */
     public final function body(): BodyInterface {
       return new PlainBody(
-        sprintf(/** @lang text */'Redirect to url: <a href="%1$s">%1$s</a>', $this->url->build())
+        sprintf(/** @lang text */
+          'Redirect to url: <a href="%1$s">%1$s</a>', $this->url->build())
       );
     }
 

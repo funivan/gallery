@@ -31,6 +31,7 @@
       return new LocalPath($this->read('path'));
     }
 
+
     /**
      * @return array
      */

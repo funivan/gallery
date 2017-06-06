@@ -1,4 +1,5 @@
 <?php
+
   use Funivan\Gallery\App\Pages\Auth\LoginPage\LoginUrl;
   use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutUrl;
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;

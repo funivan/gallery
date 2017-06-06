@@ -1,6 +1,6 @@
 <?php
 
-  declare(strict_types=1);
+  declare(strict_types = 1);
 
   namespace Funivan\Gallery\App\Pages\NotFound;
 
@@ -55,7 +55,7 @@
      * @param string $description
      * @return ErrorResponse
      */
-    public static function createWithDescription(string $message, int $code, string $description) : ErrorResponse {
+    public static function createWithDescription(string $message, int $code, string $description): ErrorResponse {
       return new self($message, $code, $description);
     }
 
@@ -65,7 +65,7 @@
      * @param int $code
      * @return ErrorResponse
      */
-    public static function create(string $message, int $code) : ErrorResponse {
+    public static function create(string $message, int $code): ErrorResponse {
       return new self($message, $code, '');
     }
 
@@ -73,7 +73,7 @@
     /**
      * @return \Funivan\Gallery\Framework\Http\Response\StatusInterface
      */
-    public final function status() : StatusInterface {
+    public final function status(): StatusInterface {
       return new ResponseStatus($this->code);
     }
 
@@ -81,7 +81,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers() : HeadersInterface {
+    public final function headers(): HeadersInterface {
       return new Headers([]);
     }
 
@@ -89,7 +89,7 @@
     /**
      * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
      */
-    public final function body() : BodyInterface {
+    public final function body(): BodyInterface {
       $view = new CompositeView(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'],
         new View(__DIR__ . '/viewError.php', [
           'phrase' => $this->message,

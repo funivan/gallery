@@ -1,5 +1,6 @@
 <?php
   /** @var string $title */
+
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
 

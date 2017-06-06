@@ -1,6 +1,6 @@
 <?php
 
-  declare(strict_types=1);
+  declare(strict_types = 1);
 
   namespace Funivan\Gallery\App;
 
@@ -44,5 +44,5 @@
       }
       return $response;
     }
-    
+
   }
