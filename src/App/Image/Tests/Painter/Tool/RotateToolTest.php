@@ -17,14 +17,15 @@
      * @expectedExceptionMessage Invalid angel. Should be between 0...360
      */
     public function testInvalidAngel() {
-      (new RotateTool(361, File::createInMemory()))->paint();
+      (new RotateTool(361, File::createInMemory()))->paint(new ImageManager(['driver' => 'gd']));
     }
 
 
     public function testSize(): void {
+      $imageManager = new ImageManager(['driver' => 'gd']);
       $tool = new RotateTool(90,
         File::createInMemory(
-          (string) (new ImageManager(['driver' => 'gd']))
+          (string) $imageManager
             ->canvas(4, 4)
             ->fill('#000')
             ->pixel('#ffffff', 0, 0)
@@ -33,7 +34,7 @@
       );
       static::assertEquals(
         '#ffffff',
-        $tool->paint()->pickColor(3, 0, 'hex')
+        $tool->paint($imageManager)->pickColor(3, 0, 'hex')
       );
     }
 

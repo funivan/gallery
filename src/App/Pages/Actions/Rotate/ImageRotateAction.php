@@ -12,6 +12,7 @@
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
+  use Intervention\Image\ImageManager;
 
   /**
    *
@@ -28,14 +29,21 @@
      */
     private $previewStorage;
 
+    /**
+     * @var ImageManager
+     */
+    private $imageManager;
+
 
     /**
      * @param int $angel
+     * @param ImageManager $imageManager
      * @param FileStorageInterface $previewStorage
      */
-    public function __construct(int $angel, FileStorageInterface $previewStorage) {
+    public function __construct(int $angel, ImageManager $imageManager, FileStorageInterface $previewStorage) {
       $this->previewStorage = $previewStorage;
       $this->angel = $angel;
+      $this->imageManager = $imageManager;
     }
 
 
@@ -46,12 +54,10 @@
      * @return FileInterface
      */
     public function execute(FileInterface $photo): FileInterface {
-      (new Painter(
-        $photo
-      ))->paint(new RotateTool($this->angel, $photo));
-      (new Painter(
-        File::create((new PreviewLocation($photo))->path(), $this->previewStorage)
-      ))->paint(new PreviewTool($photo));
+      (new Painter($this->imageManager, $photo))
+        ->paint(new RotateTool($this->angel, $photo));
+      (new Painter($this->imageManager, File::create((new PreviewLocation($photo))->path(), $this->previewStorage)))
+        ->paint(new PreviewTool($photo));
       return $photo;
     }
 

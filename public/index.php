@@ -67,6 +67,7 @@
   $dataStorage = new LocalFsStorage(new LocalPath(__DIR__ . '/../data'));
   $users = new Users(File::create(new LocalPath('users.json'), $dataStorage));
 
+  $imageManager = new \Intervention\Image\ImageManager(['driver' => 'gd']);
   $authComponent = new AuthComponent($request->cookies(), $authStorageFs, $users);
 
   /** @noinspection HtmlUnknownTag */
@@ -89,7 +90,7 @@
           ),
           new Route(
             new PathRouteMatch(PreviewUrl::PREFIX),
-            new PreviewController($imagesFs, $cacheFs)
+            new PreviewController($imageManager, $imagesFs, $cacheFs)
           ),
           # Check path by regex and then, according to the data, check what dispatcher we should call
           # This technique can be used for groups
@@ -145,7 +146,7 @@
           ),
           new Route(
             new PathRouteMatch(ImageRotateRightUrl::PREFIX),
-            new ActionDispatcher(new ImageRotateAction(90, $cacheFs), $imagesFs)
+            new ActionDispatcher(new ImageRotateAction(90, $imageManager, $cacheFs), $imagesFs)
           ),
           new Route(
             new RegexRouteMatch(LoginUrl::PREFIX),

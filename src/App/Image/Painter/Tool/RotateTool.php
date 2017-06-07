@@ -4,6 +4,7 @@
   namespace Funivan\Gallery\App\Image\Painter\Tool;
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Intervention\Image\Image;
   use Intervention\Image\ImageManager;
 
   /**
@@ -33,15 +34,15 @@
 
 
     /**
-     * @return \Intervention\Image\Image
+     * @param ImageManager $imageManager
+     * @return Image
      */
-    public function paint(): \Intervention\Image\Image {
+    public function paint(ImageManager $imageManager): Image {
       if ($this->angel < 0 or $this->angel > 360) {
         throw new \InvalidArgumentException('Invalid angel. Should be between 0...360');
       }
-      $manager = new ImageManager(['driver' => 'gd']);
-      $img = $manager->make($this->file->read());
-      return $img->rotate($this->angel * -1);
+      return $imageManager->make($this->file->read())
+        ->rotate($this->angel * -1);
     }
 
   }

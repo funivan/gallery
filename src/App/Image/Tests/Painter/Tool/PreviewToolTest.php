@@ -13,14 +13,15 @@
   class PreviewToolTest extends TestCase {
 
     public function testSize(): void {
+      $imageManager = new ImageManager(['driver' => 'gd']);
       $tool = new PreviewTool(
         File::createInMemory(
-          (string) (new ImageManager(['driver' => 'gd']))
+          (string) $imageManager
             ->canvas(500, 500)->encode('png')
         )
       );
-      $result = $tool->paint();
-      static::assertEquals([300, 300,], [$result->getWidth(), $result->getHeight()]);
+      $result = $tool->paint($imageManager);
+      static::assertEquals([300, 300,], [$result->width(), $result->getHeight()]);
     }
 
   }

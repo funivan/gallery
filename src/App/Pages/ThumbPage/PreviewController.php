@@ -15,6 +15,7 @@
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\FileResponse\FileResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
+  use Intervention\Image\ImageManager;
 
   /**
    *
@@ -31,14 +32,21 @@
      */
     private $cacheFs;
 
+    /**
+     * @var ImageManager
+     */
+    private $imageManager;
+
 
     /**
+     * @param ImageManager $imageManager
      * @param FileStorageInterface $imagesFs
      * @param FileStorageInterface $cacheFs
      */
-    public function __construct(FileStorageInterface $imagesFs, FileStorageInterface $cacheFs) {
+    public function __construct(ImageManager $imageManager, FileStorageInterface $imagesFs, FileStorageInterface $cacheFs) {
       $this->imageFs = $imagesFs;
       $this->cacheFs = $cacheFs;
+      $this->imageManager = $imageManager;
     }
 
 
@@ -56,7 +64,7 @@
       } else {
         $preview = File::create((new PreviewLocation($original))->path(), $this->cacheFs);
         if (!$preview->exists()) {
-          (new Painter($preview))->paint(new PreviewTool($original));
+          (new Painter($this->imageManager, $preview))->paint(new PreviewTool($original));
         }
         $response = FileResponse::createViewable($preview);
       }

@@ -8,6 +8,9 @@
   use Intervention\Image\Image;
   use Intervention\Image\ImageManager;
 
+  /**
+   * @codeCoverageIgnore
+   */
   class CanvasPaintTool implements PainterToolInterface {
 
     /**
@@ -32,11 +35,11 @@
 
 
     /**
+     * @param ImageManager $imageManager
      * @return Image
      */
-    public function paint(): Image {
-      return (new ImageManager(['driver' => 'gd']))
-        ->canvas($this->width, $this->height)
+    public function paint(ImageManager $imageManager): Image {
+      return $imageManager->canvas($this->width, $this->height)
         ->encode('png');
     }
 

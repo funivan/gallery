@@ -7,6 +7,9 @@
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
   use Funivan\Gallery\Framework\Auth\UserInterface;
 
+  /**
+   * @codeCoverageIgnore
+   */
   class DummyAuthComponent implements AuthComponentInterface {
 
     /**

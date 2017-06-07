@@ -16,12 +16,12 @@
   class PainterTest extends TestCase {
 
     public function testWriteDestination() {
+      $imageManager = new ImageManager(['driver' => 'gd']);
       $file = File::create(new LocalPath('/image.png'), new MemoryStorage());
-      (new Painter($file))->paint(new CanvasPaintTool(500, 400));
+      (new Painter($imageManager, $file))->paint(new CanvasPaintTool(500, 400));
       $file->read();
-      $output = (new ImageManager(['driver' => 'gd']))
-        ->make($file->read());
-      static::assertEquals([500, 400], [$output->getWidth(), $output->getHeight()]);
+      $output = $imageManager->make($file->read());
+      static::assertEquals([500, 400], [$output->width(), $output->height()]);
     }
 
   }

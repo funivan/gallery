@@ -6,6 +6,9 @@
 
   use Funivan\Gallery\Framework\Auth\UserInterface;
 
+  /**
+   * @codeCoverageIgnore
+   */
   class DummyUser implements UserInterface {
 
     const ANONYMOUS = 'anonymous';
