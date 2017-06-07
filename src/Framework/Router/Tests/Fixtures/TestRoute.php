@@ -7,7 +7,7 @@
 
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
-  use Funivan\Gallery\Framework\Router\Match\MatchResultInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
   use Funivan\Gallery\Framework\Router\RouteInterface;
 
   /**
@@ -16,7 +16,7 @@
   class TestRoute implements RouteInterface {
 
     /**
-     * @var MatchResultInterface
+     * @var \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface
      */
     private $matchResult;
 
@@ -27,7 +27,7 @@
 
 
     /**
-     * @param MatchResultInterface $result
+     * @param \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface $result
      * @param ResponseInterface $response
      */
     public function __construct(MatchResultInterface $result, ResponseInterface $response) {
@@ -47,7 +47,7 @@
 
     /**
      * @param RequestInterface $request
-     * @return MatchResultInterface
+     * @return \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface
      */
     public function match(RequestInterface $request): MatchResultInterface {
       return $this->matchResult;

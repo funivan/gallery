@@ -11,10 +11,10 @@
   use Funivan\Gallery\Framework\Http\Response\Body\BufferedBody;
   use Funivan\Gallery\Framework\Http\Response\Plain\PlainResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
-  use Funivan\Gallery\Framework\Router\Match\MatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResultInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
+  use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
   use Funivan\Gallery\Framework\Router\Route;
-  use Funivan\Gallery\Framework\Router\RouteMatchInterface;
   use Funivan\Gallery\Framework\Router\RouterDispatcher;
   use PHPUnit\Framework\TestCase;
 
@@ -27,7 +27,7 @@
       $routeMatch = new class implements RouteMatchInterface {
 
         public function match(RequestInterface $request): MatchResultInterface {
-          return new MatchResult(true, new Parameters(['id' => $request->get()->value('formId')]));
+          return MatchResult::create(true, new Parameters(['id' => $request->get()->value('formId')]));
         }
       };
       $dispatcher = new class implements DispatcherInterface {

@@ -2,7 +2,7 @@
 
   declare(strict_types = 1);
 
-  namespace Funivan\Gallery\Framework\Router\Match;
+  namespace Funivan\Gallery\Framework\Router\Match\Result;
 
   use Funivan\Gallery\Framework\Http\Request\ParametersInterface;
 

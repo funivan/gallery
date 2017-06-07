@@ -7,11 +7,10 @@
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\ParametersInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Router\Match\EmptyMatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResultInterface;
-  use Funivan\Gallery\Framework\Router\Match\SuccessRouteMatch;
-  use Funivan\Gallery\Framework\Router\RouteMatchInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
+  use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
+  use Funivan\Gallery\Framework\Router\Match\StaticRouteMatch;
 
   /**
    * Check GET,POST,USER parameters
@@ -37,7 +36,7 @@
     /**
      * @param string $type
      * @param ParameterConstrainInterface $constrain
-     * @param RouteMatchInterface $next
+     * @param \Funivan\Gallery\Framework\Router\Match\RouteMatchInterface $next
      * @internal param array $parameters
      */
     private function __construct(string $type, ParameterConstrainInterface $constrain, RouteMatchInterface $next) {
@@ -69,23 +68,23 @@
      * @return ParameterRoutMatch
      */
     public static function create(string $type, ParameterConstrainInterface $constrain): ParameterRoutMatch {
-      return new self($type, $constrain, new SuccessRouteMatch());
+      return new self($type, $constrain, new StaticRouteMatch(MatchResult::createSuccess()));
     }
 
 
     /**
      * @param RequestInterface $request
-     * @return MatchResultInterface
+     * @return \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface
      */
     public final function match(RequestInterface $request): MatchResultInterface {
       $data = $this->retrieveBag($request);
-      $result = new EmptyMatchResult();
+      $result = MatchResult::createFailure();
       if ($this->constrain->validate($data)) {
         $nextResult = $this->next->match($request);
         if ($nextResult->matched()) {
           $name = $this->constrain->name();
           $parameters = new Parameters([$name => $data->value($name)]);
-          $result = new MatchResult(true, $parameters->merge($nextResult->parameters()));
+          $result = MatchResult::create(true, $parameters->merge($nextResult->parameters()));
         }
       }
       return $result;

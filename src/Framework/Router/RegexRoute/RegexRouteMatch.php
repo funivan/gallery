@@ -6,10 +6,9 @@
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Router\Match\EmptyMatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResultInterface;
-  use Funivan\Gallery\Framework\Router\RouteMatchInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
+  use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
 
   /**
    *
@@ -42,9 +41,9 @@
             unset($params[$index]);
           }
         }
-        $result = new MatchResult(true, new Parameters($params));
+        $result = MatchResult::create(true, new Parameters($params));
       } else {
-        $result = new EmptyMatchResult();
+        $result = MatchResult::createFailure();
       }
       return $result;
     }

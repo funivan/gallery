@@ -6,10 +6,9 @@
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Router\Match\EmptyMatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResult;
-  use Funivan\Gallery\Framework\Router\Match\MatchResultInterface;
-  use Funivan\Gallery\Framework\Router\RouteMatchInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
+  use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
+  use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
 
   /**
    *
@@ -36,9 +35,9 @@
      */
     public final function match(RequestInterface $request): MatchResultInterface {
       if ($request->server()->value('PATH_INFO') === $this->path) {
-        $result = new MatchResult(true, new Parameters([]));
+        $result = MatchResult::create(true, new Parameters([]));
       } else {
-        $result = new EmptyMatchResult();
+        $result = MatchResult::createFailure();
       }
       return $result;
     }
