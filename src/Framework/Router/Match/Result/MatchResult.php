@@ -27,7 +27,7 @@
      * @param bool $matched
      * @param ParametersInterface $parameters
      */
-    public function __construct(bool $matched, ParametersInterface $parameters) {
+    private function __construct(bool $matched, ParametersInterface $parameters) {
       $this->matched = $matched;
       $this->parameters = $parameters;
     }
