@@ -18,7 +18,7 @@
       $view = new CompositeView(__DIR__ . '/fixtures/viewWrapper.php', [],
         new View(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
       );
-      self::assertSame('<div class="wrapper"><h1>Test title</h1></div>', $view->render());
+      self::assertSame('<div class="wrapper"><h1>Test title</h1></div>', trim($view->render()));
     }
 
 
@@ -29,7 +29,7 @@
             new View(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
           )
         );
-      self::assertSame('<div class="wrapper"><div class="wrapper"><h1>Test title</h1></div></div>', $view->render());
+      self::assertSame('<div class="wrapper"><div class="wrapper"><h1>Test title</h1></div></div>', str_replace("\n", '', $view->render()));
     }
 
 
