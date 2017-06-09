@@ -9,7 +9,7 @@
   /**
    *
    */
-  final class User implements UserInterface {
+  class User implements UserInterface {
 
     /**
      * @var string
@@ -46,7 +46,7 @@
      *
      * @return string
      */
-    public function uid(): string {
+    public final function uid(): string {
       return $this->uid;
     }
 
@@ -55,7 +55,7 @@
      * @param string $inputPass
      * @return bool
      */
-    public function validatePassword(string $inputPass): bool {
+    public final function validatePassword(string $inputPass): bool {
       return ($this->pass === $inputPass);
     }
 
@@ -66,7 +66,7 @@
      * @param string $ruleId
      * @return bool
      */
-    public function authorized(string $ruleId): bool {
+    public final function authorized(string $ruleId): bool {
       return in_array($ruleId, $this->rules, true);
     }
 

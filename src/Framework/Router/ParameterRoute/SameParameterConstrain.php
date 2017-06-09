@@ -9,7 +9,7 @@
   /**
    *
    */
-  final class SameParameterConstrain implements ParameterConstrainInterface {
+  class SameParameterConstrain implements ParameterConstrainInterface {
 
     /**
      * @var string
@@ -36,7 +36,7 @@
      * @param ParametersInterface $parameters
      * @return bool
      */
-    public function validate(ParametersInterface $parameters): bool {
+    public final function validate(ParametersInterface $parameters): bool {
       return ($parameters->has($this->name) and $parameters->value($this->name) === $this->value);
     }
 
@@ -44,7 +44,7 @@
     /**
      * @return string
      */
-    public function name(): string {
+    public final function name(): string {
       return $this->name;
     }
 

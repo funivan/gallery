@@ -10,7 +10,7 @@
   /**
    *
    */
-  final class StaticRouteMatch implements RouteMatchInterface {
+  class StaticRouteMatch implements RouteMatchInterface {
 
     /**
      * @var MatchResultInterface
@@ -30,7 +30,7 @@
      * @param RequestInterface $request
      * @return MatchResultInterface
      */
-    public function match(RequestInterface $request): MatchResultInterface {
+    public final function match(RequestInterface $request): MatchResultInterface {
       return $this->result;
     }
 

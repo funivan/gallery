@@ -17,7 +17,7 @@
   /**
    *
    */
-  final class ImageRotateAction implements ImageActionInterface {
+  class ImageRotateAction implements ImageActionInterface {
 
     /**
      * @var int
@@ -53,7 +53,7 @@
      * @param FileInterface $photo
      * @return FileInterface
      */
-    public function execute(FileInterface $photo): FileInterface {
+    public final function execute(FileInterface $photo): FileInterface {
       (new Painter($this->imageManager, $photo))
         ->paint(new RotateTool($this->angel, $photo));
       (new Painter($this->imageManager, File::create((new PreviewLocation($photo))->path(), $this->previewStorage)))

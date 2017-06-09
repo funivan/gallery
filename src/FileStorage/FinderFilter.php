@@ -9,7 +9,7 @@
   /**
    * @todo take a look: Data transfer object
    */
-  final class FinderFilter implements FinderFilterInterface {
+  class FinderFilter implements FinderFilterInterface {
 
     /**
      * @var array
@@ -42,7 +42,7 @@
     /**
      * @return array
      */
-    public function getExtensions(): array {
+    public final function getExtensions(): array {
       return $this->extensions;
     }
 
@@ -50,7 +50,7 @@
     /**
      * @return int
      */
-    public function getType(): int {
+    public final function getType(): int {
       return $this->type;
     }
 
@@ -58,7 +58,7 @@
     /**
      * @return PathInterface
      */
-    public function getPath(): PathInterface {
+    public final function getPath(): PathInterface {
       return $this->path;
     }
 

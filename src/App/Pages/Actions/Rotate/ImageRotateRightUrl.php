@@ -9,7 +9,7 @@
   /**
    *
    */
-  final class ImageRotateRightUrl extends PathUrl {
+  class ImageRotateRightUrl extends PathUrl {
 
     const PREFIX = '/action/change/rotate-right';
 

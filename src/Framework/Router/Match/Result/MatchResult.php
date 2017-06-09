@@ -10,7 +10,7 @@
   /**
    *
    */
-  final class MatchResult implements MatchResultInterface {
+  class MatchResult implements MatchResultInterface {
 
     /**
      * @var bool
@@ -62,7 +62,7 @@
     /**
      * @return bool
      */
-    public function matched(): bool {
+    public final function matched(): bool {
       return $this->matched;
     }
 
@@ -70,7 +70,7 @@
     /**
      * @return ParametersInterface
      */
-    public function parameters(): ParametersInterface {
+    public final function parameters(): ParametersInterface {
       return $this->parameters;
     }
 

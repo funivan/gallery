@@ -14,7 +14,7 @@
   /**
    *
    */
-  final class ActionRouteMatch implements RouteMatchInterface {
+  class ActionRouteMatch implements RouteMatchInterface {
 
     /**
      * @var string
@@ -41,7 +41,7 @@
      * @param RequestInterface $request
      * @return MatchResultInterface
      */
-    public function match(RequestInterface $request): MatchResultInterface {
+    public final function match(RequestInterface $request): MatchResultInterface {
       //@todo use POST instead of GET
       return ParameterRoutMatch::createWithNext(
         'GET', new SameParameterConstrain('flag', $this->flag),

@@ -14,7 +14,7 @@
   /**
    *
    */
-  final class ActionDispatcher implements DispatcherInterface {
+  class ActionDispatcher implements DispatcherInterface {
 
     /**
      * @var ImageActionInterface
@@ -41,7 +41,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public function handle(RequestInterface $request): ResponseInterface {
+    public final function handle(RequestInterface $request): ResponseInterface {
       $original = File::create(
         new LocalPath(urldecode($request->get()->value('path'))),
         $this->storage
