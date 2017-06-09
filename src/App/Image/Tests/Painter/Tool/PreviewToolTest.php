@@ -21,7 +21,7 @@
         )
       );
       $result = $tool->paint($imageManager);
-      static::assertEquals([300, 300, ], [$result->width(), $result->getHeight()]);
+      static::assertEquals([300, 300], [$result->width(), $result->getHeight()]);
     }
 
   }
