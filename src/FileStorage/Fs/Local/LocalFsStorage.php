@@ -115,17 +115,14 @@
 
     /**
      * @param FinderFilterInterface $filters
-     * @return array|PathInterface[]
+     * @return PathInterface[]
      */
     public final function find(FinderFilterInterface $filters): array {
       $finder = new Finder();
-      $searchPath = $this->basePath;
       $subPath = $filters->getPath();
-      if (!$subPath->isRoot()) {
-        $searchPath = $searchPath->next($subPath);
-      }
-      $finder->in($searchPath->assemble())
-        ->depth(0);
+      $finder->in(
+        $this->basePath->next($subPath)->assemble()
+      )->depth(0);
       $finder->sortByName();
 
       $ext = $filters->getExtensions();
