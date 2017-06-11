@@ -11,7 +11,7 @@
   class LocalFsStorageTest extends TestCase {
 
     public function testWriteRead() {
-      $fs = new LocalFsStorage(new LocalPath(sys_get_temp_dir()));
+      $fs = LocalFsStorage::create(new LocalPath(sys_get_temp_dir()));
       $fs->write(new LocalPath('test.txt'), 'data-file');
       self::assertSame(
         'data-file',
@@ -21,7 +21,7 @@
 
 
     public function testMeta() {
-      $fs = new LocalFsStorage(new LocalPath(sys_get_temp_dir()));
+      $fs = LocalFsStorage::create(new LocalPath(sys_get_temp_dir()));
       $path = new LocalPath('custom-file.json');
       $fs->write($path, '');
       self::assertSame(

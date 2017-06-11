@@ -8,6 +8,8 @@
   use Funivan\Gallery\FileStorage\Exception\WriteException;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\FinderFilterInterface;
+  use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryCheck;
+  use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryOperation;
   use Funivan\Gallery\FileStorage\PathInterface;
   use Symfony\Component\Finder\Finder;
 
@@ -17,26 +19,43 @@
    */
   class LocalFsStorage implements FileStorageInterface {
 
-    const ALLOW_DIRECTORY_CREATION = 1;
-
-    /**
-     * @var int
-     */
-    private $option;
-
     /**
      * @var PathInterface
      */
     private $basePath;
 
+    /**
+     * @var DirectoryOperation
+     */
+    private $directoryCheck;
+
 
     /**
      * @param PathInterface $basePath
-     * @param int $options
+     * @param DirectoryOperation $directoryCheck
      */
-    public function __construct(PathInterface $basePath, int $options = 0) {
+    private function __construct(PathInterface $basePath, DirectoryOperation $directoryCheck) {
       $this->basePath = $basePath;
-      $this->option = $options;
+      $this->directoryCheck = $directoryCheck;
+    }
+
+
+    /**
+     * @param PathInterface $basePath
+     * @return FileStorageInterface
+     */
+    public static function create(PathInterface $basePath): FileStorageInterface {
+      return new self($basePath, new DirectoryCheck());
+    }
+
+
+    /**
+     * @param PathInterface $basePath
+     * @param DirectoryOperation $directoryCheck
+     * @return FileStorageInterface
+     */
+    public static function createWithDirectoryCheck(PathInterface $basePath, DirectoryOperation $directoryCheck): FileStorageInterface {
+      return new self($basePath, $directoryCheck);
     }
 
 
@@ -48,14 +67,9 @@
      */
     public final function write(PathInterface $path, string $data): void {
       $filePath = $this->basePath->next($path);
-      $directory = $filePath->previous()->assemble();
-      $validDir = true;
-      if (self::ALLOW_DIRECTORY_CREATION === $this->option and !is_dir($directory)) {
-        $validDir = @mkdir($directory, 0777, true);
-      }
-      if (!$validDir or !is_dir($directory)) {
+      if (!$this->directoryCheck->perform($filePath->previous())) {
         throw new WriteException(
-          sprintf('Can not create file. Directory does not exists %s', $directory)
+          sprintf('Can not create file. Directory does not exists %s', $path->previous()->assemble())
         );
       }
       $result = file_put_contents($filePath->assemble(), $data);
@@ -119,9 +133,12 @@
     public final function find(FinderFilterInterface $filters): array {
       $finder = new Finder();
       $subPath = $filters->getPath();
-      $finder->in(
-        $this->basePath->next($subPath)->assemble()
-      )->depth(0);
+      $path = $this->basePath;
+      if (!$subPath->isRoot()) {
+        $path = $path->next($subPath);
+      }
+      $finder->in($path->assemble());
+      $finder->depth(0);
       $finder->sortByName();
 
       $ext = $filters->getExtensions();

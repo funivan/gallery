@@ -28,6 +28,7 @@
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalFsStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryAutomaticCreation;
   use Funivan\Gallery\Framework\Auth\AuthenticationDispatcher;
   use Funivan\Gallery\Framework\Auth\AuthorizationDispatcher;
   use Funivan\Gallery\Framework\Dispatcher\App;
@@ -60,11 +61,11 @@
   );
 
   $configuration = new Configuration(__DIR__ . '/../configuration.ini');
-  $imagesFs = new LocalFsStorage($configuration->baseImagePath());
-  $cacheFs = new LocalFsStorage(new LocalPath(__DIR__ . '/../cache'), LocalFsStorage::ALLOW_DIRECTORY_CREATION);
-  $authStorageFs = new LocalFsStorage(new LocalPath(__DIR__ . '/../storage'));
+  $imagesFs = LocalFsStorage::create($configuration->baseImagePath());
+  $cacheFs = LocalFsStorage::createWithDirectoryCheck(new LocalPath(__DIR__ . '/../cache'), new DirectoryAutomaticCreation());
+  $authStorageFs = LocalFsStorage::create(new LocalPath(__DIR__ . '/../storage'));
 
-  $dataStorage = new LocalFsStorage(new LocalPath(__DIR__ . '/../data'));
+  $dataStorage = LocalFsStorage::create(new LocalPath(__DIR__ . '/../data'));
   $users = new Users(File::create(new LocalPath('users.json'), $dataStorage));
 
   $imageManager = new \Intervention\Image\ImageManager(['driver' => 'gd']);
