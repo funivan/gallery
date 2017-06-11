@@ -64,4 +64,27 @@
       );
     }
 
+
+    public function testForwardPath() {
+      self::assertSame(
+        '/my/custom/user.txt',
+        (new CachableFile(
+          File::create(new LocalPath('/my/custom/user.txt'), new MemoryStorage())
+        ))->path()->assemble()
+      );
+    }
+
+
+    public function testMove() {
+      $storage = new MemoryStorage();
+      $file = (new CachableFile(
+        File::create(new LocalPath('/data.json'), $storage)
+      ));
+      $file->write('test');
+      $file->move(new LocalPath('/data/text.json'));
+      self::assertTrue(
+        $storage->file(new LocalPath('/data/text.json'))
+      );
+    }
+
   }
