@@ -2,6 +2,7 @@
 
   namespace Funivan\Gallery\FileStorage\Tests\Fs\BlackHole;
 
+  use Funivan\Gallery\FileStorage\FinderFilter;
   use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use PHPUnit\Framework\TestCase;
@@ -20,8 +21,31 @@
 
 
     public function testDirectory(): void {
-      $path = new LocalPath('/test');
-      self::assertFalse((new BlackHoleStorage())->directory($path));
+      self::assertFalse(
+        (new BlackHoleStorage())->directory(new LocalPath('/test'))
+      );
+    }
+
+
+    public function testFind(): void {
+      self::assertSame(
+        [],
+        (new BlackHoleStorage())->find(
+          new FinderFilter(
+            new LocalPath('/'),
+            FinderFilter::TYPE_DIR
+          )
+        )
+      );
+    }
+
+
+    /**
+     * @expectedException \BadMethodCallException
+     * @expectedExceptionMessage "Read" operation is not supported by this adapter
+     */
+    public function testRead() {
+      (new BlackHoleStorage())->read(new LocalPath('/document.txt'));
     }
 
 
