@@ -40,6 +40,7 @@
     /**
      * @param PathInterface $path
      * @param string $data
+     * @return void
      */
     public function write(PathInterface $path, string $data): void;
 
@@ -53,6 +54,7 @@
 
     /**
      * @param PathInterface $path
+     * @return void
      */
     public function remove(PathInterface $path): void;
 
@@ -60,6 +62,7 @@
     /**
      * @param PathInterface $old
      * @param PathInterface $new
+     * @return void
      */
     public function move(PathInterface $old, PathInterface $new): void;
 
