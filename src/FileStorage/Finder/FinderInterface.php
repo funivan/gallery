@@ -4,10 +4,13 @@
 
   use Funivan\Gallery\FileStorage\PathInterface;
 
+  /**
+   *
+   */
   interface FinderInterface {
 
     /**
-     * @return PathInterface[]
+     * @return PathInterface[]|\Iterator
      */
     public function items(): \Iterator;
 

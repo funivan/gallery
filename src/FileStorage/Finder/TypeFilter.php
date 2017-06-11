@@ -7,6 +7,9 @@
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\PathInterface;
 
+  /**
+   *
+   */
   class TypeFilter implements FinderInterface {
 
     /**
@@ -38,7 +41,7 @@
 
 
     /**
-     * @return PathInterface[]
+     * @return PathInterface[]|\Iterator
      */
     public function items(): \Iterator {
       foreach ($this->original->items() as $item) {

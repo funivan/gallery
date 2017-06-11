@@ -32,8 +32,7 @@
 
 
     /**
-     * @param PathInterface $path
-     * @return PathInterface[]
+     * @return PathInterface[]|\Iterator
      */
     public function items(): \Iterator {
       $tree = $this->tree();
@@ -47,7 +46,7 @@
 
     /**
      * @param PathInterface $path
-     * @return PathInterface[] \Generator
+     * @return PathInterface[]|\Generator
      */
     private function all(PathInterface $path): \Generator {
       $prev = $path;

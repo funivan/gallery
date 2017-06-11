@@ -14,7 +14,7 @@
     /** @noinspection PhpDocSignatureInspection */
 
     /**
-     * @return PathInterface[]
+     * @return PathInterface[]|\Iterator
      */
     public function items(): \Iterator {
       return new \EmptyIterator();

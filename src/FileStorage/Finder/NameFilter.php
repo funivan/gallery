@@ -6,6 +6,9 @@
 
   use Funivan\Gallery\FileStorage\PathInterface;
 
+  /**
+   *
+   */
   class NameFilter implements FinderInterface {
 
     /**
@@ -30,7 +33,7 @@
 
 
     /**
-     * @return PathInterface[]
+     * @return PathInterface[]|\Iterator
      */
     public function items(): \Iterator {
       foreach ($this->original->items() as $path) {
