@@ -6,7 +6,9 @@
 
   use Funivan\Gallery\FileStorage\Exception\ReadException;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\FinderFilterInterface;
+  use Funivan\Gallery\FileStorage\Finder\FinderInterface;
+  use Funivan\Gallery\FileStorage\Finder\InMemoryPathFinder;
+  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\PathInterface;
 
   /**
@@ -23,11 +25,11 @@
 
 
     /**
-     * @param FinderFilterInterface $finder
-     * @return PathInterface[]
+     * @param PathInterface $path
+     * @return FinderInterface
      */
-    public final function find(FinderFilterInterface $finder): array {
-      throw new \BadMethodCallException('"Find" operation is not supported by this adapter');
+    public function finder(PathInterface $path): FinderInterface {
+      return new InMemoryPathFinder(array_keys($this->files), $path);
     }
 
 
@@ -49,9 +51,18 @@
      * @return string
      */
     public function type(PathInterface $path): string {
-      return array_key_exists($path->assemble(), $this->files)
-        ? FileStorageInterface::TYPE_FILE
-        : FileStorageInterface::TYPE_UNKNOWN;
+      $result = FileStorageInterface::TYPE_UNKNOWN;
+      if (array_key_exists($path->assemble(), $this->files)) {
+        $result = FileStorageInterface::TYPE_FILE;
+      } else {
+        foreach (array_keys($this->files) as $filePath) {
+          if ((new LocalPath($filePath))->previous()->equal($path)) {
+            $result = FileStorageInterface::TYPE_DIRECTORY;
+            break;
+          }
+        }
+      }
+      return $result;
     }
 
 

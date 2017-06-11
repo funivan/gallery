@@ -4,6 +4,8 @@
 
   namespace Funivan\Gallery\FileStorage;
 
+  use Funivan\Gallery\FileStorage\Finder\FinderInterface;
+
   /**
    */
   interface FileStorageInterface {
@@ -16,10 +18,10 @@
 
 
     /**
-     * @param FinderFilterInterface $finder
-     * @return PathInterface[]
+     * @param PathInterface $path
+     * @return FinderInterface
      */
-    public function find(FinderFilterInterface $finder): array;
+    public function finder(PathInterface $path): FinderInterface;
 
 
     /**

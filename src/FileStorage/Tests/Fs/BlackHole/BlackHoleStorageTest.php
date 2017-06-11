@@ -3,7 +3,6 @@
   namespace Funivan\Gallery\FileStorage\Tests\Fs\BlackHole;
 
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\FinderFilter;
   use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use PHPUnit\Framework\TestCase;
@@ -26,13 +25,13 @@
 
     public function testFind(): void {
       self::assertSame(
-        [],
-        (new BlackHoleStorage())->find(
-          new FinderFilter(
-            new LocalPath('/'),
-            FinderFilter::TYPE_DIR
-          )
+        0,
+        iterator_count(
+          (new BlackHoleStorage())->finder(
+            new LocalPath('/')
+          )->items()
         )
+
       );
     }
 

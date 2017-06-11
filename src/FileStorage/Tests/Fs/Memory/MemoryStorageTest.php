@@ -59,4 +59,17 @@
     }
 
 
+    public function testList(): void {
+      $storage = new MemoryStorage();
+      $storage->write(new LocalPath('/my/doc/doc.txt'), 'custom file content');
+      $storage->write(new LocalPath('/my/doc/user/data.json'), 'other file content');
+      $storage->write(new LocalPath('/my/document.doc'), 'doc conter');
+
+      self::assertSame(
+        2,
+        iterator_count($storage->finder(new LocalPath('/my/doc'))->items())
+      );
+    }
+
+
   }

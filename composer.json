@@ -9,7 +9,6 @@
   ],
   "require": {
     "catfan/Medoo": "1.2.*",
-    "symfony/finder": "3.2.*",
     "intervention/image": "2.3.*",
     "ralouphie/mimey": "1.0.*"
   },

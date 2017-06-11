@@ -7,11 +7,11 @@
   use Funivan\Gallery\FileStorage\Exception\ReadException;
   use Funivan\Gallery\FileStorage\Exception\WriteException;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\FinderFilterInterface;
+  use Funivan\Gallery\FileStorage\Finder\FinderInterface;
+  use Funivan\Gallery\FileStorage\Fs\Local\FsIterator\LocalFsFinder;
   use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryCheck;
   use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryOperation;
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Symfony\Component\Finder\Finder;
 
   /**
    * Can be tested via integration tests.
@@ -126,39 +126,8 @@
     }
 
 
-    /**
-     * @param FinderFilterInterface $filters
-     * @return PathInterface[]
-     */
-    public final function find(FinderFilterInterface $filters): array {
-      $finder = new Finder();
-      $subPath = $filters->getPath();
-      $path = $this->basePath;
-      if (!$subPath->isRoot()) {
-        $path = $path->next($subPath);
-      }
-      $finder->in($path->assemble());
-      $finder->depth(0);
-      $finder->sortByName();
-
-      $ext = $filters->getExtensions();
-      if (count($ext) > 0) {
-        $finder->name('/.+\.(' . implode('|', $ext) . ')$/i');
-      }
-      if ($filters->getType() === FinderFilterInterface::TYPE_FILE) {
-        $finder->files();
-      } elseif ($filters->getType() === FinderFilterInterface::TYPE_DIR) {
-        $finder->directories();
-      } else {
-        throw new \InvalidArgumentException('Invalid filters parameters');
-      }
-      /** @var \Symfony\Component\Finder\SplFileInfo[] $files */
-      $path = [];
-      foreach ($finder as $file) {
-        $path[] = $subPath->next(new LocalPath($file->getRelativePathname()));
-      }
-      $path = array_reverse($path);
-      return $path;
+    public function finder(PathInterface $path): FinderInterface {
+      return new LocalFsFinder($this->basePath, $path);
     }
 
 

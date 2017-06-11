@@ -6,8 +6,8 @@
 
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\FinderFilter;
-  use Funivan\Gallery\FileStorage\FinderFilterInterface;
+  use Funivan\Gallery\FileStorage\Finder\NameFilter;
+  use Funivan\Gallery\FileStorage\Finder\TypeFilter;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
@@ -41,22 +41,27 @@
      */
     public final function handle(RequestInterface $request): ResponseInterface {
       $currentPath = new LocalPath($request->parameters()->value('dir'));
-      $files = $this->imageFs->find(
-        new FinderFilter($currentPath, FinderFilterInterface::TYPE_FILE, ['jpg', 'jpeg', 'png'])
+      $baseFinder = $this->imageFs->finder($currentPath);
+      $files = new TypeFilter(
+        FileStorageInterface::TYPE_FILE,
+        $this->imageFs,
+        new NameFilter('!\.(jpg|jpeg|png)$!i', $baseFinder)
       );
-      $directories = $this->imageFs->find(
-        new FinderFilter($currentPath, FinderFilterInterface::TYPE_DIR)
+      $directories = new TypeFilter(
+        FileStorageInterface::TYPE_DIRECTORY,
+        $this->imageFs,
+        $baseFinder
       );
       $photos = [];
-      foreach ($files as $file) {
-        $photos[] = File::create($file, $this->imageFs);
+      foreach ($files->items() as $filePath) {
+        $photos[] = File::create($filePath, $this->imageFs);
       }
       return new ViewResponse(
         new CompositeView(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'List : ' . $currentPath->assemble()],
           new View(__DIR__ . '/viewList.php', [
             'photos' => $photos,
             'currentPath' => $currentPath,
-            'directories' => $directories,
+            'directories' => $directories->items(),
           ])
         )
       );

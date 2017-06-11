@@ -6,6 +6,7 @@
 
   use Funivan\Gallery\FileStorage\Fs\Local\LocalFsStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryAutomaticCreation;
   use PHPUnit\Framework\TestCase;
 
   class LocalFsStorageTest extends TestCase {
@@ -28,6 +29,22 @@
         'json',
         $fs->meta($path, 'extension')
       );
+    }
+
+
+    public function testFind() {
+      $fs = LocalFsStorage::createWithDirectoryCheck(
+        new LocalPath(sys_get_temp_dir()),
+        new DirectoryAutomaticCreation()
+      );
+      $dir = microtime(true);
+      $filePath = new LocalPath('/test/' . $dir . '/my-doc.txt');
+      $fs->write($filePath, 'doc');
+      $files = [];
+      foreach ($fs->finder(new LocalPath('/test/' . $dir))->items() as $path) {
+        $files[] = $path->assemble();
+      }
+      self::assertSame([$filePath->assemble()], $files);
     }
 
   }

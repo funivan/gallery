@@ -5,7 +5,8 @@
   namespace Funivan\Gallery\FileStorage\Fs\BlackHole;
 
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\FinderFilterInterface;
+  use Funivan\Gallery\FileStorage\Finder\EmptyFinder;
+  use Funivan\Gallery\FileStorage\Finder\FinderInterface;
   use Funivan\Gallery\FileStorage\PathInterface;
 
   /**
@@ -13,12 +14,13 @@
    */
   class BlackHoleStorage implements FileStorageInterface {
 
+
     /**
-     * @param FinderFilterInterface $finder
-     * @return PathInterface[]
+     * @param PathInterface $path
+     * @return FinderInterface
      */
-    public final function find(FinderFilterInterface $finder): array {
-      return [];
+    public function finder(PathInterface $path): FinderInterface {
+      return new EmptyFinder();
     }
 
 
