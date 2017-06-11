@@ -79,7 +79,7 @@
      * @return bool
      */
     public final function exists(): bool {
-      return FileStorageInterface::TYPE_FILE === $this->storage->meta($this->path, 'type');
+      return FileStorageInterface::TYPE_FILE === $this->storage->type($this->path);
     }
 
 

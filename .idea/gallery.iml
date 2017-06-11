@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/App/Image/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/App/Users/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/FileStorage/Tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/FileStorage/Tests" isTestSource="true" packagePrefix="Funivan\Gallery\FileStorage\Tests" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Auth/Tests" isTestSource="true" packagePrefix="Funivan\Gallery\Framework\Auth\Tests"/>
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Templating/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Router/Tests" isTestSource="true" />

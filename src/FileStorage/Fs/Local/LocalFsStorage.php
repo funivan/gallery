@@ -75,14 +75,12 @@
     public final function read(PathInterface $path): string {
       $result = file_get_contents($this->basePath->next($path)->assemble());
       if (false === $result) {
-        throw new ReadException(sprintf('Can not read file :%s', $path->assemble()));
+        throw new ReadException(
+          sprintf('Can not read file :%s', $path->assemble())
+        );
       }
       return (string) $result;
     }
-
-
-
-
 
 
     /**
@@ -91,20 +89,24 @@
      * @return string
      */
     public final function meta(PathInterface $path, string $name): string {
-      $fullPath = $this->basePath->next($path)->assemble();
-      $result = null;
       if ('extension' === $name) {
-        $result = pathinfo($fullPath, PATHINFO_EXTENSION);
-      } elseif ('type' === $name) {
-        $result = FileStorageInterface::TYPE_UNKNOWN;
-        if (is_file($fullPath)) {
-          $result = FileStorageInterface::TYPE_FILE;
-        } elseif (is_dir($fullPath)) {
-          $result = FileStorageInterface::TYPE_DIRECTORY;
-        }
+        return pathinfo($path->assemble(), PATHINFO_EXTENSION);
       }
-      if ($result === null) {
-        throw new \InvalidArgumentException('Unsupported meta key');
+      throw new \InvalidArgumentException('Unsupported meta key');
+    }
+
+
+    /**
+     * @param PathInterface $path
+     * @return string
+     */
+    public function type(PathInterface $path): string {
+      $fullPath = $this->basePath->next($path)->assemble();
+      $result = FileStorageInterface::TYPE_UNKNOWN;
+      if (is_file($fullPath)) {
+        $result = FileStorageInterface::TYPE_FILE;
+      } elseif (is_dir($fullPath)) {
+        $result = FileStorageInterface::TYPE_DIRECTORY;
       }
       return $result;
     }
@@ -149,11 +151,7 @@
      */
     public final function remove(PathInterface $path): void {
       $fullPath = $this->basePath->next($path)->assemble();
-      if (FileStorageInterface::TYPE_DIRECTORY === $this->meta($path, 'type')) {
-        $result = rmdir($fullPath);
-      } else {
-        $result = unlink($fullPath);
-      }
+      $result = unlink($fullPath);
       if (!$result) {
         throw new WriteException(
           sprintf('Can not remove %s', $path->assemble())

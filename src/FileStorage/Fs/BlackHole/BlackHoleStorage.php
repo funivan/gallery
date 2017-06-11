@@ -28,10 +28,16 @@
      * @return string
      */
     public final function meta(PathInterface $path, string $name): string {
-      if ('type' === $name) {
-        return FileStorageInterface::TYPE_UNKNOWN;
-      }
       throw new \BadMethodCallException('"Meta" operation is not supported by this adapter');
+    }
+
+
+    /**
+     * @param PathInterface $path
+     * @return string
+     */
+    public function type(PathInterface $path): string {
+      return FileStorageInterface::TYPE_UNKNOWN;
     }
 
 

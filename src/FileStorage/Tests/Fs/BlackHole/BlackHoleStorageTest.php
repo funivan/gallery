@@ -19,7 +19,7 @@
       $storage->write($path, 'data');
       self::assertSame(
         FileStorageInterface::TYPE_UNKNOWN,
-        $storage->meta($path, 'type')
+        $storage->type($path)
       );
     }
 

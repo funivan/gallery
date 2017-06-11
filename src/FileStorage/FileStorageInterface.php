@@ -32,6 +32,13 @@
 
     /**
      * @param PathInterface $path
+     * @return string
+     */
+    public function type(PathInterface $path): string;
+
+
+    /**
+     * @param PathInterface $path
      * @param string $data
      */
     public function write(PathInterface $path, string $data): void;

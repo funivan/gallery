@@ -37,18 +37,21 @@
      * @return string
      */
     public final function meta(PathInterface $path, string $name): string {
-      $result = null;
       if ('extension' === $name) {
-        $result = pathinfo($path->name(), PATHINFO_EXTENSION);
-      } elseif ('type' === $name) {
-        $result = array_key_exists($path->assemble(), $this->files)
-          ? FileStorageInterface::TYPE_FILE
-          : FileStorageInterface::TYPE_UNKNOWN;
+        return pathinfo($path->name(), PATHINFO_EXTENSION);
       }
-      if ($result === null) {
-        throw new \InvalidArgumentException('Unsupported meta key');
-      }
-      return $result;
+      throw new \InvalidArgumentException('Unsupported meta key');
+    }
+
+
+    /**
+     * @param PathInterface $path
+     * @return string
+     */
+    public function type(PathInterface $path): string {
+      return array_key_exists($path->assemble(), $this->files)
+        ? FileStorageInterface::TYPE_FILE
+        : FileStorageInterface::TYPE_UNKNOWN;
     }
 
 

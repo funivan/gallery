@@ -27,7 +27,7 @@
       $storage->write($path, 'plain content');
       self::assertSame(
         FileStorageInterface::TYPE_FILE,
-        $storage->meta($path, 'type')
+        $storage->type($path)
       );
     }
 
@@ -38,12 +38,12 @@
       $storage->write($path, 'plain content');
       self::assertSame(
         FileStorageInterface::TYPE_FILE,
-        $storage->meta($path, 'type')
+        $storage->type($path)
       );
       $storage->remove($path);
       self::assertSame(
         FileStorageInterface::TYPE_UNKNOWN,
-        $storage->meta($path, 'type')
+        $storage->type($path)
       );
     }
 
@@ -54,7 +54,7 @@
       $storage->move(new LocalPath('/path/doc.txt'), new LocalPath('/path/test.txt'));
       self::assertSame(
         FileStorageInterface::TYPE_FILE,
-        $storage->meta(new LocalPath('/path/test.txt'), 'type')
+        $storage->type(new LocalPath('/path/test.txt'))
       );
     }
 

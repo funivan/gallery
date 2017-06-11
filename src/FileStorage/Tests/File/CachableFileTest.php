@@ -85,7 +85,7 @@
       $file->move(new LocalPath('/data/text.json'));
       self::assertSame(
         FileStorageInterface::TYPE_FILE,
-        $storage->meta(new LocalPath('/data/text.json'), 'type')
+        $storage->type(new LocalPath('/data/text.json'))
       );
     }
 
