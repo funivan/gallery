@@ -11,6 +11,7 @@
   interface PainterToolInterface {
 
     /**
+     * @param ImageManager $imageManager
      * @return Image
      */
     public function paint(ImageManager $imageManager): Image;

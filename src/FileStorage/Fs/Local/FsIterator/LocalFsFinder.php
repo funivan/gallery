@@ -32,7 +32,7 @@
 
 
     /**
-     * @return PathInterface[]
+     * @return PathInterface[]|\Iterator
      */
     public function items(): \Iterator {
       /** @var \DirectoryIterator $item */

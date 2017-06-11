@@ -63,7 +63,7 @@
       $storage = new MemoryStorage();
       $storage->write(new LocalPath('/my/doc/doc.txt'), 'custom file content');
       $storage->write(new LocalPath('/my/doc/user/data.json'), 'other file content');
-      $storage->write(new LocalPath('/my/document.doc'), 'doc conter');
+      $storage->write(new LocalPath('/my/document.doc'), 'doc content');
 
       self::assertSame(
         2,

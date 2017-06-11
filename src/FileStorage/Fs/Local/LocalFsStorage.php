@@ -126,6 +126,10 @@
     }
 
 
+    /**
+     * @param PathInterface $path
+     * @return FinderInterface
+     */
     public function finder(PathInterface $path): FinderInterface {
       return new LocalFsFinder($this->basePath, $path);
     }

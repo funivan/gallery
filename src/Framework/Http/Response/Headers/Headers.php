@@ -72,6 +72,7 @@
 
 
     /**
+     * @param string $name
      * @return FieldInterface
      */
     public function field(string $name): FieldInterface {
@@ -80,7 +81,9 @@
           return $field;
         }
       }
-      throw new \InvalidArgumentException(sprintf('Field with name "%s" does not exists', $name));
+      throw new \InvalidArgumentException(
+        sprintf('Field with name "%s" does not exists', $name)
+      );
     }
 
   }

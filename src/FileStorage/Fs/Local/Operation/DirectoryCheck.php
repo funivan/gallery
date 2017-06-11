@@ -11,6 +11,10 @@
    */
   class DirectoryCheck implements DirectoryOperation {
 
+    /**
+     * @param PathInterface $path
+     * @return bool
+     */
     public function perform(PathInterface $path): bool {
       return is_dir($path->assemble());
     }

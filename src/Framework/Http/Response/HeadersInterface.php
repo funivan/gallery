@@ -26,6 +26,7 @@
 
 
     /**
+     * @param string $name
      * @return FieldInterface
      */
     public function field(string $name): FieldInterface;
