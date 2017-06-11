@@ -4,27 +4,27 @@ Directories                                         81
 Files                                              158
 
 Size
-  Lines of Code (LOC)                             7656
-  Comment Lines of Code (CLOC)                    2306 (30.12%)
-  Non-Comment Lines of Code (NCLOC)               5350 (69.88%)
-  Logical Lines of Code (LLOC)                    1722 (22.49%)
-    Classes                                        757 (43.96%)
+  Lines of Code (LOC)                             7631
+  Comment Lines of Code (CLOC)                    2274 (29.80%)
+  Non-Comment Lines of Code (NCLOC)               5357 (70.20%)
+  Logical Lines of Code (LLOC)                    1728 (22.64%)
+    Classes                                        761 (44.04%)
       Average Class Length                           5
         Minimum Class Length                         0
-        Maximum Class Length                        39
+        Maximum Class Length                        42
       Average Method Length                          1
         Minimum Method Length                        0
         Maximum Method Length                       13
-    Functions                                      201 (11.67%)
+    Functions                                      200 (11.57%)
       Average Function Length                       40
-    Not in classes or functions                    764 (44.37%)
+    Not in classes or functions                    767 (44.39%)
 
 Cyclomatic Complexity
-  Average Complexity per LLOC                     0.06
-  Average Complexity per Class                    1.61
+  Average Complexity per LLOC                     0.07
+  Average Complexity per Class                    1.67
     Minimum Class Complexity                      1.00
-    Maximum Class Complexity                     15.00
-  Average Complexity per Method                   1.33
+    Maximum Class Complexity                     19.00
+  Average Complexity per Method                   1.37
     Minimum Method Complexity                     1.00
     Maximum Method Complexity                     6.00
 
@@ -33,12 +33,12 @@ Dependencies
     Global Constants                                 0 (0.00%)
     Global Variables                                 0 (0.00%)
     Super-Global Variables                           0 (0.00%)
-  Attribute Accesses                               358
-    Non-Static                                     358 (100.00%)
+  Attribute Accesses                               356
+    Non-Static                                     356 (100.00%)
     Static                                           0 (0.00%)
-  Method Calls                                     637
-    Non-Static                                     477 (74.88%)
-    Static                                         160 (25.12%)
+  Method Calls                                     631
+    Non-Static                                     472 (74.80%)
+    Static                                         159 (25.20%)
 
 Structure
   Namespaces                                        81
@@ -47,20 +47,20 @@ Structure
   Classes                                           87
     Abstract Classes                                 0 (0.00%)
     Concrete Classes                                87 (100.00%)
-  Methods                                          348
+  Methods                                          340
     Scope
-      Non-Static Methods                           327 (93.97%)
-      Static Methods                                21 (6.03%)
+      Non-Static Methods                           319 (93.82%)
+      Static Methods                                21 (6.18%)
     Visibility
-      Public Methods                               337 (96.84%)
-      Non-Public Methods                            11 (3.16%)
+      Public Methods                               329 (96.76%)
+      Non-Public Methods                            11 (3.24%)
   Functions                                          5
     Named Functions                                  0 (0.00%)
     Anonymous Functions                              5 (100.00%)
-  Constants                                         21
+  Constants                                         24
     Global Constants                                 0 (0.00%)
-    Class Constants                                 21 (100.00%)
+    Class Constants                                 24 (100.00%)
 
 Tests
   Classes                                           32
-  Methods                                           78
+  Methods                                           77

@@ -8,18 +8,11 @@
    */
   interface FileStorageInterface {
 
-    /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public function file(PathInterface $path): bool;
+    const TYPE_UNKNOWN = 'unknown';
 
+    const TYPE_FILE = 'file';
 
-    /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public function directory(PathInterface $path): bool;
+    const TYPE_DIRECTORY = 'directory';
 
 
     /**

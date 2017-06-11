@@ -14,24 +14,6 @@
   class BlackHoleStorage implements FileStorageInterface {
 
     /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public final function file(PathInterface $path): bool {
-      return false;
-    }
-
-
-    /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public final function directory(PathInterface $path): bool {
-      return false;
-    }
-
-
-    /**
      * @param FinderFilterInterface $finder
      * @return PathInterface[]
      */
@@ -46,6 +28,9 @@
      * @return string
      */
     public final function meta(PathInterface $path, string $name): string {
+      if ('type' === $name) {
+        return FileStorageInterface::TYPE_UNKNOWN;
+      }
       throw new \BadMethodCallException('"Meta" operation is not supported by this adapter');
     }
 

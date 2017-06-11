@@ -23,24 +23,6 @@
 
 
     /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public final function file(PathInterface $path): bool {
-      return array_key_exists($path->assemble(), $this->files);
-    }
-
-
-    /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public final function directory(PathInterface $path): bool {
-      throw new \BadMethodCallException('Directories are not supported by this adapter');
-    }
-
-
-    /**
      * @param FinderFilterInterface $finder
      * @return PathInterface[]
      */
@@ -55,10 +37,18 @@
      * @return string
      */
     public final function meta(PathInterface $path, string $name): string {
+      $result = null;
       if ('extension' === $name) {
-        return pathinfo($path->name(), PATHINFO_EXTENSION);
+        $result = pathinfo($path->name(), PATHINFO_EXTENSION);
+      } elseif ('type' === $name) {
+        $result = array_key_exists($path->assemble(), $this->files)
+          ? FileStorageInterface::TYPE_FILE
+          : FileStorageInterface::TYPE_UNKNOWN;
       }
-      throw new \InvalidArgumentException('Unsupported meta key');
+      if ($result === null) {
+        throw new \InvalidArgumentException('Unsupported meta key');
+      }
+      return $result;
     }
 
 

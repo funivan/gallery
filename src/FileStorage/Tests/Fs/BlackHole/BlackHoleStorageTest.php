@@ -2,6 +2,7 @@
 
   namespace Funivan\Gallery\FileStorage\Tests\Fs\BlackHole;
 
+  use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\FinderFilter;
   use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
@@ -16,13 +17,9 @@
       $storage = new BlackHoleStorage();
       $path = new LocalPath('/test.txt');
       $storage->write($path, 'data');
-      self::assertFalse($storage->file($path));
-    }
-
-
-    public function testDirectory(): void {
-      self::assertFalse(
-        (new BlackHoleStorage())->directory(new LocalPath('/test'))
+      self::assertSame(
+        FileStorageInterface::TYPE_UNKNOWN,
+        $storage->meta($path, 'type')
       );
     }
 

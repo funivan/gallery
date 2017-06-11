@@ -4,6 +4,7 @@
 
   use Funivan\Gallery\FileStorage\File\CachableFile;
   use Funivan\Gallery\FileStorage\File\File;
+  use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
   use PHPUnit\Framework\TestCase;
@@ -77,13 +78,14 @@
 
     public function testMove() {
       $storage = new MemoryStorage();
-      $file = (new CachableFile(
+      $file = new CachableFile(
         File::create(new LocalPath('/data.json'), $storage)
-      ));
+      );
       $file->write('test');
       $file->move(new LocalPath('/data/text.json'));
-      self::assertTrue(
-        $storage->file(new LocalPath('/data/text.json'))
+      self::assertSame(
+        FileStorageInterface::TYPE_FILE,
+        $storage->meta(new LocalPath('/data/text.json'), 'type')
       );
     }
 

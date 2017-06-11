@@ -2,6 +2,7 @@
 
   namespace Funivan\Gallery\FileStorage\Tests\Fs\Memory;
 
+  use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
   use PHPUnit\Framework\TestCase;
@@ -24,7 +25,10 @@
       $storage = new MemoryStorage();
       $path = new LocalPath('/my/document.doc');
       $storage->write($path, 'plain content');
-      self::assertTrue($storage->file($path));
+      self::assertSame(
+        FileStorageInterface::TYPE_FILE,
+        $storage->meta($path, 'type')
+      );
     }
 
 
@@ -32,9 +36,15 @@
       $storage = new MemoryStorage();
       $path = new LocalPath('custom/file my /path/doc.txt');
       $storage->write($path, 'plain content');
-      self::assertTrue($storage->file($path));
+      self::assertSame(
+        FileStorageInterface::TYPE_FILE,
+        $storage->meta($path, 'type')
+      );
       $storage->remove($path);
-      self::assertFalse($storage->file($path));
+      self::assertSame(
+        FileStorageInterface::TYPE_UNKNOWN,
+        $storage->meta($path, 'type')
+      );
     }
 
 
@@ -42,8 +52,9 @@
       $storage = new MemoryStorage();
       $storage->write(new LocalPath('/path/doc.txt'), 'plain content');
       $storage->move(new LocalPath('/path/doc.txt'), new LocalPath('/path/test.txt'));
-      self::assertTrue(
-        $storage->file(new LocalPath('/path/test.txt'))
+      self::assertSame(
+        FileStorageInterface::TYPE_FILE,
+        $storage->meta(new LocalPath('/path/test.txt'), 'type')
       );
     }
 

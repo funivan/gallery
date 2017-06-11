@@ -81,22 +81,8 @@
     }
 
 
-    /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public final function file(PathInterface $path): bool {
-      return is_file($this->basePath->next($path)->assemble());
-    }
 
 
-    /**
-     * @param PathInterface $path
-     * @return bool
-     */
-    public final function directory(PathInterface $path): bool {
-      return is_dir($this->basePath->next($path)->assemble());
-    }
 
 
     /**
@@ -106,10 +92,21 @@
      */
     public final function meta(PathInterface $path, string $name): string {
       $fullPath = $this->basePath->next($path)->assemble();
+      $result = null;
       if ('extension' === $name) {
-        return pathinfo($fullPath, PATHINFO_EXTENSION);
+        $result = pathinfo($fullPath, PATHINFO_EXTENSION);
+      } elseif ('type' === $name) {
+        $result = FileStorageInterface::TYPE_UNKNOWN;
+        if (is_file($fullPath)) {
+          $result = FileStorageInterface::TYPE_FILE;
+        } elseif (is_dir($fullPath)) {
+          $result = FileStorageInterface::TYPE_DIRECTORY;
+        }
       }
-      throw new \InvalidArgumentException('Unsupported meta key');
+      if ($result === null) {
+        throw new \InvalidArgumentException('Unsupported meta key');
+      }
+      return $result;
     }
 
 
@@ -152,7 +149,7 @@
      */
     public final function remove(PathInterface $path): void {
       $fullPath = $this->basePath->next($path)->assemble();
-      if ($this->directory($path)) {
+      if (FileStorageInterface::TYPE_DIRECTORY === $this->meta($path, 'type')) {
         $result = rmdir($fullPath);
       } else {
         $result = unlink($fullPath);
