@@ -38,4 +38,17 @@
     }
 
 
+    /**
+     * @expectedException \Funivan\Gallery\Framework\Http\Response\Headers\Exceptions\OverwriteHeaderFieldException
+     * @expectedExceptionMessage Header field Location is already defined
+     */
+    public function testOverwriteExistingVariable() {
+      (new Headers(
+        [new Field('Location', 'test.com')])
+      )->merge(
+        new Headers([new Field('Location', '/')])
+      );
+    }
+
+
   }
