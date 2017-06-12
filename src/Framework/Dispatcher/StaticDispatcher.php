@@ -2,13 +2,15 @@
 
   declare(strict_types = 1);
 
-  namespace Funivan\Gallery\Framework\Dispatcher\Tests\Fixtures;
+  namespace Funivan\Gallery\Framework\Dispatcher;
 
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
 
-  class DummyDispatcher implements DispatcherInterface {
+  /**
+   *
+   */
+  class StaticDispatcher implements DispatcherInterface {
 
     /**
      * @var ResponseInterface

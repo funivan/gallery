@@ -5,7 +5,7 @@
   use Funivan\Gallery\Framework\Auth\AuthorizationDispatcher;
   use Funivan\Gallery\Framework\Auth\Tests\Fixtures\DummyAuthComponent;
   use Funivan\Gallery\Framework\Auth\Tests\Fixtures\DummyUser;
-  use Funivan\Gallery\Framework\Dispatcher\Tests\Fixtures\DummyDispatcher;
+  use Funivan\Gallery\Framework\Dispatcher\StaticDispatcher;
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\Request;
@@ -26,7 +26,7 @@
         new DummyAuthComponent(
           new DummyUser(123, '123', ['edit_photo'])
         ),
-        new DummyDispatcher(
+        new StaticDispatcher(
           PlainResponse::createWithHeaders(
             'authorized',
             new Headers([

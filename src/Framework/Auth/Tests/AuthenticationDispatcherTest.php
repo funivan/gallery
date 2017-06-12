@@ -5,7 +5,7 @@
   use Funivan\Gallery\Framework\Auth\AuthenticationDispatcher;
   use Funivan\Gallery\Framework\Auth\Tests\Fixtures\DummyAuthComponent;
   use Funivan\Gallery\Framework\Auth\Tests\Fixtures\DummyUser;
-  use Funivan\Gallery\Framework\Dispatcher\Tests\Fixtures\DummyDispatcher;
+  use Funivan\Gallery\Framework\Dispatcher\StaticDispatcher;
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\Request;
@@ -18,12 +18,11 @@
    */
   class AuthenticationDispatcherTest extends TestCase {
 
-
     public function testDispatch() {
       $dispatcher = new AuthenticationDispatcher(
         new DummyAuthComponent(new DummyUser(DummyUser::ANONYMOUS)),
-        new PathUrl('/login', new Parameters([])),
-        new DummyDispatcher(
+        new StaticDispatcher(new RedirectResponse(new PathUrl('/login', new Parameters([])), 302)),
+        new StaticDispatcher(
           new RedirectResponse(new PathUrl('/my/login.page', new Parameters([])), 302)
         )
       );

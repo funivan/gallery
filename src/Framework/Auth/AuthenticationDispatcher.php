@@ -6,7 +6,6 @@
 
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
   use Funivan\Gallery\Framework\Router\UrlInterface;
 
@@ -29,17 +28,17 @@
     /**
      * @var UrlInterface
      */
-    private $loginRoute;
+    private $fallback;
 
 
     /**
      * @param AuthComponentInterface $authComponent
-     * @param UrlInterface $loginRoute
+     * @param DispatcherInterface $fallback
      * @param DispatcherInterface $original
      */
-    public function __construct(AuthComponentInterface $authComponent, UrlInterface $loginRoute, DispatcherInterface $original) {
+    public function __construct(AuthComponentInterface $authComponent, DispatcherInterface $fallback, DispatcherInterface $original) {
       $this->authComponent = $authComponent;
-      $this->loginRoute = $loginRoute;
+      $this->fallback = $fallback;
       $this->original = $original;
     }
 
@@ -52,7 +51,7 @@
       if ($this->authComponent->authenticated()) {
         $result = $this->original->handle($request);
       } else {
-        $result = new RedirectResponse($this->loginRoute, 301);
+        $result = $this->fallback->handle($request);
       }
       return $result;
     }

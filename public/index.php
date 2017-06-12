@@ -32,9 +32,11 @@
   use Funivan\Gallery\Framework\Auth\AuthenticationDispatcher;
   use Funivan\Gallery\Framework\Auth\AuthorizationDispatcher;
   use Funivan\Gallery\Framework\Dispatcher\App;
+  use Funivan\Gallery\Framework\Dispatcher\StaticDispatcher;
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\Request;
+  use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
   use Funivan\Gallery\Framework\Router\ParameterRoute\HasParameterConstrain;
   use Funivan\Gallery\Framework\Router\ParameterRoute\ParameterRoutMatch;
   use Funivan\Gallery\Framework\Router\PathRoute\PathRouteMatch;
@@ -100,7 +102,7 @@
             new RegexRouteMatch('/action/.*'),
             new AuthenticationDispatcher(
               $authComponent,
-              new LoginUrl(),
+              new StaticDispatcher(new RedirectResponse(new LoginUrl(), 302)),
               new RouterDispatcher([
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::SET_PATH, FlagsInterface::FAVOURITE),
