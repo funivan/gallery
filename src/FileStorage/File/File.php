@@ -5,7 +5,6 @@
   namespace Funivan\Gallery\FileStorage\File;
 
   use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
   use Funivan\Gallery\FileStorage\PathInterface;
@@ -44,14 +43,6 @@
       $file = new self(new LocalPath('/memory.txt'), new MemoryStorage());
       $file->write($content);
       return $file;
-    }
-
-
-    /**
-     * @return FileInterface
-     */
-    public static function createBlackHole(): FileInterface {
-      return new self(new LocalPath('/memory.txt'), new BlackHoleStorage());
     }
 
 

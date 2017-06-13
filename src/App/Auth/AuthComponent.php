@@ -7,6 +7,7 @@
   use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
+  use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
   use Funivan\Gallery\Framework\Auth\UserInterface;
@@ -42,7 +43,7 @@
         $userUid = $cookies->get(UserUidDispatcher::COOKIE_UID_NAME)->value();
         $this->file = File::create(new LocalPath($userUid . '.txt'), $authorizedUserStorage);
       } else {
-        $this->file = File::createBlackHole();
+        $this->file = File::create(new LocalPath('/memory.txt'), new BlackHoleStorage());
       }
       $this->users = $users;
     }
