@@ -14,6 +14,7 @@
      * Add element to the end of the array
      *
      * @param string $data
+     * @return void
      */
     public function push(string $data): void;
 
