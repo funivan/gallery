@@ -1,4 +1,5 @@
 <?php
+  declare(strict_types = 1);
 
   namespace Funivan\Gallery\Framework\Dispatcher\Tests;
 
@@ -38,7 +39,7 @@
 
 
             public function headers(): HeadersInterface {
-              return new Headers([new Field('X-User-Time', 1489)]);
+              return new Headers([new Field('X-User-Time', '1489')]);
             }
 
 

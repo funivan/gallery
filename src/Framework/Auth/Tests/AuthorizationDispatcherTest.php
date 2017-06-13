@@ -1,4 +1,5 @@
 <?php
+  declare(strict_types = 1);
 
   namespace Funivan\Gallery\Framework\Auth\Tests;
 
@@ -24,7 +25,7 @@
       $authorization = new AuthorizationDispatcher(
         'edit_photo',
         new DummyAuthComponent(
-          new DummyUser(123, '123', ['edit_photo'])
+          new DummyUser('123', '123', ['edit_photo'])
         ),
         new StaticDispatcher(
           PlainResponse::createWithHeaders(

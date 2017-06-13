@@ -1,4 +1,5 @@
 <?php
+  declare(strict_types = 1);
 
   use Funivan\Gallery\App\Auth\AuthComponent;
   use Funivan\Gallery\App\Auth\UserUidDispatcher;

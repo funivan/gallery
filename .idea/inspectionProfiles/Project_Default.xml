@@ -103,7 +103,9 @@
       <scope name="Tests" level="INFORMATION" enabled="true" />
       <option name="CHECK_FIELD" value="true" />
     </inspection_tool>
-    <inspection_tool class="PhpMissingStrictTypesDeclarationInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="PhpMissingStrictTypesDeclarationInspection" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Views" level="ERROR" enabled="false" />
+    </inspection_tool>
     <inspection_tool class="PhpUndefinedClassInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpUndefinedMethodInspection" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="DOWNGRADE_SEVERITY" value="true" />
