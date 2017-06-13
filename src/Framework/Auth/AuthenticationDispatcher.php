@@ -7,11 +7,10 @@
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
-  use Funivan\Gallery\Framework\Router\UrlInterface;
 
   /**
    * Check if client is authenticated and execute next dispatcher
-   *  or redirect user to the login url
+   *  or execute fallback dispatcher
    */
   class AuthenticationDispatcher implements DispatcherInterface {
 
@@ -26,7 +25,7 @@
     private $authComponent;
 
     /**
-     * @var UrlInterface
+     * @var DispatcherInterface
      */
     private $fallback;
 
