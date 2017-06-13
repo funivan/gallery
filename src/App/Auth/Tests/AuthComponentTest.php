@@ -1,10 +1,15 @@
 <?php
 
+  declare(strict_types = 1);
+
   namespace Funivan\Gallery\App\Auth\Tests;
 
   use Funivan\Gallery\App\Auth\AuthComponent;
+  use Funivan\Gallery\App\Auth\UserUidDispatcher;
+  use Funivan\Gallery\App\Users\User;
   use Funivan\Gallery\App\Users\UsersInMemory;
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
+  use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookie;
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
   use PHPUnit\Framework\TestCase;
 
@@ -12,6 +17,19 @@
    * @codeCoverageIgnore
    */
   class AuthComponentTest extends TestCase {
+
+
+    public function testSuccessAuth() {
+      $user = new User('123', 'pass', []);
+      $auth = new AuthComponent(
+        RequestCookies::create([new RequestCookie(UserUidDispatcher::COOKIE_UID_NAME, '123')]),
+        new MemoryStorage(),
+        new UsersInMemory([$user])
+      );
+      $auth->logIn($user);
+      self::assertSame('123', $auth->user()->uid());
+    }
+
 
     /**
      * @expectedException \RuntimeException

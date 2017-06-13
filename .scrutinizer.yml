@@ -8,6 +8,7 @@ checks:
       simplify_boolean_return: true
       return_doc_comment_if_not_inferrable: true
       check_method_contracts:
+          verify_interface_like_constraints: true
           verify_documented_constraints: true
           verify_parent_constraints: true
       uppercase_constants: true
