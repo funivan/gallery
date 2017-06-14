@@ -59,12 +59,13 @@
         $errors[] = $validation->errors();
       }
       $response = new ViewResponse(
-        new CompositeView(__DIR__ . '/../../../Layout/viewLayout.php', ['title' => 'Login Page'],
-          new View(__DIR__ . '/viewAuthPage.php', [
-            'auth' => $this->authComponent,
-            'errors' => $errors,
-          ])
-        )
+        CompositeView::create(__DIR__ . '/../../../Layout/viewLayout.php', ['title' => 'Login Page'])
+          ->withSubView(
+            View::create(__DIR__ . '/viewAuthPage.php', [
+              'auth' => $this->authComponent,
+              'errors' => $errors,
+            ])
+          )
       );
       return $response;
     }

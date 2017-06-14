@@ -90,12 +90,13 @@
      * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
      */
     public final function body(): BodyInterface {
-      $view = new CompositeView(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'],
-        new View(__DIR__ . '/viewError.php', [
-          'phrase' => $this->message,
-          'description' => $this->description,
-        ])
-      );
+      $view = CompositeView::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'])
+        ->withSubView(
+          View::create(__DIR__ . '/viewError.php', [
+            'phrase' => $this->message,
+            'description' => $this->description,
+          ])
+        );
       return new ViewBody($view);
     }
 

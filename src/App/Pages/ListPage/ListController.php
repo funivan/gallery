@@ -57,13 +57,14 @@
         $photos[] = File::create($filePath, $this->imageFs);
       }
       return new ViewResponse(
-        new CompositeView(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'List : ' . $currentPath->assemble()],
-          new View(__DIR__ . '/viewList.php', [
-            'photos' => $photos,
-            'currentPath' => $currentPath,
-            'directories' => $directories->items(),
-          ])
-        )
+        CompositeView::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'List : ' . $currentPath->assemble()])
+          ->withSubView(
+            View::create(__DIR__ . '/viewList.php', [
+              'photos' => $photos,
+              'currentPath' => $currentPath,
+              'directories' => $directories->items(),
+            ])
+          )
       );
     }
   }

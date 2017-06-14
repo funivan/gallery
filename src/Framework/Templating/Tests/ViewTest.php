@@ -3,6 +3,7 @@
 
   namespace Funivan\Gallery\Framework\Templating\Tests;
 
+  use Funivan\Gallery\Framework\Templating\CompositeView;
   use Funivan\Gallery\Framework\Templating\View;
   use PHPUnit\Framework\TestCase;
 
@@ -12,8 +13,44 @@
   final class ViewTest extends TestCase {
 
     public function testSimpleRender(): void {
-      $view = new View(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'users']);
+      $view = View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'users']);
       self::assertSame('<h1>users</h1>', trim($view->render()));
+    }
+
+
+    public function testWithSimpleSubView(): void {
+      $view = CompositeView::createWithView(
+        __DIR__ . '/fixtures/viewWrapper.php',
+        [],
+        View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
+      );
+      self::assertSame('<div class="wrapper"><h1>Test title</h1></div>', trim($view->render()));
+    }
+
+
+    public function testWithMultipleNestedViews(): void {
+      $view =
+        CompositeView::create(__DIR__ . '/fixtures/viewWrapper.php', [])
+          ->withSubView(
+            CompositeView::createWithView(
+              __DIR__ . '/fixtures/viewWrapper.php',
+              [],
+              View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
+            )
+          );
+      self::assertSame('<div class="wrapper"><div class="wrapper"><h1>Test title</h1></div></div>', str_replace("\n", '', $view->render()));
+    }
+
+
+    /**
+     * @expectedException \Funivan\Gallery\Framework\Templating\Exception\OverwriteViewVariableException
+     */
+    public function testWithOverwriteData(): void {
+      $view = CompositeView::create(__DIR__ . '/fixtures/viewWrapper.php', ['content' => 'test mainViewContent'])
+        ->withSubView(
+          View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'title'])
+        );
+      $view->render();
     }
 
 

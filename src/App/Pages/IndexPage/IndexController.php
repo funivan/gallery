@@ -22,9 +22,10 @@
      */
     public final function handle(RequestInterface $request): ResponseInterface {
       return new ViewResponse(
-        new CompositeView(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'],
-          new View(__DIR__ . '/viewIndex.php')
-        )
+        CompositeView::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'])
+          ->withSubView(
+            View::create(__DIR__ . '/viewIndex.php', [])
+          )
       );
     }
 
