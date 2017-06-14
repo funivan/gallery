@@ -1,17 +1,22 @@
 <?php
 
-  /** @var \Funivan\Gallery\FileStorage\PathInterface $currentPath */
   /** @var View $this */
+  /** @var PathInterface $currentPath */
+  /** @var PathInterface[] $directories */
 
-  /** @var \Funivan\Gallery\FileStorage\PathInterface[] $directories */
+  /** @var UserInterface $user */
+
 
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
+  use Funivan\Gallery\App\Pages\Actions\RuleIds;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\ChangeFlagUrl;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
   use Funivan\Gallery\App\Photo\Flag\Flags;
   use Funivan\Gallery\App\Photo\Flag\FlagsInterface;
+  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\Gallery\Framework\Auth\UserInterface;
   use Funivan\Gallery\Framework\Templating\View;
 
 
@@ -48,49 +53,60 @@
                 </div>
               </a>
             </div>
+
+
             <div class="card sticky-action">
               <div class="card-action" data-image-path="<?= $filePath->assemble() ?>">
                 <!--@todo toggle visibility -->
                 <?php $flags = new Flags($file); ?>
-                <a
-                  href="<?= ChangeFlagUrl::createRemove(FlagsInterface::PRIVATE, $file->path())->build() ?>"
-                  class="js-toggle <?= $flags->has(FlagsInterface::PRIVATE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-visibility-<?= $index ?>"
-                ><i class="material-icons">visibility</i></a>
+                <?php if ($user->authorized(RuleIds::FAVOURITE_REMOVE)) { ?>
+                  <a
+                    href="<?= ChangeFlagUrl::createRemove(FlagsInterface::PRIVATE, $file->path())->build() ?>"
+                    class="js-toggle <?= $flags->has(FlagsInterface::PRIVATE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                    data-type="toggle-visibility-<?= $index ?>"
+                  ><i class="material-icons">visibility</i></a>
+                <?php } ?>
+                <?php if ($user->authorized(RuleIds::FAVOURITE_SET)) { ?>
+                  <a
+                    href="<?= ChangeFlagUrl::createSet(FlagsInterface::PRIVATE, $file->path())->build() ?>"
+                    class="js-toggle <?= !$flags->has(FlagsInterface::PRIVATE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                    data-type="toggle-visibility-<?= $index ?>"
+                  ><i class="material-icons" style="color:gray">visibility</i></a>
+                <?php } ?>
+                <?php if ($user->authorized(RuleIds::MOVE_TO_TRASH)) { ?>
+                  <a
+                    href="<?= ChangeFlagUrl::createRemove(FlagsInterface::DELETED, $file->path())->build() ?>"
+                    class="js-toggle <?= $flags->has(FlagsInterface::DELETED) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                    data-type="toggle-delete-<?= $index ?>"
+                  ><i class="material-icons" style="color:#ffcdd2">delete</i></a>
+                <?php } ?>
+                <?php if ($user->authorized(RuleIds::RESTORE_FROM_TRASH)) { ?>
+                  <a
+                    href="<?= ChangeFlagUrl::createSet(FlagsInterface::DELETED, $file->path())->build() ?>"
+                    class="js-toggle <?= !$flags->has(FlagsInterface::DELETED) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                    data-type="toggle-delete-<?= $index ?>"
+                  ><i class="material-icons" style="color:gray">delete</i></a>
+                <?php } ?>
+                <?php if ($user->authorized(RuleIds::FAVOURITE_REMOVE)) { ?>
+                  <a
+                    href="<?= ChangeFlagUrl::createRemove(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
+                    class="js-toggle <?= $flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                    data-type="toggle-favourite-<?= $index ?>"
+                  ><i class="material-icons">star</i></a>
+                <?php } ?>
+                <?php if ($user->authorized(RuleIds::FAVOURITE_SET)) { ?>
+                  <a
+                    href="<?= ChangeFlagUrl::createSet(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
+                    class="js-toggle <?= !$flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
+                    data-type="toggle-favourite-<?= $index ?>"
+                  ><i class="material-icons" style="color:gray">star</i></a>
+                <?php } ?>
 
-                <a
-                  href="<?= ChangeFlagUrl::createSet(FlagsInterface::PRIVATE, $file->path())->build() ?>"
-                  class="js-toggle <?= !$flags->has(FlagsInterface::PRIVATE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-visibility-<?= $index ?>"
-                ><i class="material-icons" style="color:gray">visibility</i></a>
-                <a
-                  href="<?= ChangeFlagUrl::createRemove(FlagsInterface::DELETED, $file->path())->build() ?>"
-                  class="js-toggle <?= $flags->has(FlagsInterface::DELETED) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-delete-<?= $index ?>"
-                ><i class="material-icons" style="color:#ffcdd2">delete</i></a>
-
-                <a
-                  href="<?= ChangeFlagUrl::createSet(FlagsInterface::DELETED, $file->path())->build() ?>"
-                  class="js-toggle <?= !$flags->has(FlagsInterface::DELETED) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-delete-<?= $index ?>"
-                ><i class="material-icons" style="color:gray">delete</i></a>
-
-                <a
-                  href="<?= ChangeFlagUrl::createRemove(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
-                  class="js-toggle <?= $flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-favourite-<?= $index ?>"
-                ><i class="material-icons">star</i></a>
-
-                <a
-                  href="<?= ChangeFlagUrl::createSet(FlagsInterface::FAVOURITE, $file->path())->build() ?>"
-                  class="js-toggle <?= !$flags->has(FlagsInterface::FAVOURITE) ? 'js-flag-active' : 'js-flag-hidden' ?>"
-                  data-type="toggle-favourite-<?= $index ?>"
-                ><i class="material-icons" style="color:gray">star</i></a>
-
-                <a href="<?= (new ImageRotateRightUrl($filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
-                  <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
-                </a>
-
+                <?php if ($user->authorized(RuleIds::ROTATE)) { ?>
+                  <a href="<?= (new ImageRotateRightUrl($filePath))->build() ?>" class="js-toggle" data-url="/toggle/start/">
+                    <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
+                  </a>
+                <?php } ?>
               </div>
             </div>
           </div>

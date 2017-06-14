@@ -34,7 +34,7 @@
      * @param array $data
      * @param ViewInterface|null $subView
      */
-    public function __construct(string $id, array $data, ?ViewInterface $subView) {
+    private function __construct(string $id, array $data, ?ViewInterface $subView) {
       $this->id = $id;
       $this->data = $data;
       $this->subView = $subView;
@@ -66,7 +66,7 @@
      * @param array $data
      * @return ViewInterface
      */
-    public function withData(array $data): ViewInterface {
+    public final function withData(array $data): ViewInterface {
       return new self($this->id, array_merge($this->data, $data), $this->subView);
     }
 
@@ -75,7 +75,7 @@
      * @param ViewInterface $view
      * @return ViewInterface
      */
-    public function withSubView(ViewInterface $view): ViewInterface {
+    public final function withSubView(ViewInterface $view): ViewInterface {
       return new self($this->id, $this->data, $view);
     }
 

@@ -12,6 +12,7 @@
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
   use Funivan\Gallery\Framework\Http\Response\ViewResponse\ViewResponse;
   use Funivan\Gallery\Framework\Templating\View;
+  use Funivan\Gallery\Framework\Templating\ViewInterface;
 
   /**
    *
@@ -29,12 +30,19 @@
      */
     private $users;
 
+    /**
+     * @var ViewInterface
+     */
+    private $view;
+
 
     /**
+     * @param ViewInterface $view
      * @param AuthComponentInterface $authComponent
      * @param UsersInterface $users
      */
-    public function __construct(AuthComponentInterface $authComponent, UsersInterface $users) {
+    public function __construct(ViewInterface $view, AuthComponentInterface $authComponent, UsersInterface $users) {
+      $this->view = $view;
       $this->authComponent = $authComponent;
       $this->users = $users;
     }
@@ -58,7 +66,7 @@
         $errors[] = $validation->errors();
       }
       $response = new ViewResponse(
-        View::create(__DIR__ . '/../../../Layout/viewLayout.php', ['title' => 'Login Page'])
+        $this->view->withData(['title' => 'Login Page'])
           ->withSubView(
             View::create(__DIR__ . '/viewAuthPage.php', [
               'auth' => $this->authComponent,

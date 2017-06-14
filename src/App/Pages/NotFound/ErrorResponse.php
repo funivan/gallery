@@ -89,7 +89,7 @@
      * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
      */
     public final function body(): BodyInterface {
-      $view = View::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'])
+      $view = View::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Error'])
         ->withSubView(
           View::create(__DIR__ . '/viewError.php', [
             'phrase' => $this->message,

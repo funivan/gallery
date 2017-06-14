@@ -3,6 +3,7 @@
     "ivan": {
       "pass": 123,
       "rules": [
+        "rotate",
         "favourite_set",
         "favourite_remove",
         "private_set",

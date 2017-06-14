@@ -1,10 +1,15 @@
 <?php
+  /** @var \Funivan\Gallery\Framework\Auth\AuthComponentInterface $auth */
   /** @var string $title */
 
+  /** @var string $content */
+
+  use Funivan\Gallery\App\Pages\Auth\LoginPage\LoginUrl;
+  use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
 
-  /** @var string $content */
+  $auth = $auth ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,38 +32,50 @@
 
     <nav>
       <div class="nav-wrapper">
-
-        <ul class="left ">
-          <li>
-            <a href="#">
-              <i class="material-icons">play_circle_filled</i>
-            </a>
-          </li>
-        </ul>
-
+        <? if (null !== $auth) { ?>
+          <ul>
+            <?php if ($auth->authenticated()) { ?>
+              <li>
+                <a href="<?= (new LogoutUrl())->build() ?>">
+                  <i class="material-icons">power_settings_new</i>
+                </a>
+              </li>
+            <?php } else { ?>
+              <li>
+                <a href="<?= (new LoginUrl())->build() ?>">
+                  <i class="material-icons">person_pin</i>
+                </a>
+              </li>
+            <?php } ?>
+          </ul>
+        <?php } ?>
 
         <a href="<?= (new ListUrl(new LocalPath('/')))->build() ?>" class="brand-logo center hide-on-med-and-down">Images </a>
 
-        <ul class="right">
-          <li>
-            <a href="#">
-              <i class="material-icons">visibility_off</i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="material-icons">visibility</i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="material-icons">delete</i>
-            </a>
-          </li>
-        </ul>
+        <? if (null !== $auth) { ?>
+
+          <ul class="right">
+            <?php if ($auth->authenticated()) { ?>
+              <li>
+                <a href="#">
+                  <i class="material-icons">visibility_off</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="material-icons">visibility</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="material-icons">delete</i>
+                </a>
+              </li>
+            <?php } ?>
+          </ul>
+        <?php } ?>
       </div>
     </nav>
-
 
     <div>
       <?= $content ?>

@@ -4,10 +4,12 @@
   use Funivan\Gallery\App\Auth\AuthComponent;
   use Funivan\Gallery\App\Auth\UserUidDispatcher;
   use Funivan\Gallery\App\Configuration;
+  use Funivan\Gallery\App\Layout\Layout;
   use Funivan\Gallery\App\Pages\Actions\ActionDispatcher;
   use Funivan\Gallery\App\Pages\Actions\ActionRouteMatch;
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateAction;
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
+  use Funivan\Gallery\App\Pages\Actions\RuleIds;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\ChangeFlagUrl;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\RemoveFlagAction;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\SetFlagAction;
@@ -72,8 +74,9 @@
   $users = new Users(File::create(new LocalPath('users.json'), $dataStorage));
 
   $imageManager = new \Intervention\Image\ImageManager(['driver' => 'gd']);
-  $authComponent = new AuthComponent($request->cookies(), $authStorageFs, $users);
+  $authComponent = AuthComponent::createFromCookie($request->cookies(), $authStorageFs, $users);
 
+  $view = Layout::createDefault($authComponent);
   /** @noinspection HtmlUnknownTag */
   $app = new App(
     new SafeDispatcher( # Catch all exceptions and provide nice Response
@@ -82,7 +85,7 @@
           # Simple Route. If we match url - then execute index controller
           new Route(
             new PathRouteMatch(IndexUrl::PREFIX),
-            new IndexController()
+            new IndexController($view)
           ),
           # Multilevel check
           # First check parameter 'path' in GET and then check path route
@@ -107,38 +110,58 @@
               new RouterDispatcher([
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::SET_PATH, FlagsInterface::FAVOURITE),
-                  new AuthorizationDispatcher('favourite_set', $authComponent,
+                  new AuthorizationDispatcher(
+                    RuleIds::FAVOURITE_SET,
+                    $authComponent,
                     new ActionDispatcher(new SetFlagAction(FlagsInterface::FAVOURITE), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::REMOVE_PATH, FlagsInterface::FAVOURITE),
-                  new AuthorizationDispatcher('favourite_remove', $authComponent,
+                  new AuthorizationDispatcher(
+                    RuleIds::FAVOURITE_REMOVE,
+                    $authComponent,
                     new ActionDispatcher(new RemoveFlagAction(FlagsInterface::FAVOURITE), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::SET_PATH, FlagsInterface::PRIVATE),
-                  new AuthorizationDispatcher('private_set', $authComponent,
+                  new AuthorizationDispatcher(
+                    RuleIds::PRIVATE_SET,
+                    $authComponent,
                     new ActionDispatcher(new SetFlagAction(FlagsInterface::PRIVATE), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::REMOVE_PATH, FlagsInterface::PRIVATE),
-                  new AuthorizationDispatcher('private_remove', $authComponent,
+                  new AuthorizationDispatcher(
+                    RuleIds::PRIVATE_REMOVE,
+                    $authComponent,
                     new ActionDispatcher(new RemoveFlagAction(FlagsInterface::PRIVATE), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::SET_PATH, FlagsInterface::DELETED),
-                  new AuthorizationDispatcher('move_to_trash', $authComponent,
+                  new AuthorizationDispatcher(
+                    RuleIds::MOVE_TO_TRASH,
+                    $authComponent,
                     new ActionDispatcher(new SetFlagAction(FlagsInterface::DELETED), $imagesFs)
                   )
                 ),
                 new Route(
                   new ActionRouteMatch(ChangeFlagUrl::REMOVE_PATH, FlagsInterface::DELETED),
-                  new AuthorizationDispatcher('restore_from_trash', $authComponent,
+                  new AuthorizationDispatcher(
+                    RuleIds::RESTORE_FROM_TRASH,
+                    $authComponent,
                     new ActionDispatcher(new RemoveFlagAction(FlagsInterface::DELETED), $imagesFs)
+                  )
+                ),
+                new Route(
+                  new PathRouteMatch(ImageRotateRightUrl::PREFIX),
+                  new AuthorizationDispatcher(
+                    RuleIds::ROTATE,
+                    $authComponent,
+                    new ActionDispatcher(new ImageRotateAction(90, $imageManager, $cacheFs), $imagesFs)
                   )
                 ),
               ])
@@ -146,15 +169,11 @@
           ),
           new Route(
             new RegexRouteMatch(ListUrl::REGEX),
-            new ListController($imagesFs)
-          ),
-          new Route(
-            new PathRouteMatch(ImageRotateRightUrl::PREFIX),
-            new ActionDispatcher(new ImageRotateAction(90, $imageManager, $cacheFs), $imagesFs)
+            new ListController($view, $imagesFs, $authComponent)
           ),
           new Route(
             new RegexRouteMatch(LoginUrl::PREFIX),
-            new LoginController($authComponent, $users)
+            new LoginController($view, $authComponent, $users)
           ),
           new Route(
             new RegexRouteMatch(LogoutUrl::PREFIX),
