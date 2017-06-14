@@ -25,7 +25,7 @@
     private $users;
 
     /**
-     * @var File
+     * @var FileInterface
      */
     private $file;
 
