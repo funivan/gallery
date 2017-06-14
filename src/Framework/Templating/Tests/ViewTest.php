@@ -3,7 +3,6 @@
 
   namespace Funivan\Gallery\Framework\Templating\Tests;
 
-  use Funivan\Gallery\Framework\Templating\CompositeView;
   use Funivan\Gallery\Framework\Templating\View;
   use PHPUnit\Framework\TestCase;
 
@@ -19,7 +18,7 @@
 
 
     public function testWithSimpleSubView(): void {
-      $view = CompositeView::createWithView(
+      $view = View::createWithView(
         __DIR__ . '/fixtures/viewWrapper.php',
         [],
         View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
@@ -30,9 +29,9 @@
 
     public function testWithMultipleNestedViews(): void {
       $view =
-        CompositeView::create(__DIR__ . '/fixtures/viewWrapper.php', [])
+        View::create(__DIR__ . '/fixtures/viewWrapper.php', [])
           ->withSubView(
-            CompositeView::createWithView(
+            View::createWithView(
               __DIR__ . '/fixtures/viewWrapper.php',
               [],
               View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'Test title'])
@@ -46,7 +45,7 @@
      * @expectedException \Funivan\Gallery\Framework\Templating\Exception\OverwriteViewVariableException
      */
     public function testWithOverwriteData(): void {
-      $view = CompositeView::create(__DIR__ . '/fixtures/viewWrapper.php', ['content' => 'test mainViewContent'])
+      $view = View::create(__DIR__ . '/fixtures/viewWrapper.php', ['content' => 'test mainViewContent'])
         ->withSubView(
           View::create(__DIR__ . '/fixtures/viewTitle.php', ['title' => 'title'])
         );

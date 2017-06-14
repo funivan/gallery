@@ -11,7 +11,6 @@
   use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
   use Funivan\Gallery\Framework\Http\Response\ViewResponse\ViewResponse;
-  use Funivan\Gallery\Framework\Templating\CompositeView;
   use Funivan\Gallery\Framework\Templating\View;
 
   /**
@@ -59,7 +58,7 @@
         $errors[] = $validation->errors();
       }
       $response = new ViewResponse(
-        CompositeView::create(__DIR__ . '/../../../Layout/viewLayout.php', ['title' => 'Login Page'])
+        View::create(__DIR__ . '/../../../Layout/viewLayout.php', ['title' => 'Login Page'])
           ->withSubView(
             View::create(__DIR__ . '/viewAuthPage.php', [
               'auth' => $this->authComponent,

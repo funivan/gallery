@@ -11,7 +11,6 @@
   use Funivan\Gallery\Framework\Http\Response\Status\ResponseStatus;
   use Funivan\Gallery\Framework\Http\Response\StatusInterface;
   use Funivan\Gallery\Framework\Http\Response\ViewResponse\ViewBody;
-  use Funivan\Gallery\Framework\Templating\CompositeView;
   use Funivan\Gallery\Framework\Templating\View;
 
   /**
@@ -90,7 +89,7 @@
      * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
      */
     public final function body(): BodyInterface {
-      $view = CompositeView::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'])
+      $view = View::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Hello'])
         ->withSubView(
           View::create(__DIR__ . '/viewError.php', [
             'phrase' => $this->message,

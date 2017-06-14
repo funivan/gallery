@@ -13,7 +13,6 @@
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
   use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
   use Funivan\Gallery\Framework\Http\Response\ViewResponse\ViewResponse;
-  use Funivan\Gallery\Framework\Templating\CompositeView;
   use Funivan\Gallery\Framework\Templating\View;
 
   /**
@@ -57,7 +56,7 @@
         $photos[] = File::create($filePath, $this->imageFs);
       }
       return new ViewResponse(
-        CompositeView::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'List : ' . $currentPath->assemble()])
+        View::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'List : ' . $currentPath->assemble()])
           ->withSubView(
             View::create(__DIR__ . '/viewList.php', [
               'photos' => $photos,
