@@ -32,7 +32,7 @@
 
     <nav>
       <div class="nav-wrapper">
-        <? if (null !== $auth) { ?>
+        <?php if (null !== $auth) { ?>
           <ul>
             <?php if ($auth->authenticated()) { ?>
               <li>
@@ -52,7 +52,7 @@
 
         <a href="<?= (new ListUrl(new LocalPath('/')))->build() ?>" class="brand-logo center hide-on-med-and-down">Images </a>
 
-        <? if (null !== $auth) { ?>
+        <?php if (null !== $auth) { ?>
 
           <ul class="right">
             <?php if ($auth->authenticated()) { ?>

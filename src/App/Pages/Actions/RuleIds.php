@@ -4,6 +4,9 @@
 
   namespace Funivan\Gallery\App\Pages\Actions;
 
+  /**
+   *
+   */
   final class RuleIds {
 
     const FAVOURITE_SET = 'favourite_set';

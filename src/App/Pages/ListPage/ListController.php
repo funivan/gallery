@@ -42,6 +42,7 @@
     /**
      * @param ViewInterface $view
      * @param FileStorageInterface $imagesFs
+     * @param AuthComponentInterface $auth
      */
     public function __construct(ViewInterface $view, FileStorageInterface $imagesFs, AuthComponentInterface $auth) {
       $this->view = $view;
