@@ -69,10 +69,13 @@
           )
         )
       );
-      $directories = new TypeFilter(
-        FileStorageInterface::TYPE_DIRECTORY,
-        $this->imageFs,
-        $baseFinder
+      $directories = new OrderByName(
+        new TypeFilter(
+          FileStorageInterface::TYPE_DIRECTORY,
+          $this->imageFs,
+          $baseFinder
+        ),
+        false
       );
       $photos = [];
       foreach ($files->items() as $filePath) {

@@ -14,12 +14,19 @@
      */
     private $original;
 
+    /**
+     * @var bool
+     */
+    private $reverse;
+
 
     /**
      * @param FinderInterface $original
+     * @param bool $reverse
      */
-    public function __construct(FinderInterface $original) {
+    public function __construct(FinderInterface $original, bool $reverse = true) {
       $this->original = $original;
+      $this->reverse = $reverse;
     }
 
 
@@ -29,7 +36,11 @@
     public function items(): \Iterator {
       $items = $this->original->items();
       $items = iterator_to_array($items);
-      arsort($items);
+      if ($this->reverse) {
+        arsort($items);
+      } else {
+        sort($items);
+      }
       return new \ArrayIterator($items);
     }
 
