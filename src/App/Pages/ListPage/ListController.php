@@ -8,6 +8,7 @@
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Finder\NameFilter;
+  use Funivan\Gallery\FileStorage\Finder\OrderByName;
   use Funivan\Gallery\FileStorage\Finder\TypeFilter;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
@@ -58,12 +59,14 @@
     public final function handle(RequestInterface $request): ResponseInterface {
       $currentPath = new LocalPath($request->parameters()->value('dir'));
       $baseFinder = $this->imageFs->finder($currentPath);
-      $files = new TypeFilter(
-        FileStorageInterface::TYPE_FILE,
-        $this->imageFs,
-        new NameFilter(
-          '!\.(jpg|jpeg|png)$!i',
-          $baseFinder
+      $files = new OrderByName(
+        new TypeFilter(
+          FileStorageInterface::TYPE_FILE,
+          $this->imageFs,
+          new NameFilter(
+            '!\.(jpg|jpeg|png)$!i',
+            $baseFinder
+          )
         )
       );
       $directories = new TypeFilter(
