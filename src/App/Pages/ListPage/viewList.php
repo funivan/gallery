@@ -154,7 +154,7 @@
       });
       event.preventDefault();
       return false;
-    })
+    });
 
     var $rotateButton = $('.js-rotate');
     $rotateButton.click(function (event) {
