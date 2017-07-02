@@ -9,16 +9,16 @@
   /**
    *
    */
-  class ImageRotateRightUrl extends PathUrl {
+  class ImageRotateUrl extends PathUrl {
 
-    const PREFIX = '/action/change/rotate-right';
+    const PREFIX = '/action/change/rotate';
 
 
     /**
-     *
+     * @param int $angle
      */
-    public function __construct() {
-      parent::__construct(self::PREFIX, new Parameters([]));
+    public function __construct(int $angle) {
+      parent::__construct(self::PREFIX, new Parameters(['angle' => $angle]));
     }
 
   }

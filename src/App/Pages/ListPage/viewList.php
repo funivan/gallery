@@ -9,7 +9,7 @@
   /** @var UserInterface $user */
 
 
-  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
+  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateUrl;
   use Funivan\Gallery\App\Pages\Actions\RuleIds;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\ChangeFlagUrl;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
@@ -111,7 +111,12 @@
                 ><i class="material-icons" style="color:gray">star</i></a>
 
                 <?php if ($user->authorized(RuleIds::ROTATE)) { ?>
-                  <a href="<?= (new ImageRotateRightUrl())->build() ?>" class="js-rotate">
+                  <?php /* ?>
+                  <a href="<?= (new ImageRotateUrl(180))->build() ?>" class="js-rotate">
+                    <i class="material-icons" style="color:gray">replay</i>
+                  </a>
+                  <?php */  ?>
+                  <a href="<?= (new ImageRotateUrl(90))->build() ?>" class="js-rotate">
                     <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
                   </a>
                 <?php } ?>

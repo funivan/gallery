@@ -8,7 +8,7 @@
   use Funivan\Gallery\App\Pages\Actions\ActionDispatcher;
   use Funivan\Gallery\App\Pages\Actions\ActionRouteMatch;
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateAction;
-  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateRightUrl;
+  use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateUrl;
   use Funivan\Gallery\App\Pages\Actions\RuleIds;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\ChangeFlagUrl;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\RemoveFlagAction;
@@ -157,7 +157,7 @@
                   )
                 ),
                 new Route(
-                  new PathRouteMatch(ImageRotateRightUrl::PREFIX),
+                  new PathRouteMatch(ImageRotateUrl::PREFIX),
                   new AuthorizationDispatcher(
                     RuleIds::ROTATE,
                     $authComponent,
