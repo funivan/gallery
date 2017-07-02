@@ -3,7 +3,6 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\Rotate;
 
-  use Funivan\Gallery\FileStorage\PathInterface;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
 
@@ -16,10 +15,10 @@
 
 
     /**
-     * @param PathInterface $path
+     *
      */
-    public function __construct(PathInterface $path) {
-      parent::__construct(self::PREFIX, new Parameters(['path' => $path->assemble()]));
+    public function __construct() {
+      parent::__construct(self::PREFIX, new Parameters([]));
     }
 
   }

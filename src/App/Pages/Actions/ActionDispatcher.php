@@ -44,7 +44,7 @@
      */
     public final function handle(RequestInterface $request): ResponseInterface {
       $original = File::create(
-        new LocalPath(urldecode($request->get()->value('path'))),
+        new LocalPath(urldecode($request->post()->value('path'))),
         $this->storage
       );
       if (!$original->exists()) {
