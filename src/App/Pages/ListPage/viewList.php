@@ -51,7 +51,7 @@
             <div class="card-image waves-effect waves-block waves-light">
               <a href="<?= (new DownloadUrl($filePath))->build() ?>" target="_blank">
                 <div class="valign-wrapper center-align">
-                  <img src='<?= (new PreviewUrl($filePath))->build() ?>' class="img-responsive center-block">
+                  <img src='<?= (new PreviewUrl($filePath))->build() ?>' class="img-responsive center-block js-image-preview">
                 </div>
               </a>
             </div>
@@ -111,7 +111,7 @@
                 ><i class="material-icons" style="color:gray">star</i></a>
 
                 <?php if ($user->authorized(RuleIds::ROTATE)) { ?>
-                  <a href="<?= (new ImageRotateRightUrl())->build() ?>" class="js-toggle">
+                  <a href="<?= (new ImageRotateRightUrl())->build() ?>" class="js-rotate">
                     <i class="material-icons" style="transform: scaleX(-1);color:gray">replay</i>
                   </a>
                 <?php } ?>
@@ -149,6 +149,19 @@
           }
         });
         $image.attr('data-image-path', data.path)
+      }, 'json').fail(function () {
+        alert("error");
+      });
+      event.preventDefault();
+      return false;
+    })
+
+    var $rotateButton = $('.js-rotate');
+    $rotateButton.click(function (event) {
+      var $el = $(this);
+      var $image = $el.parents('.js-image-card');
+      $.post($el.attr('href'), {'path': $image.attr('data-image-path')}, function (data) {
+        $image.find('.js-image-preview').attr('src', data.preview);
       }, 'json').fail(function () {
         alert("error");
       });

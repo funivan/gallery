@@ -20,9 +20,16 @@
      * @todo take a look: Not code free constructor
      *
      * @param PathInterface $path
+     * @param string|null $stamp
      */
-    public function __construct(PathInterface $path) {
-      parent::__construct(self::PREFIX, new Parameters(['path' => $path->assemble()]));
+    public function __construct(PathInterface $path, string $stamp = null) {
+      $parameters = [
+        'path' => $path->assemble(),
+      ];
+      if (null !== $stamp) {
+        $parameters['stamp'] = $stamp;
+      }
+      parent::__construct(self::PREFIX, new Parameters($parameters));
     }
 
   }

@@ -4,6 +4,7 @@
   namespace Funivan\Gallery\App\Pages\Actions;
 
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
+  use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
@@ -55,6 +56,7 @@
           json_encode([
             'result' => 'ok',
             'path' => $file->path()->assemble(),
+            'preview' => (new PreviewUrl($file->path(), (string) microtime(true)))->build(),
           ])
         );
       }
