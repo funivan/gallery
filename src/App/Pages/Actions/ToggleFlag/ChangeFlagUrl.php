@@ -4,7 +4,6 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\ToggleFlag;
 
-  use Funivan\Gallery\FileStorage\PathInterface;
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
   use Funivan\Gallery\Framework\Router\UrlInterface;
@@ -30,40 +29,30 @@
 
 
     /**
-     * @var PathInterface
-     */
-    private $path;
-
-
-    /**
      * @param string $url
      * @param string $flag
-     * @param PathInterface $path
      */
-    private function __construct(string $url, string $flag, PathInterface $path) {
+    private function __construct(string $url, string $flag) {
       $this->flag = $flag;
-      $this->path = $path;
       $this->url = $url;
     }
 
 
     /**
      * @param string $flag
-     * @param PathInterface $path
      * @return UrlInterface
      */
-    public static function createSet(string $flag, PathInterface $path): UrlInterface {
-      return new self(self::SET_PATH, $flag, $path);
+    public static function createSet(string $flag): UrlInterface {
+      return new self(self::SET_PATH, $flag);
     }
 
 
     /**
      * @param string $flag
-     * @param PathInterface $path
      * @return UrlInterface
      */
-    public static function createRemove(string $flag, PathInterface $path): UrlInterface {
-      return new self(self::REMOVE_PATH, $flag, $path);
+    public static function createRemove(string $flag): UrlInterface {
+      return new self(self::REMOVE_PATH, $flag);
     }
 
 
@@ -74,7 +63,6 @@
       return (new PathUrl(
         $this->url,
         new Parameters([
-          'path' => $this->path->assemble(),
           'flag' => $this->flag,
         ]))
       )->build();
