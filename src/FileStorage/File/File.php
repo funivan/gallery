@@ -105,7 +105,7 @@
     /**
      * @return PathInterface
      */
-    public function path(): PathInterface {
+    final public function path(): PathInterface {
       return $this->path;
     }
 
@@ -114,7 +114,7 @@
      * @param PathInterface $path
      * @return FileInterface
      */
-    public function move(PathInterface $path): FileInterface {
+    final public function move(PathInterface $path): FileInterface {
       $this->storage->move($this->path(), $path);
       return new self($path, $this->storage);
     }

@@ -79,7 +79,7 @@
      * @param string $type
      * @return string
      */
-    public function meta(string $type): string {
+    final public function meta(string $type): string {
       return $this->original->meta($type);
     }
 
@@ -87,7 +87,7 @@
     /**
      * @return PathInterface
      */
-    public function path(): PathInterface {
+    final public function path(): PathInterface {
       return $this->original->path();
     }
 
@@ -96,7 +96,7 @@
      * @param PathInterface $path
      * @return FileInterface
      */
-    public function move(PathInterface $path): FileInterface {
+    final public function move(PathInterface $path): FileInterface {
       return $this->original->move($path);
     }
 

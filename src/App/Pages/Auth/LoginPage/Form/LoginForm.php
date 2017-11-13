@@ -10,7 +10,7 @@
   /**
    *
    */
-  class LoginForm {
+  class LoginForm implements FormInterface {
 
     /**
      * @var UsersInterface

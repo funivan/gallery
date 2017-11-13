@@ -16,7 +16,7 @@
     /**
      * @return PathInterface[]|\Iterator
      */
-    public function items(): \Iterator {
+    final public function items(): \Iterator {
       return new \EmptyIterator();
     }
 

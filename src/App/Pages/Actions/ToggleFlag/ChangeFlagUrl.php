@@ -59,7 +59,7 @@
     /**
      * @return string
      */
-    public function build(): string {
+    final public function build(): string {
       return (new PathUrl(
         $this->url,
         new Parameters([

@@ -35,7 +35,7 @@
     /**
      * @return PathInterface[]|\Iterator
      */
-    public function items(): \Iterator {
+    final public function items(): \Iterator {
       /** @var \DirectoryIterator $item */
       foreach ($this->iterator as $item) {
         if (!$item->isDot()) {

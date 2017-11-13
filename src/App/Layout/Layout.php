@@ -17,7 +17,7 @@
      * @param AuthComponentInterface $auth
      * @return ViewInterface
      */
-    public static function createDefault(AuthComponentInterface $auth): ViewInterface {
+    final public static function createDefault(AuthComponentInterface $auth): ViewInterface {
       return self::create(__DIR__ . '/viewLayout.php', [
         'auth' => $auth,
       ]);

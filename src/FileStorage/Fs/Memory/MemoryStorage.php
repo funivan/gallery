@@ -28,7 +28,7 @@
      * @param PathInterface $path
      * @return FinderInterface
      */
-    public function finder(PathInterface $path): FinderInterface {
+    final public function finder(PathInterface $path): FinderInterface {
       return new InMemoryPathFinder(array_keys($this->files), $path);
     }
 
@@ -50,7 +50,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public function type(PathInterface $path): string {
+    final public function type(PathInterface $path): string {
       $result = FileStorageInterface::TYPE_UNKNOWN;
       if (array_key_exists($path->assemble(), $this->files)) {
         $result = FileStorageInterface::TYPE_FILE;
@@ -102,7 +102,7 @@
      * @param PathInterface $old
      * @param PathInterface $new
      */
-    public function move(PathInterface $old, PathInterface $new): void {
+    final public function move(PathInterface $old, PathInterface $new): void {
       $this->write($new, $this->read($old));
       $this->remove($old);
     }

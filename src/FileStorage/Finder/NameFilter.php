@@ -35,7 +35,7 @@
     /**
      * @return PathInterface[]|\Iterator
      */
-    public function items(): \Iterator {
+    final public function items(): \Iterator {
       foreach ($this->original->items() as $path) {
         if (preg_match($this->regexp, $path->name()) === 1) {
           yield $path;

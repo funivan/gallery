@@ -114,7 +114,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public function type(PathInterface $path): string {
+    final public function type(PathInterface $path): string {
       $fullPath = $this->basePath->next($path)->assemble();
       $result = FileStorageInterface::TYPE_UNKNOWN;
       if (is_file($fullPath)) {
@@ -130,7 +130,7 @@
      * @param PathInterface $path
      * @return FinderInterface
      */
-    public function finder(PathInterface $path): FinderInterface {
+    final public function finder(PathInterface $path): FinderInterface {
       return new LocalFsFinder($this->basePath, $path);
     }
 
@@ -155,7 +155,7 @@
      * @param PathInterface $new
      * @throws WriteException
      */
-    public function move(PathInterface $old, PathInterface $new): void {
+    final public function move(PathInterface $old, PathInterface $new): void {
       $result = rename(
         $this->basePath->next($old)->assemble(),
         $this->basePath->next($new)->assemble()
