@@ -7,7 +7,7 @@
   /**
    * @todo take a look: Data transfer object
    */
-  class ValidationResult {
+  class ValidationResult implements ValidationResultInterface {
 
     /**
      * @var string[]
