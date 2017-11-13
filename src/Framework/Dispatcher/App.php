@@ -7,9 +7,9 @@
   use Funivan\Gallery\Framework\Http\Request\Request;
 
   /**
-   * Run dispatcher and send response to the client.
+   *
    */
-  class App {
+  class App implements AppInterface {
 
 
     /**
@@ -27,8 +27,6 @@
 
 
     /**
-     * Send response to the client
-     *
      * @param Request $request
      * @return void
      */
