@@ -31,7 +31,7 @@
      *
      * @return void
      */
-    public final function send(): void {
+    final public function send(): void {
       echo $this->view->render();
     }
 

@@ -32,7 +32,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       try {
         $response = $this->original->handle($request);
       } catch (\Exception $e) {

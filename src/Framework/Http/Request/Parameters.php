@@ -28,7 +28,7 @@
      * @param string $name
      * @return bool
      */
-    public final function has(string $name): bool {
+    final public function has(string $name): bool {
       return array_key_exists($name, $this->data);
     }
 
@@ -37,7 +37,7 @@
      * @param string $name
      * @return string
      */
-    public final function value(string $name): string {
+    final public function value(string $name): string {
       if (!array_key_exists($name, $this->data)) {
         throw new \InvalidArgumentException(
           sprintf('Can not fetch parameter: %s', $name)
@@ -51,7 +51,7 @@
      * @param ParametersInterface $parameters
      * @return ParametersInterface
      */
-    public final function merge(ParametersInterface $parameters): ParametersInterface {
+    final public function merge(ParametersInterface $parameters): ParametersInterface {
       return new Parameters(array_merge($this->all(), $parameters->all()));
     }
 
@@ -59,7 +59,7 @@
     /**
      * @return array
      */
-    public final function all(): array {
+    final public function all(): array {
       return $this->data;
     }
 

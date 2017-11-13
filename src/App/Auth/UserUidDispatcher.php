@@ -15,7 +15,7 @@
    */
   class UserUidDispatcher implements DispatcherInterface {
 
-    const COOKIE_UID_NAME = 'user_uid';
+    public const COOKIE_UID_NAME = 'user_uid';
 
     /**
      * @var DispatcherInterface
@@ -35,7 +35,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $response = $this->original->handle($request);
       if (!$request->cookies()->has(self::COOKIE_UID_NAME)) {
         $uid = md5(password_hash(sha1(random_int(0, 1000) . '' . time() . '678dsKK00afj%^@)@$$^'), PASSWORD_BCRYPT));

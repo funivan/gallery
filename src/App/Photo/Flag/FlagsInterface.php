@@ -12,11 +12,11 @@
    */
   interface FlagsInterface {
 
-    const FAVOURITE = 'f';
+    public const FAVOURITE = 'f';
 
-    const DELETED = 'd';
+    public const DELETED = 'd';
 
-    const PRIVATE = 'p';
+    public const PRIVATE = 'p';
 
 
     /**

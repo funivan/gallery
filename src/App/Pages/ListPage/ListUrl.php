@@ -13,7 +13,7 @@
    */
   final class ListUrl extends RegexRouteBuilder {
 
-    const REGEX = '/list(?<dir>/.*)';
+    public const REGEX = '/list(?<dir>/.*)';
 
 
     /**

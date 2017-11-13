@@ -11,7 +11,7 @@
    */
   class DummyUser implements UserInterface {
 
-    const ANONYMOUS = 'anonymous';
+    public const ANONYMOUS = 'anonymous';
 
     /**
      * @var string

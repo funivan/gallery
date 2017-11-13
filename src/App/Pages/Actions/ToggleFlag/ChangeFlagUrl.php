@@ -14,9 +14,9 @@
    */
   class ChangeFlagUrl implements UrlInterface {
 
-    const SET_PATH = '/action/set-flag';
+    public const SET_PATH = '/action/set-flag';
 
-    const REMOVE_PATH = '/action/remove-flag';
+    public const REMOVE_PATH = '/action/remove-flag';
 
     /**
      * @var string

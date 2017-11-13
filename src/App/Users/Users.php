@@ -30,7 +30,7 @@
      * @param string $uid
      * @return bool
      */
-    public final function has(string $uid): bool {
+    final public function has(string $uid): bool {
       $rawUsers = json_decode($this->file->read(), true);
       return array_key_exists($uid, $rawUsers['users']);
     }
@@ -40,7 +40,7 @@
      * @param string $uid
      * @return UserInterface
      */
-    public final function get(string $uid): UserInterface {
+    final public function get(string $uid): UserInterface {
       $rawUsers = json_decode($this->file->read(), true);
       if (!array_key_exists($uid, $rawUsers['users'])) {
         throw new \InvalidArgumentException(sprintf('User does not exists :%s', $uid));

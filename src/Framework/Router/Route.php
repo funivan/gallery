@@ -40,7 +40,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       return $this->dispatcher->handle($request);
     }
 
@@ -49,7 +49,7 @@
      * @param RequestInterface $request
      * @return \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface
      */
-    public final function match(RequestInterface $request): MatchResultInterface {
+    final public function match(RequestInterface $request): MatchResultInterface {
       return $this->matcher->match($request);
     }
 

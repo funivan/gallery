@@ -59,7 +59,7 @@
     /**
      * @return StatusInterface
      */
-    public final function status(): StatusInterface {
+    final public function status(): StatusInterface {
       return new ResponseStatus(200);
     }
 
@@ -67,7 +67,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers(): HeadersInterface {
+    final public function headers(): HeadersInterface {
       return $this->headers;
     }
 
@@ -75,7 +75,7 @@
     /**
      * @return BodyInterface
      */
-    public final function body(): BodyInterface {
+    final public function body(): BodyInterface {
       return new PlainBody($this->content);
     }
 

@@ -55,7 +55,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $currentPath = new LocalPath($request->parameters()->value('dir'));
       $baseFinder = $this->imageFs->finder($currentPath);
       $files = new TypeFilter(

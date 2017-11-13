@@ -46,7 +46,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       if ($this->authComponent->authenticated()) {
         $result = $this->original->handle($request);
       } else {

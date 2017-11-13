@@ -62,7 +62,7 @@
     /**
      * @return bool
      */
-    public final function matched(): bool {
+    final public function matched(): bool {
       return $this->matched;
     }
 
@@ -70,7 +70,7 @@
     /**
      * @return ParametersInterface
      */
-    public final function parameters(): ParametersInterface {
+    final public function parameters(): ParametersInterface {
       return $this->parameters;
     }
 

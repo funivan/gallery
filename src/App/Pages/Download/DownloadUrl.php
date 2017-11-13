@@ -14,7 +14,7 @@
    */
   final class DownloadUrl extends PathUrl {
 
-    const PREFIX = '/download/';
+    public const PREFIX = '/download/';
 
 
     /**

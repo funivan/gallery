@@ -55,7 +55,7 @@
      * @param string $name
      * @return bool
      */
-    public final function has(string $name): bool {
+    final public function has(string $name): bool {
       return array_key_exists($name, $this->cookies);
     }
 
@@ -64,7 +64,7 @@
      * @param string $name
      * @return RequestCookieInterface
      */
-    public final function get(string $name): RequestCookieInterface {
+    final public function get(string $name): RequestCookieInterface {
       if (!array_key_exists($name, $this->cookies)) {
         throw new \InvalidArgumentException(sprintf('Can not retrieve cookie %s', $name));
       }

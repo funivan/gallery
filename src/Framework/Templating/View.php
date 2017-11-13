@@ -66,7 +66,7 @@
      * @param array $data
      * @return ViewInterface
      */
-    public final function withData(array $data): ViewInterface {
+    final public function withData(array $data): ViewInterface {
       return new self($this->id, array_merge($this->data, $data), $this->subView);
     }
 
@@ -75,7 +75,7 @@
      * @param ViewInterface $view
      * @return ViewInterface
      */
-    public final function withSubView(ViewInterface $view): ViewInterface {
+    final public function withSubView(ViewInterface $view): ViewInterface {
       return new self($this->id, $this->data, $view);
     }
 
@@ -84,7 +84,7 @@
      * @return string
      * @throws OverwriteViewVariableException
      */
-    public final function render(): string {
+    final public function render(): string {
       if (array_key_exists('content', $this->data)) {
         throw new OverwriteViewVariableException(
           sprintf('View should not contains variable "%s"', 'content')

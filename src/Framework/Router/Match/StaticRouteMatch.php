@@ -30,7 +30,7 @@
      * @param RequestInterface $request
      * @return MatchResultInterface
      */
-    public final function match(RequestInterface $request): MatchResultInterface {
+    final public function match(RequestInterface $request): MatchResultInterface {
       return $this->result;
     }
 

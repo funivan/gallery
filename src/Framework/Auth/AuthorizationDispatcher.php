@@ -47,7 +47,7 @@
      * @return ResponseInterface
      * @throws AccessDeniedException
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $user = $this->authComponent->user();
       if (!$user->authorized($this->rule)) {
         throw new AccessDeniedException(

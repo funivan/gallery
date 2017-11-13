@@ -46,7 +46,7 @@
      *
      * @return string
      */
-    public final function uid(): string {
+    final public function uid(): string {
       return $this->uid;
     }
 
@@ -55,7 +55,7 @@
      * @param string $inputPass
      * @return bool
      */
-    public final function validatePassword(string $inputPass): bool {
+    final public function validatePassword(string $inputPass): bool {
       return ($this->pass === $inputPass);
     }
 
@@ -66,7 +66,7 @@
      * @param string $ruleId
      * @return bool
      */
-    public final function authorized(string $ruleId): bool {
+    final public function authorized(string $ruleId): bool {
       return in_array($ruleId, $this->rules, true);
     }
 

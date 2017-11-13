@@ -34,7 +34,7 @@
     /**
      * @return StatusInterface
      */
-    public final function status(): StatusInterface {
+    final public function status(): StatusInterface {
       return new ResponseStatus(200);
     }
 
@@ -42,7 +42,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers(): HeadersInterface {
+    final public function headers(): HeadersInterface {
       return new Headers([]);
     }
 
@@ -50,7 +50,7 @@
     /**
      * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
      */
-    public final function body(): BodyInterface {
+    final public function body(): BodyInterface {
       return new ViewBody($this->view);
     }
 

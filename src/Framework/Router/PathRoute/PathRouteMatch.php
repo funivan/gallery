@@ -33,7 +33,7 @@
      * @param RequestInterface $request
      * @return MatchResultInterface
      */
-    public final function match(RequestInterface $request): MatchResultInterface {
+    final public function match(RequestInterface $request): MatchResultInterface {
       if ($request->server()->value('PATH_INFO') === $this->path) {
         $result = MatchResult::create(true, new Parameters([]));
       } else {

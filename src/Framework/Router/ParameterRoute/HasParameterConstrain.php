@@ -30,7 +30,7 @@
      * @param ParametersInterface $parameters
      * @return bool
      */
-    public final function validate(ParametersInterface $parameters): bool {
+    final public function validate(ParametersInterface $parameters): bool {
       return $parameters->has($this->name);
     }
 
@@ -38,7 +38,7 @@
     /**
      * @return string
      */
-    public final function name(): string {
+    final public function name(): string {
       return $this->name;
     }
 

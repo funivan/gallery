@@ -36,7 +36,7 @@
     /**
      * @return string
      */
-    public final function read(): string {
+    final public function read(): string {
       if ($this->content->empty()) {
         $this->content->append($this->original->read());
       }
@@ -49,7 +49,7 @@
      *
      * @return bool
      */
-    public final function exists(): bool {
+    final public function exists(): bool {
       return $this->original->exists();
     }
 
@@ -59,7 +59,7 @@
      *
      * @return void
      */
-    public final function remove(): void {
+    final public function remove(): void {
       $this->original->remove();
       $this->content->clear();
     }
@@ -69,7 +69,7 @@
      * @param string $content
      * @return void
      */
-    public final function write(string $content): void {
+    final public function write(string $content): void {
       $this->original->write($content);
       $this->content->clear()->append($content);
     }

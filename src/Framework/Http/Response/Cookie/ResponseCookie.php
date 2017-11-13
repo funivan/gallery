@@ -9,9 +9,9 @@
    */
   class ResponseCookie implements ResponseCookieInterface {
 
-    const HTTP_ONLY = 'HttpOnly';
+    public const HTTP_ONLY = 'HttpOnly';
 
-    const SECURE = 'Secure';
+    public const SECURE = 'Secure';
 
     /**
      * @var string
@@ -81,7 +81,7 @@
     /**
      * @return string
      */
-    public final function assemble(): string {
+    final public function assemble(): string {
       return $this->name . '=' . $this->value . ';' . implode(';', $this->parts);
     }
 

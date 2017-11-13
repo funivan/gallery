@@ -34,7 +34,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $this->authComponent->logOut();
       return new RedirectResponse(new IndexUrl(), 302);
     }

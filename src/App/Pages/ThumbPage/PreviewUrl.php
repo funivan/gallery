@@ -13,7 +13,7 @@
    */
   final class PreviewUrl extends PathUrl {
 
-    const PREFIX = '/preview/';
+    public const PREFIX = '/preview/';
 
 
     /**

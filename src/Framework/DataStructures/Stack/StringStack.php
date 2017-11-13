@@ -19,7 +19,7 @@
     /**
      * @param string $data
      */
-    public final function push(string $data): void {
+    final public function push(string $data): void {
       $this->elements[] = $data;
     }
 
@@ -27,7 +27,7 @@
     /**
      * @return string
      */
-    public final function pop(): string {
+    final public function pop(): string {
       $element = array_pop($this->elements);
       if (null === $element) {
         throw new \RuntimeException('Stack is empty');
@@ -42,7 +42,7 @@
      *
      * @return bool
      */
-    public final function empty(): bool {
+    final public function empty(): bool {
       return count($this->elements) === 0;
     }
 

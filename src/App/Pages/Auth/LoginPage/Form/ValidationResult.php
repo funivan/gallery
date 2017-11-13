@@ -26,7 +26,7 @@
     /**
      * @return bool
      */
-    public final function valid(): bool {
+    final public function valid(): bool {
       return count($this->errors) === 0;
     }
 
@@ -34,7 +34,7 @@
     /**
      * @return string[]
      */
-    public final function errors(): array {
+    final public function errors(): array {
       return $this->errors;
     }
 

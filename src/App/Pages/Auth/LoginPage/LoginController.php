@@ -54,7 +54,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $errors = [];
       $form = new Form\LoginForm($this->users);
       if ($form->submitted($request)) {

@@ -34,7 +34,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       return new ViewResponse(
         $this->view->withData(['title' => 'index page'])
           ->withSubView(

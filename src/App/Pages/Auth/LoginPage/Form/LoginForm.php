@@ -30,7 +30,7 @@
      * @param RequestInterface $request
      * @return ValidationResult
      */
-    public final function validate(RequestInterface $request): ValidationResult {
+    final public function validate(RequestInterface $request): ValidationResult {
       $errors = [];
       $post = $request->post();
       $userUid = $post->value('login');
@@ -51,7 +51,7 @@
      * @param RequestInterface $request
      * @return bool
      */
-    public final function submitted(RequestInterface $request): bool {
+    final public function submitted(RequestInterface $request): bool {
       $post = $request->post();
       return ($post->has('login') and $post->has('pass'));
     }

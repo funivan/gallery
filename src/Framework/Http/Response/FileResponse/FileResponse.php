@@ -70,7 +70,7 @@
     /**
      * @return StatusInterface
      */
-    public final function status(): StatusInterface {
+    final public function status(): StatusInterface {
       return new ResponseStatus(200);
     }
 
@@ -78,7 +78,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers(): HeadersInterface {
+    final public function headers(): HeadersInterface {
       return (new Headers([
         new Field('Content-Type', (string) (new \Mimey\MimeTypes)->getMimeType($this->file->meta('extension'))),
       ]))->merge($this->headers);
@@ -90,7 +90,7 @@
      *
      * @return BodyInterface
      */
-    public final function body(): BodyInterface {
+    final public function body(): BodyInterface {
       return new PlainBody($this->file->read());
     }
 

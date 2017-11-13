@@ -28,7 +28,7 @@
      * @param PathInterface $path
      * @return PathInterface
      */
-    public final function next(PathInterface $path): PathInterface {
+    final public function next(PathInterface $path): PathInterface {
       if ($path->isRoot()) {
         throw new \InvalidArgumentException('Next path can not be root');
       }
@@ -43,7 +43,7 @@
     /**
      * @return bool
      */
-    public final function isRoot(): bool {
+    final public function isRoot(): bool {
       return '/' === $this->path;
     }
 
@@ -51,7 +51,7 @@
     /**
      * @return PathInterface
      */
-    public final function previous(): PathInterface {
+    final public function previous(): PathInterface {
       if ($this->isRoot()) {
         throw new \RuntimeException('Can not retrieve previous path. LocalPath is root already');
       }
@@ -68,7 +68,7 @@
     /**
      * @return string
      */
-    public final function name(): string {
+    final public function name(): string {
       if ($this->isRoot()) {
         $name = '/';
       } else {
@@ -83,7 +83,7 @@
      * @param PathInterface $path
      * @return bool
      */
-    public final function equal(PathInterface $path): bool {
+    final public function equal(PathInterface $path): bool {
       return $path->assemble() === $this->assemble();
     }
 
@@ -91,7 +91,7 @@
     /**
      * @return string
      */
-    public final function assemble(): string {
+    final public function assemble(): string {
       if (!$this->isRoot() and preg_match('!/$!', $this->path) === 1) {
         throw new \InvalidArgumentException('Path is invalid. Should not be ended with: /');
       }

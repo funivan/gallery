@@ -29,7 +29,7 @@
      * @param string $name
      * @return string
      */
-    public final function meta(PathInterface $path, string $name): string {
+    final public function meta(PathInterface $path, string $name): string {
       throw new \BadMethodCallException('"Meta" operation is not supported by this adapter');
     }
 
@@ -48,7 +48,7 @@
      * @param string $data
      * @return void
      */
-    public final function write(PathInterface $path, string $data): void {
+    final public function write(PathInterface $path, string $data): void {
 
     }
 
@@ -57,7 +57,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public final function read(PathInterface $path): string {
+    final public function read(PathInterface $path): string {
       throw new \BadMethodCallException('"Read" operation is not supported by this adapter');
     }
 
@@ -65,7 +65,7 @@
     /**
      * @param PathInterface $path
      */
-    public final function remove(PathInterface $path): void {
+    final public function remove(PathInterface $path): void {
 
     }
 

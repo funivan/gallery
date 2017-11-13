@@ -73,7 +73,7 @@
     /**
      * @return bool
      */
-    public final function authenticated(): bool {
+    final public function authenticated(): bool {
       return $this->file->exists();
     }
 
@@ -81,7 +81,7 @@
     /**
      * @return UserInterface
      */
-    public final function user(): UserInterface {
+    final public function user(): UserInterface {
       if (!$this->authenticated()) {
         throw new \RuntimeException('User is not authenticated');
       }
@@ -98,7 +98,7 @@
     /**
      * @return void
      */
-    public final function logOut(): void {
+    final public function logOut(): void {
       if ($this->file->exists()) {
         $this->file->remove();
       }
@@ -109,7 +109,7 @@
      * @param UserInterface $user
      * @return void
      */
-    public final function logIn(UserInterface $user): void {
+    final public function logIn(UserInterface $user): void {
       $this->file->write($user->uid());
     }
 

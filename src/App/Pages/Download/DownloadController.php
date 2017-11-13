@@ -36,7 +36,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $path = new LocalPath(urldecode($request->get()->value('path')));
       $original = File::create($path, $this->storage);
       if (!$original->exists()) {

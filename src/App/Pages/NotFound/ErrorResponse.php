@@ -72,7 +72,7 @@
     /**
      * @return \Funivan\Gallery\Framework\Http\Response\StatusInterface
      */
-    public final function status(): StatusInterface {
+    final public function status(): StatusInterface {
       return new ResponseStatus($this->code);
     }
 
@@ -80,7 +80,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers(): HeadersInterface {
+    final public function headers(): HeadersInterface {
       return new Headers([]);
     }
 
@@ -88,7 +88,7 @@
     /**
      * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
      */
-    public final function body(): BodyInterface {
+    final public function body(): BodyInterface {
       $view = View::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Error'])
         ->withSubView(
           View::create(__DIR__ . '/viewError.php', [

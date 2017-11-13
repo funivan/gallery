@@ -38,7 +38,7 @@
      *
      * @return string
      */
-    public final function build(): string {
+    final public function build(): string {
       $path = $this->path;
       $parameters = $this->parameters->all();
       if (count($parameters) > 0) {
