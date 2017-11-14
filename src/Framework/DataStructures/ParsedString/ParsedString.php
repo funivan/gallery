@@ -7,7 +7,7 @@
   /**
    *
    */
-  class ParsedString {
+  class ParsedString implements ParsedStringInterface {
 
 
     /**

@@ -11,7 +11,7 @@
   /**
    *
    */
-  class PreviewLocation {
+  class PreviewLocation implements LocationInterface {
 
     /**
      * @var FileInterface
