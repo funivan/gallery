@@ -20,7 +20,7 @@
      *
      * @param RequestCookieInterface[] $cookies
      */
-    private function __construct(array $cookies = []) {
+    private function __construct(array $cookies) {
       $cookiesByName = [];
       foreach ($cookies as $cookie) {
         $cookiesByName[$cookie->name()] = $cookie;

@@ -49,7 +49,7 @@
     /**
      * @param PathInterface $path
      * @param FileStorageInterface $storage
-     * @return mixed
+     * @return FileInterface
      */
     public static function create(PathInterface $path, FileStorageInterface $storage): FileInterface {
       return new self($path, $storage);

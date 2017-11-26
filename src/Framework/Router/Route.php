@@ -26,29 +26,17 @@
     private $dispatcher;
 
 
-    /**
-     * @param RouteMatchInterface $match
-     * @param DispatcherInterface $dispatcher
-     */
     public function __construct(RouteMatchInterface $match, DispatcherInterface $dispatcher) {
       $this->matcher = $match;
       $this->dispatcher = $dispatcher;
     }
 
 
-    /**
-     * @param RequestInterface $request
-     * @return ResponseInterface
-     */
     final public function handle(RequestInterface $request): ResponseInterface {
       return $this->dispatcher->handle($request);
     }
 
 
-    /**
-     * @param RequestInterface $request
-     * @return \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface
-     */
     final public function match(RequestInterface $request): MatchResultInterface {
       return $this->matcher->match($request);
     }

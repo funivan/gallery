@@ -24,10 +24,7 @@
     }
 
 
-    /**
-     * @param string $name
-     * @return bool
-     */
+
     final public function has(string $name): bool {
       return array_key_exists($name, $this->data);
     }
@@ -57,7 +54,7 @@
 
 
     /**
-     * @return array
+     * @return array Array<String, String>
      */
     final public function all(): array {
       return $this->data;

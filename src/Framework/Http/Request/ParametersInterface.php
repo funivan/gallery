@@ -31,7 +31,7 @@
 
 
     /**
-     * @return array
+     * @return array Array<String, String>
      */
     public function all(): array;
 

@@ -104,8 +104,16 @@
     <inspection_tool class="PhpDocMissingThrowsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpDocSignatureInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpDuplicateArrayKeysInspection" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="PhpMissingDocCommentInspection" enabled="true" level="ERROR" enabled_by_default="true">
-      <scope name="Tests" level="INFORMATION" enabled="true" />
+    <inspection_tool class="PhpMissingDocCommentInspection" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <scope name="Interfaces" level="ERROR" enabled="true">
+        <option name="SKIP_EMPTY_FUNCTION" value="false" />
+        <option name="SKIP_EMPTY_METHOD" value="false" />
+      </scope>
+      <scope name="Tests" level="INFORMATION" enabled="true">
+        <option name="CHECK_CONSTANT" value="true" />
+        <option name="SKIP_EMPTY_FUNCTION" value="false" />
+        <option name="SKIP_EMPTY_METHOD" value="false" />
+      </scope>
       <option name="CHECK_FIELD" value="true" />
     </inspection_tool>
     <inspection_tool class="PhpMissingStrictTypesDeclarationInspection" enabled="true" level="ERROR" enabled_by_default="true">
