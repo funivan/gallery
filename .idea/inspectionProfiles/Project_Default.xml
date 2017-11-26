@@ -4,6 +4,9 @@
     <inspection_tool class="AdditionOperationOnArraysInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="AmbiguousMemberInitializationInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="BashSimpleVarUsage" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="DeclareMethodsInTheInterfaceInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Tests" level="WARNING" enabled="false" />
+    </inspection_tool>
     <inspection_tool class="ExceptionsAnnotatingAndHandlingInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ForeachInvariantsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ForgottenDebugOutputInspection" enabled="true" level="ERROR" enabled_by_default="true">
@@ -113,9 +116,15 @@
       <option name="DOWNGRADE_SEVERITY" value="true" />
     </inspection_tool>
     <inspection_tool class="PhpUndefinedVariableInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="PhpUnhandledExceptionInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Tests" level="WARNING" enabled="false" />
+    </inspection_tool>
     <inspection_tool class="PhpUnnecessaryFullyQualifiedNameInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpUnusedParameterInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Docs" level="WEAK WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="PublicMethodsShouldBeFinalInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Tests" level="WARNING" enabled="false" />
     </inspection_tool>
     <inspection_tool class="ReturnTypeCanBeDeclaredInspection" enabled="true" level="ERROR" enabled_by_default="true">
       <scope name="Tests" level="WEAK WARNING" enabled="false" />
