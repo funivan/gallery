@@ -33,7 +33,7 @@
     /**
      * @return \Iterator
      */
-    public function items(): \Iterator {
+    final public function items(): \Iterator {
       $items = $this->original->items();
       $items = iterator_to_array($items);
       if ($this->reverse) {

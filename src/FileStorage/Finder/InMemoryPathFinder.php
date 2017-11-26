@@ -1,4 +1,5 @@
 <?php
+
   declare(strict_types = 1);
 
   namespace Funivan\Gallery\FileStorage\Finder;
@@ -35,7 +36,7 @@
     /**
      * @return PathInterface[]|\Iterator
      */
-    public function items(): \Iterator {
+    final public function items(): \Iterator {
       $tree = $this->tree();
       foreach ($tree as $path) {
         if (!$path->isRoot() and $path->previous()->equal($this->pathFilter)) {
@@ -60,7 +61,7 @@
     /**
      * @return PathInterface[]
      */
-    protected function tree(): array {
+    private function tree(): array {
       $tree = [];
       foreach ($this->items as $rawPath) {
         foreach ($this->all(new LocalPath($rawPath)) as $path) {

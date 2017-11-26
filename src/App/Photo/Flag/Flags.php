@@ -43,7 +43,7 @@
      * @param string $type
      * @return FileInterface
      */
-    public function set(string $type): FileInterface {
+    final public function set(string $type): FileInterface {
       if (!in_array($type, self::FLAGS)) {
         throw new \InvalidArgumentException('Unsupported flag');
       }
@@ -58,7 +58,7 @@
      * @param string $type
      * @return FileInterface
      */
-    public function remove(string $type): FileInterface {
+    final public function remove(string $type): FileInterface {
       if (!in_array($type, self::FLAGS)) {
         throw new \InvalidArgumentException('Unsupported flag');
       }
@@ -74,7 +74,7 @@
      * @param string $type
      * @return bool
      */
-    public function has(string $type): bool {
+    final public function has(string $type): bool {
       if (!in_array($type, self::FLAGS)) {
         throw new \InvalidArgumentException('Unsupported flag');
       }

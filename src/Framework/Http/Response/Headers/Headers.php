@@ -29,7 +29,7 @@
     /**
      * @return FieldInterface[]
      */
-    public final function fields(): array {
+    final public function fields(): array {
       return $this->fields;
     }
 
@@ -39,7 +39,7 @@
      * @return HeadersInterface
      * @throws OverwriteHeaderFieldException
      */
-    public final function merge(HeadersInterface $headers): HeadersInterface {
+    final public function merge(HeadersInterface $headers): HeadersInterface {
       $fieldsByName = [];
       foreach ($this->fields() as $field) {
         $fieldsByName[$field->name()] = $field;
@@ -60,7 +60,7 @@
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {
+    final public function has(string $name): bool {
       $has = false;
       foreach ($this->fields as $field) {
         if ($field->name() === $name) {
@@ -75,7 +75,7 @@
      * @param string $name
      * @return FieldInterface
      */
-    public function field(string $name): FieldInterface {
+    final public function field(string $name): FieldInterface {
       foreach ($this->fields as $field) {
         if ($field->name() === $name) {
           return $field;

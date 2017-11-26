@@ -57,7 +57,7 @@
      * @param ParametersInterface $parameters
      * @return RequestInterface
      */
-    public final function withParameters(ParametersInterface $parameters): RequestInterface {
+    final public function withParameters(ParametersInterface $parameters): RequestInterface {
       return new Request(
         $this->get,
         $this->post,
@@ -71,7 +71,7 @@
     /**
      * @return ParametersInterface
      */
-    public final function get(): ParametersInterface {
+    final public function get(): ParametersInterface {
       return $this->get;
     }
 
@@ -79,7 +79,7 @@
     /**
      * @return ParametersInterface
      */
-    public final function server(): ParametersInterface {
+    final public function server(): ParametersInterface {
       return $this->server;
     }
 
@@ -87,7 +87,7 @@
     /**
      * @return ParametersInterface
      */
-    public final function post(): ParametersInterface {
+    final public function post(): ParametersInterface {
       return $this->post;
     }
 
@@ -95,7 +95,7 @@
     /**
      * @return ParametersInterface
      */
-    public final function parameters(): ParametersInterface {
+    final public function parameters(): ParametersInterface {
       return $this->userParameters;
     }
 
@@ -103,7 +103,7 @@
     /**
      * @return RequestCookiesInterface
      */
-    public final function cookies(): RequestCookiesInterface {
+    final public function cookies(): RequestCookiesInterface {
       return $this->cookies;
     }
 

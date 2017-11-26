@@ -43,7 +43,7 @@
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       $original = File::create(
         new LocalPath(urldecode($request->post()->value('path'))),
         $this->storage

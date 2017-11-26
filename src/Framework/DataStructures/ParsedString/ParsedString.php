@@ -7,7 +7,7 @@
   /**
    *
    */
-  class ParsedString {
+  class ParsedString implements ParsedStringInterface {
 
 
     /**
@@ -36,7 +36,7 @@
      * @param string $value
      * @return ParsedString
      */
-    public function with(string $token, string $value): ParsedString {
+    final public function with(string $token, string $value): ParsedString {
       /** @var array $data */
       preg_match($this->regexp, $this->input, $data);
       $newInput = '';
@@ -57,7 +57,7 @@
      * @param string $token
      * @return ParsedString
      */
-    public function without(string $token): ParsedString {
+    final public function without(string $token): ParsedString {
       return $this->with($token, '');
     }
 
@@ -66,7 +66,7 @@
      * @param string $token
      * @return bool
      */
-    public function has(string $token): bool {
+    final public function has(string $token): bool {
       preg_match($this->regexp, $this->input, $data);
       return (array_key_exists($token, $data) and '' !== $data[$token]);
     }
@@ -75,7 +75,7 @@
     /**
      * @return string
      */
-    public function value(): string {
+    final public function value(): string {
       return $this->input;
     }
 

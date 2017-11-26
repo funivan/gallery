@@ -76,7 +76,7 @@
      * @param RequestInterface $request
      * @return \Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface
      */
-    public final function match(RequestInterface $request): MatchResultInterface {
+    final public function match(RequestInterface $request): MatchResultInterface {
       $data = $this->retrieveBag($request);
       $result = MatchResult::createFailure();
       if ($this->constrain->validate($data)) {

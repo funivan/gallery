@@ -38,7 +38,7 @@
      * Create url from the parameters
      * @return string
      */
-    public final function build(): string {
+    final public function build(): string {
       $path = $this->regex;
       $usedParameters = [];
       /** @noinspection HtmlUnknownTag */

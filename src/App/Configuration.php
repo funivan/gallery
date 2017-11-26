@@ -28,7 +28,7 @@
     /**
      * @return PathInterface
      */
-    public final function baseImagePath(): PathInterface {
+    final public function baseImagePath(): PathInterface {
       return new LocalPath($this->read('path'));
     }
 
@@ -52,7 +52,7 @@
      * @param string $name
      * @return string
      */
-    public final function read(string $name): string {
+    final public function read(string $name): string {
       $data = $this->data();
       if (!array_key_exists($name, $data)) {
         throw new \InvalidArgumentException('Invalid key:' . $name);

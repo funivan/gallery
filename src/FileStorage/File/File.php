@@ -61,7 +61,7 @@
      *
      * @return string
      */
-    public final function read(): string {
+    final public function read(): string {
       return $this->storage->read($this->path);
     }
 
@@ -69,7 +69,7 @@
     /**
      * @return bool
      */
-    public final function exists(): bool {
+    final public function exists(): bool {
       return FileStorageInterface::TYPE_FILE === $this->storage->type($this->path);
     }
 
@@ -77,7 +77,7 @@
     /**
      * @return void
      */
-    public final function remove(): void {
+    final public function remove(): void {
       $this->storage->remove($this->path);
     }
 
@@ -88,7 +88,7 @@
      * @param string $content
      * @return void
      */
-    public final function write(string $content): void {
+    final public function write(string $content): void {
       $this->storage->write($this->path, $content);
     }
 
@@ -97,7 +97,7 @@
      * @param string $type
      * @return string
      */
-    public final function meta(string $type): string {
+    final public function meta(string $type): string {
       return $this->storage->meta($this->path, $type);
     }
 
@@ -105,7 +105,7 @@
     /**
      * @return PathInterface
      */
-    public function path(): PathInterface {
+    final public function path(): PathInterface {
       return $this->path;
     }
 
@@ -114,7 +114,7 @@
      * @param PathInterface $path
      * @return FileInterface
      */
-    public function move(PathInterface $path): FileInterface {
+    final public function move(PathInterface $path): FileInterface {
       $this->storage->move($this->path(), $path);
       return new self($path, $this->storage);
     }

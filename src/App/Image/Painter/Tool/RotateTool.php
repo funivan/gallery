@@ -37,7 +37,7 @@
      * @param ImageManager $imageManager
      * @return Image
      */
-    public function paint(ImageManager $imageManager): Image {
+    final public function paint(ImageManager $imageManager): Image {
       if ($this->angel < 0 or $this->angel > 360) {
         throw new \InvalidArgumentException('Invalid angel. Should be between 0...360');
       }

@@ -12,7 +12,7 @@
    */
   final class IndexUrl extends PathUrl {
 
-    const PREFIX = '/';
+    public const PREFIX = '/';
 
 
     /**

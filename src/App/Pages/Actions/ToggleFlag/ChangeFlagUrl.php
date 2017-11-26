@@ -13,9 +13,9 @@
    */
   class ChangeFlagUrl implements UrlInterface {
 
-    const SET_PATH = '/action/set-flag';
+    public const SET_PATH = '/action/set-flag';
 
-    const REMOVE_PATH = '/action/remove-flag';
+    public const REMOVE_PATH = '/action/remove-flag';
 
     /**
      * @var string
@@ -59,7 +59,7 @@
     /**
      * @return string
      */
-    public function build(): string {
+    final public function build(): string {
       return (new PathUrl(
         $this->url,
         new Parameters([

@@ -33,7 +33,7 @@
     /**
      * @return string
      */
-    public final function name(): string {
+    final public function name(): string {
       return $this->name;
     }
 
@@ -41,7 +41,7 @@
     /**
      * @return string
      */
-    public final function value(): string {
+    final public function value(): string {
       return $this->value;
     }
 

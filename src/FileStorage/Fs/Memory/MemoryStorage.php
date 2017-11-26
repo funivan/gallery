@@ -28,7 +28,7 @@
      * @param PathInterface $path
      * @return FinderInterface
      */
-    public function finder(PathInterface $path): FinderInterface {
+    final public function finder(PathInterface $path): FinderInterface {
       return new InMemoryPathFinder(array_keys($this->files), $path);
     }
 
@@ -38,7 +38,7 @@
      * @param string $name
      * @return string
      */
-    public final function meta(PathInterface $path, string $name): string {
+    final public function meta(PathInterface $path, string $name): string {
       if ('extension' === $name) {
         return pathinfo($path->name(), PATHINFO_EXTENSION);
       }
@@ -50,7 +50,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public function type(PathInterface $path): string {
+    final public function type(PathInterface $path): string {
       $result = FileStorageInterface::TYPE_UNKNOWN;
       if (array_key_exists($path->assemble(), $this->files)) {
         $result = FileStorageInterface::TYPE_FILE;
@@ -70,7 +70,7 @@
      * @param PathInterface $path
      * @param string $data
      */
-    public final function write(PathInterface $path, string $data): void {
+    final public function write(PathInterface $path, string $data): void {
       $filePath = $path->assemble();
       $this->files[$filePath] = $data;
     }
@@ -81,7 +81,7 @@
      * @return string
      * @throws ReadException
      */
-    public final function read(PathInterface $path): string {
+    final public function read(PathInterface $path): string {
       $filePath = $path->assemble();
       if (!array_key_exists($filePath, $this->files)) {
         throw new ReadException(sprintf('Can not read file contents : %s', $filePath));
@@ -93,7 +93,7 @@
     /**
      * @param PathInterface $path
      */
-    public final function remove(PathInterface $path): void {
+    final public function remove(PathInterface $path): void {
       unset($this->files[$path->assemble()]);
     }
 
@@ -102,7 +102,7 @@
      * @param PathInterface $old
      * @param PathInterface $new
      */
-    public function move(PathInterface $old, PathInterface $new): void {
+    final public function move(PathInterface $old, PathInterface $new): void {
       $this->write($new, $this->read($old));
       $this->remove($old);
     }

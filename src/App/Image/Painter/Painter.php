@@ -37,7 +37,7 @@
      * @param PainterToolInterface $painter
      * @return void
      */
-    public function paint(PainterToolInterface $painter): void {
+    final public function paint(PainterToolInterface $painter): void {
       $result = $painter->paint($this->imageManager);
       $this->destinationFile->write((string) $result->encode($this->destinationFile->meta('extension')));
     }

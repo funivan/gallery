@@ -30,7 +30,7 @@
      * @param ImageManager $imageManager
      * @return Image
      */
-    public function paint(ImageManager $imageManager): Image {
+    final public function paint(ImageManager $imageManager): Image {
       return $imageManager->make($this->image->read())
         ->fit(300, 300);
     }

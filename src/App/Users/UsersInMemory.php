@@ -29,7 +29,7 @@
      * @param string $uid
      * @return bool
      */
-    public function has(string $uid): bool {
+    final public function has(string $uid): bool {
       $result = false;
       foreach ($this->users as $user) {
         if ($user->uid() === $uid) {
@@ -45,7 +45,7 @@
      * @param string $uid
      * @return UserInterface
      */
-    public function get(string $uid): UserInterface {
+    final public function get(string $uid): UserInterface {
       foreach ($this->users as $user) {
         if ($user->uid() === $uid) {
           return $user;

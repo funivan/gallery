@@ -43,7 +43,7 @@
     /**
      * @return StatusInterface
      */
-    public final function status(): StatusInterface {
+    final public function status(): StatusInterface {
       return new ResponseStatus($this->code);
     }
 
@@ -51,7 +51,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers(): HeadersInterface {
+    final public function headers(): HeadersInterface {
       #@todo create UnCachableHeaders
       return new Headers([
           new Field('Location', $this->url->build()),
@@ -65,7 +65,7 @@
     /**
      * @return BodyInterface
      */
-    public final function body(): BodyInterface {
+    final public function body(): BodyInterface {
       return new PlainBody(
         sprintf(/** @lang text */
           'Redirect to url: <a href="%1$s">%1$s</a>', $this->url->build())

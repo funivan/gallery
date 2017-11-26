@@ -19,7 +19,7 @@
      * @param PathInterface $path
      * @return FinderInterface
      */
-    public function finder(PathInterface $path): FinderInterface {
+    final public function finder(PathInterface $path): FinderInterface {
       return new EmptyFinder();
     }
 
@@ -29,7 +29,7 @@
      * @param string $name
      * @return string
      */
-    public final function meta(PathInterface $path, string $name): string {
+    final public function meta(PathInterface $path, string $name): string {
       throw new \BadMethodCallException('"Meta" operation is not supported by this adapter');
     }
 
@@ -38,7 +38,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public function type(PathInterface $path): string {
+    final public function type(PathInterface $path): string {
       return FileStorageInterface::TYPE_UNKNOWN;
     }
 
@@ -48,7 +48,7 @@
      * @param string $data
      * @return void
      */
-    public final function write(PathInterface $path, string $data): void {
+    final public function write(PathInterface $path, string $data): void {
 
     }
 
@@ -57,7 +57,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public final function read(PathInterface $path): string {
+    final public function read(PathInterface $path): string {
       throw new \BadMethodCallException('"Read" operation is not supported by this adapter');
     }
 
@@ -65,7 +65,7 @@
     /**
      * @param PathInterface $path
      */
-    public final function remove(PathInterface $path): void {
+    final public function remove(PathInterface $path): void {
 
     }
 
@@ -74,7 +74,7 @@
      * @param PathInterface $old
      * @param PathInterface $new
      */
-    public function move(PathInterface $old, PathInterface $new): void {
+    final public function move(PathInterface $old, PathInterface $new): void {
 
     }
 

@@ -26,7 +26,7 @@
      *
      * @return bool
      */
-    public final function empty(): bool {
+    final public function empty(): bool {
       return $this->empty;
     }
 
@@ -35,7 +35,7 @@
      * @param string $string
      * @return BufferedStringInterface
      */
-    public final function append(string $string): BufferedStringInterface {
+    final public function append(string $string): BufferedStringInterface {
       $this->string = $this->string . $string;
       $this->empty = false;
       return $this;
@@ -45,7 +45,7 @@
     /**
      * @return BufferedStringInterface
      */
-    public final function clear(): BufferedStringInterface {
+    final public function clear(): BufferedStringInterface {
       $this->string = '';
       $this->empty = true;
       return $this;
@@ -55,7 +55,7 @@
     /**
      * @return string
      */
-    public final function read(): string {
+    final public function read(): string {
       if ($this->empty) {
         throw new \RuntimeException('Buffer is empty');
       }

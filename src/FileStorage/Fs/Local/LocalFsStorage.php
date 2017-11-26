@@ -65,7 +65,7 @@
      * @return void
      * @throws WriteException
      */
-    public final function write(PathInterface $path, string $data): void {
+    final public function write(PathInterface $path, string $data): void {
       $filePath = $this->basePath->next($path);
       if (!$this->directoryCheck->perform($filePath->previous())) {
         throw new WriteException(
@@ -86,7 +86,7 @@
      * @return string
      * @throws ReadException
      */
-    public final function read(PathInterface $path): string {
+    final public function read(PathInterface $path): string {
       $result = file_get_contents($this->basePath->next($path)->assemble());
       if (false === $result) {
         throw new ReadException(
@@ -102,7 +102,7 @@
      * @param string $name
      * @return string
      */
-    public final function meta(PathInterface $path, string $name): string {
+    final public function meta(PathInterface $path, string $name): string {
       if ('extension' === $name) {
         return pathinfo($path->assemble(), PATHINFO_EXTENSION);
       }
@@ -114,7 +114,7 @@
      * @param PathInterface $path
      * @return string
      */
-    public function type(PathInterface $path): string {
+    final public function type(PathInterface $path): string {
       $fullPath = $this->basePath->next($path)->assemble();
       $result = FileStorageInterface::TYPE_UNKNOWN;
       if (is_file($fullPath)) {
@@ -130,7 +130,7 @@
      * @param PathInterface $path
      * @return FinderInterface
      */
-    public function finder(PathInterface $path): FinderInterface {
+    final public function finder(PathInterface $path): FinderInterface {
       return new LocalFsFinder($this->basePath, $path);
     }
 
@@ -139,7 +139,7 @@
      * @param PathInterface $path
      * @throws WriteException
      */
-    public final function remove(PathInterface $path): void {
+    final public function remove(PathInterface $path): void {
       $fullPath = $this->basePath->next($path)->assemble();
       $result = unlink($fullPath);
       if (!$result) {
@@ -155,7 +155,7 @@
      * @param PathInterface $new
      * @throws WriteException
      */
-    public function move(PathInterface $old, PathInterface $new): void {
+    final public function move(PathInterface $old, PathInterface $new): void {
       $result = rename(
         $this->basePath->next($old)->assemble(),
         $this->basePath->next($new)->assemble()

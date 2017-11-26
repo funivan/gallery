@@ -31,7 +31,7 @@
      * @param FileInterface $photo
      * @return FileInterface
      */
-    public function execute(FileInterface $photo): FileInterface {
+    final public function execute(FileInterface $photo): FileInterface {
       return (new Flags($photo))->remove($this->flag);
     }
 

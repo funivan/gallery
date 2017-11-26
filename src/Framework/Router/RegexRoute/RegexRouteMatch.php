@@ -33,7 +33,7 @@
      * @param RequestInterface $request
      * @return MatchResultInterface
      */
-    public final function match(RequestInterface $request): MatchResultInterface {
+    final public function match(RequestInterface $request): MatchResultInterface {
       $matched = (preg_match('!^' . $this->regex . '$!', $request->server()->value('PATH_INFO'), $params) === 1);
       if ($matched) {
         foreach ((array) $params as $index => $param) {

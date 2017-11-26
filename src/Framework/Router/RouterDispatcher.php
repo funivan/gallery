@@ -37,7 +37,7 @@
      * @return ResponseInterface
      * @throws \Exception
      */
-    public final function handle(RequestInterface $request): ResponseInterface {
+    final public function handle(RequestInterface $request): ResponseInterface {
       foreach ($this->routes as $route) {
         $matchResult = $route->match($request);
         if ($matchResult->matched()) {

@@ -36,7 +36,7 @@
     /**
      * @return string
      */
-    public final function read(): string {
+    final public function read(): string {
       if ($this->content->empty()) {
         $this->content->append($this->original->read());
       }
@@ -49,7 +49,7 @@
      *
      * @return bool
      */
-    public final function exists(): bool {
+    final public function exists(): bool {
       return $this->original->exists();
     }
 
@@ -59,7 +59,7 @@
      *
      * @return void
      */
-    public final function remove(): void {
+    final public function remove(): void {
       $this->original->remove();
       $this->content->clear();
     }
@@ -69,7 +69,7 @@
      * @param string $content
      * @return void
      */
-    public final function write(string $content): void {
+    final public function write(string $content): void {
       $this->original->write($content);
       $this->content->clear()->append($content);
     }
@@ -79,7 +79,7 @@
      * @param string $type
      * @return string
      */
-    public function meta(string $type): string {
+    final public function meta(string $type): string {
       return $this->original->meta($type);
     }
 
@@ -87,7 +87,7 @@
     /**
      * @return PathInterface
      */
-    public function path(): PathInterface {
+    final public function path(): PathInterface {
       return $this->original->path();
     }
 
@@ -96,7 +96,7 @@
      * @param PathInterface $path
      * @return FileInterface
      */
-    public function move(PathInterface $path): FileInterface {
+    final public function move(PathInterface $path): FileInterface {
       return $this->original->move($path);
     }
 

@@ -40,7 +40,7 @@
     /**
      * @return StatusInterface
      */
-    public final function status(): StatusInterface {
+    final public function status(): StatusInterface {
       return $this->original->status();
     }
 
@@ -48,7 +48,7 @@
     /**
      * @return HeadersInterface
      */
-    public final function headers(): HeadersInterface {
+    final public function headers(): HeadersInterface {
       $headerFields = $this->original->headers()->fields();
       $rawCookieData = [];
       //@todo move comparison to the field
@@ -68,7 +68,7 @@
     /**
      * @return BodyInterface
      */
-    public final function body(): BodyInterface {
+    final public function body(): BodyInterface {
       return $this->original->body();
     }
 

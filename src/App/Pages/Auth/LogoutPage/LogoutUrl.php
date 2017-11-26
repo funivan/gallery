@@ -12,7 +12,7 @@
    */
   final class LogoutUrl extends PathUrl {
 
-    const PREFIX = '/logout/';
+    public const PREFIX = '/logout/';
 
 
     /**

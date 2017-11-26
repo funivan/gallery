@@ -8,7 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/App/Users/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/FileStorage/Tests" isTestSource="true" packagePrefix="Funivan\Gallery\FileStorage\Tests" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Framework/Auth/Tests" isTestSource="true" packagePrefix="Funivan\Gallery\Framework\Auth\Tests"/>
+      <sourceFolder url="file://$MODULE_DIR$/src/Framework/Auth/Tests" isTestSource="true" packagePrefix="Funivan\Gallery\Framework\Auth\Tests" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Templating/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Router/Tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/Framework/Http/Tests" isTestSource="true" />
@@ -160,19 +160,19 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jquery-2.1.1" level="application" />
+    <orderEntry type="library" name="materialize" level="application" />
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
           <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
           <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jquery-2.1.1" level="application" />
-    <orderEntry type="library" name="materialize" level="application" />
   </component>
 </module>

@@ -10,11 +10,11 @@
    */
   interface FileStorageInterface {
 
-    const TYPE_UNKNOWN = 'unknown';
+    public const TYPE_UNKNOWN = 'unknown';
 
-    const TYPE_FILE = 'file';
+    public const TYPE_FILE = 'file';
 
-    const TYPE_DIRECTORY = 'directory';
+    public const TYPE_DIRECTORY = 'directory';
 
 
     /**

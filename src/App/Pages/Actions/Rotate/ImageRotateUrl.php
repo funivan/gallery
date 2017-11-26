@@ -11,7 +11,7 @@
    */
   class ImageRotateUrl extends PathUrl {
 
-    const PREFIX = '/action/change/rotate';
+    public const PREFIX = '/action/change/rotate';
 
 
     /**

@@ -43,7 +43,7 @@
     /**
      * @return PathInterface[]|\Iterator
      */
-    public function items(): \Iterator {
+    final public function items(): \Iterator {
       foreach ($this->original->items() as $item) {
         if ($this->storage->type($item) === $this->type) {
           yield $item;

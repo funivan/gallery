@@ -15,7 +15,7 @@
      * @param PathInterface $path
      * @return bool
      */
-    public function perform(PathInterface $path): bool {
+    final public function perform(PathInterface $path): bool {
       $dir = $path->assemble();
       if (is_dir($dir)) {
         $result = true;

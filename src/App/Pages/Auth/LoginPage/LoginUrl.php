@@ -12,7 +12,7 @@
    */
   final class LoginUrl extends PathUrl {
 
-    const PREFIX = '/login/';
+    public const PREFIX = '/login/';
 
 
     /**

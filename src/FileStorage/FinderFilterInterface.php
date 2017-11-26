@@ -9,9 +9,9 @@
    */
   interface FinderFilterInterface {
 
-    const TYPE_FILE = 1;
+    public const TYPE_FILE = 1;
 
-    const TYPE_DIR = 2;
+    public const TYPE_DIR = 2;
 
 
     /**

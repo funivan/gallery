@@ -15,7 +15,7 @@
      * Map of standard HTTP status code/reason phrases
      * @var array
      */
-    const PHRASES = [
+    public const PHRASES = [
       100 => 'Continue',
       101 => 'Switching Protocols',
       102 => 'Processing',
@@ -93,7 +93,7 @@
     /**
      * @return int
      */
-    public final function code(): int {
+    final public function code(): int {
       return $this->code;
     }
 
@@ -101,7 +101,7 @@
     /**
      * @return string
      */
-    public final function phrase(): string {
+    final public function phrase(): string {
       if (!array_key_exists($this->code, self::PHRASES)) {
         throw new \InvalidArgumentException('Invalid header code');
       }

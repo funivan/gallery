@@ -11,7 +11,7 @@
   /**
    *
    */
-  class PreviewLocation {
+  class PreviewLocation implements LocationInterface {
 
     /**
      * @var FileInterface
@@ -30,7 +30,7 @@
     /**
      * @return PathInterface
      */
-    public final function path(): PathInterface {
+    final public function path(): PathInterface {
       $hash = md5($this->image->path()->assemble());
       $path = (new LocalPath(substr($hash, 0, 2)))
         ->next(
