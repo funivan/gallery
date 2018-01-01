@@ -101,6 +101,7 @@
     /**
      * @param PathInterface $old
      * @param PathInterface $new
+     * @throws ReadException
      */
     final public function move(PathInterface $old, PathInterface $new): void {
       $this->write($new, $this->read($old));

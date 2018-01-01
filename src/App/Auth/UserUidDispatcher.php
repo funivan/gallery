@@ -34,6 +34,7 @@
     /**
      * @param RequestInterface $request
      * @return ResponseInterface
+     * @throws \Exception
      */
     final public function handle(RequestInterface $request): ResponseInterface {
       $response = $this->original->handle($request);
