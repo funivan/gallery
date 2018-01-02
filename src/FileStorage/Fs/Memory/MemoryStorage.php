@@ -21,7 +21,7 @@
      *
      * @var array Array<String, String>
      */
-    private $files;
+    private $files = [];
 
 
     /**

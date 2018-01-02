@@ -4,13 +4,10 @@
 
   namespace Funivan\Gallery\App\Auth\Tests;
 
-  use Funivan\Gallery\App\Auth\AuthComponent;
+  use Funivan\Gallery\App\Auth\FileBasedAuthComponent;
   use Funivan\Gallery\App\Auth\UserUidDispatcher;
   use Funivan\Gallery\App\Users\User;
   use Funivan\Gallery\App\Users\UsersInMemory;
-  use Funivan\Gallery\FileStorage\File\File;
-  use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookie;
   use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
@@ -19,12 +16,11 @@
   /**
    * @codeCoverageIgnore
    */
-  class AuthComponentTest extends TestCase {
-
+  class FileBasedAuthComponentTest extends TestCase {
 
     public function testSuccessAuth() {
       $user = new User('123', 'pass', []);
-      $auth = AuthComponent::createFromCookie(
+      $auth = new FileBasedAuthComponent(
         RequestCookies::create([new RequestCookie(UserUidDispatcher::COOKIE_UID_NAME, '123')]),
         new MemoryStorage(),
         new UsersInMemory([$user])
@@ -39,8 +35,9 @@
      * @expectedExceptionMessage User is not authenticated
      */
     public function testRetrieveUnAuthenticatedUser() {
-      $auth = AuthComponent::create(
-        File::create(new LocalPath('/memory.txt'), new BlackHoleStorage()),
+      $auth = new FileBasedAuthComponent(
+        RequestCookies::create([new RequestCookie(UserUidDispatcher::COOKIE_UID_NAME, '111')]),
+        new MemoryStorage(),
         new UsersInMemory([])
       );
       $auth->user();

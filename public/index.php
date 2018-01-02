@@ -1,7 +1,8 @@
 <?php
+
   declare(strict_types = 1);
 
-  use Funivan\Gallery\App\Auth\AuthComponent;
+  use Funivan\Gallery\App\Auth\FileBasedAuthComponent;
   use Funivan\Gallery\App\Auth\UserUidDispatcher;
   use Funivan\Gallery\App\Configuration;
   use Funivan\Gallery\App\Layout\Layout;
@@ -74,7 +75,7 @@
   $users = new Users(File::create(new LocalPath('users.json'), $dataStorage));
 
   $imageManager = new \Intervention\Image\ImageManager(['driver' => 'gd']);
-  $authComponent = AuthComponent::createFromCookie($request->cookies(), $authStorageFs, $users);
+  $authComponent = new FileBasedAuthComponent($request->cookies(), $authStorageFs, $users);
 
   $view = Layout::createDefault($authComponent);
   /** @noinspection HtmlUnknownTag */
