@@ -27,7 +27,7 @@
      * @return bool
      */
     final public function valid(): bool {
-      return count($this->errors) === 0;
+      return count($this->errors()) === 0;
     }
 
 
