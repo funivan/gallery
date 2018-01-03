@@ -45,6 +45,8 @@
 
 
     /**
+     * @todo check if we can remove this method. We can create composite Parameters
+     *
      * @param ParametersInterface $parameters
      * @return ParametersInterface
      */
