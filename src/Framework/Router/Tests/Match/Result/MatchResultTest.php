@@ -8,17 +8,6 @@
 
   class MatchResultTest extends TestCase {
 
-    public function testFailureResult() {
-      self::assertFalse(MatchResult::createFailure()->matched());
-    }
-
-
-    public function testParametersFailure() {
-      self::assertCount(
-        0,
-        MatchResult::createFailure()->parameters()->all()
-      );
-    }
     public function testSuccessResult() {
       self::assertTrue(MatchResult::createSuccess()->matched());
     }

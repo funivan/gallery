@@ -6,8 +6,6 @@
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Templating\View;
 
-  /** @var string $phrase */
-
 ?>
 <div class="row">
   <div class="col m12 l9">

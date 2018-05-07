@@ -6,6 +6,7 @@
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\FailedMatchResult;
   use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
   use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
   use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
@@ -37,7 +38,7 @@
       if ($request->server()->value('PATH_INFO') === $this->path) {
         $result = MatchResult::create(true, new Parameters([]));
       } else {
-        $result = MatchResult::createFailure();
+        $result = new FailedMatchResult();
       }
       return $result;
     }

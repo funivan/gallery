@@ -6,6 +6,7 @@
 
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\FailedMatchResult;
   use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
   use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
   use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
@@ -43,7 +44,7 @@
         }
         $result = MatchResult::create(true, new Parameters($params));
       } else {
-        $result = MatchResult::createFailure();
+        $result = new FailedMatchResult();
       }
       return $result;
     }

@@ -51,13 +51,6 @@
     }
 
 
-    /**
-     * @return MatchResultInterface
-     */
-    public static function createFailure(): MatchResultInterface {
-      return new self(false, new Parameters([]));
-    }
-
 
     /**
      * @return bool

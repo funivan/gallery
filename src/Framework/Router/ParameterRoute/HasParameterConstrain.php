@@ -31,7 +31,7 @@
      * @return bool
      */
     final public function validate(ParametersInterface $parameters): bool {
-      return $parameters->has($this->name);
+      return $parameters->has($this->name());
     }
 
 

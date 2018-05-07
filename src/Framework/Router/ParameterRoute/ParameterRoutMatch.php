@@ -7,6 +7,7 @@
   use Funivan\Gallery\Framework\Http\Request\Parameters;
   use Funivan\Gallery\Framework\Http\Request\ParametersInterface;
   use Funivan\Gallery\Framework\Http\Request\RequestInterface;
+  use Funivan\Gallery\Framework\Router\Match\Result\FailedMatchResult;
   use Funivan\Gallery\Framework\Router\Match\Result\MatchResult;
   use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
   use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
@@ -78,7 +79,7 @@
      */
     final public function match(RequestInterface $request): MatchResultInterface {
       $data = $this->retrieveBag($request);
-      $result = MatchResult::createFailure();
+      $result = new FailedMatchResult();
       if ($this->constrain->validate($data)) {
         $nextResult = $this->next->match($request);
         if ($nextResult->matched()) {
@@ -109,6 +110,5 @@
       }
       return $data;
     }
-
 
   }
