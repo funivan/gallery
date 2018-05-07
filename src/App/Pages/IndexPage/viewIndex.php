@@ -7,10 +7,17 @@
   use Funivan\Gallery\Framework\Templating\View;
 
 ?>
-<div class="row">
-  <div class="col m12 l9">
-    <div class="row">
-      <a href="<?= (new ListUrl(new LocalPath('/')))->build() ?>">View images</a>
+<div class="container">
+  <div class="section">
+    <div class="row center">
+      <h3 class="light header">Gallery</h3>
+      <p class="col s12 m8 offset-m2 caption">
+        View and manager your media
+      </p>
+      <br>
+      <a href="<?= (new ListUrl(new LocalPath('/')))->build() ?>" class="btn-large waves-effect waves-light">
+        Get started
+      </a>
     </div>
   </div>
 </div>
