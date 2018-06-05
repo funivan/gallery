@@ -7,9 +7,9 @@
   use Funivan\Gallery\App\Users\User;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
+  use Funivan\Gallery\FileStorage\Finder\FilteredByTypeFilesList;
   use Funivan\Gallery\FileStorage\Finder\NameFilter;
   use Funivan\Gallery\FileStorage\Finder\OrderByName;
-  use Funivan\Gallery\FileStorage\Finder\TypeFilter;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
   use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
@@ -60,7 +60,7 @@
       $currentPath = new LocalPath($request->parameters()->value('dir'));
       $baseFinder = $this->imageFs->finder($currentPath);
       $files = new OrderByName(
-        new TypeFilter(
+        new FilteredByTypeFilesList(
           FileStorageInterface::TYPE_FILE,
           $this->imageFs,
           new NameFilter(
@@ -70,13 +70,14 @@
         )
       );
       $directories = new OrderByName(
-        new TypeFilter(
+        new FilteredByTypeFilesList(
           FileStorageInterface::TYPE_DIRECTORY,
           $this->imageFs,
           $baseFinder
         ),
         false
       );
+      //@todo convert to photos list
       $photos = [];
       foreach ($files->items() as $filePath) {
         $photos[] = File::create($filePath, $this->imageFs);

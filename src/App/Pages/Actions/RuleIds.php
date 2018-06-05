@@ -19,6 +19,8 @@
 
     public const MOVE_TO_TRASH = 'move_to_trash';
 
+    public const LIST_TRASH = 'list_trash';
+
     public const RESTORE_FROM_TRASH = 'restore_from_trash';
 
     public const ROTATE = 'rotate';

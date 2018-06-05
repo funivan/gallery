@@ -10,7 +10,7 @@
   /**
    *
    */
-  class TypeFilter implements FinderInterface {
+  class FilteredByTypeFilesList implements FinderInterface {
 
     /**
      * @var FinderInterface

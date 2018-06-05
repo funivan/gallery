@@ -4,8 +4,10 @@
 
   /** @var string $content */
 
+  use Funivan\Gallery\App\Pages\Actions\RuleIds;
   use Funivan\Gallery\App\Pages\Auth\LoginPage\LoginUrl;
   use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutUrl;
+  use Funivan\Gallery\App\Pages\DeleteQueue\ShowDeleteQueueUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
 
@@ -53,7 +55,6 @@
         <a href="<?= (new ListUrl(new LocalPath('/')))->build() ?>" class="brand-logo center hide-on-med-and-down">Images </a>
 
         <?php if (null !== $auth) { ?>
-
           <ul class="right">
             <?php if ($auth->authenticated()) { ?>
               <li>
@@ -66,11 +67,13 @@
                   <i class="material-icons">visibility</i>
                 </a>
               </li>
-              <li>
-                <a href="#">
-                  <i class="material-icons">delete</i>
-                </a>
-              </li>
+              <?php if ($auth->user()->authorized(RuleIds::LIST_TRASH)) { ?>
+                <li>
+                  <a href="<?php echo (new ShowDeleteQueueUrl())->build()  ?>">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </li>
+              <? } ?>
             <?php } ?>
           </ul>
         <?php } ?>

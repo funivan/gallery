@@ -34,8 +34,9 @@
      * @return \Iterator
      */
     final public function items(): \Iterator {
-      $items = $this->original->items();
-      $items = iterator_to_array($items);
+      $items = iterator_to_array(
+        $this->original->items()
+      );
       if ($this->reverse) {
         arsort($items);
       } else {
@@ -43,6 +44,5 @@
       }
       return new \ArrayIterator($items);
     }
-
 
   }

@@ -9,6 +9,7 @@
         "private_set",
         "private_remove",
         "move_to_trash",
+        "list_trash",
         "restore_from_trash"
       ]
     }

@@ -7,15 +7,18 @@
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\PathInterface;
 
-  /**
-   * @property \DirectoryIterator iterator
-   */
+
   class LocalFsFinder implements FinderInterface {
 
     /**
      * @var PathInterface
      */
     private $searchPath;
+
+    /**
+     * @var \DirectoryIterator
+     */
+    private $iterator;
 
 
     /**

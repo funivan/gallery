@@ -18,6 +18,8 @@
   use Funivan\Gallery\App\Pages\Auth\LoginPage\LoginUrl;
   use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutController;
   use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutUrl;
+  use Funivan\Gallery\App\Pages\DeleteQueue\ShowDeleteQueueController;
+  use Funivan\Gallery\App\Pages\DeleteQueue\ShowDeleteQueueUrl;
   use Funivan\Gallery\App\Pages\Download\DownloadController;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\IndexPage\IndexController;
@@ -179,6 +181,14 @@
           new Route(
             new RegexRouteMatch(LogoutUrl::PREFIX),
             new LogoutController($authComponent)
+          ),
+          new Route(
+            new RegexRouteMatch(ShowDeleteQueueUrl::URL),
+            new AuthorizationDispatcher(
+              RuleIds::LIST_TRASH,
+              $authComponent,
+              new ShowDeleteQueueController($view, $imagesFs, $authComponent)
+            )
           ),
         ]))
     )
