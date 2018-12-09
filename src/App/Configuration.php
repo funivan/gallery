@@ -3,8 +3,8 @@
 
   namespace Funivan\Gallery\App;
 
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\PathInterface;
 
   /**
    * @todo use file instead of plain file path

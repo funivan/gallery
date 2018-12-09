@@ -4,7 +4,7 @@
   namespace Funivan\Gallery\App\Image\Tests\Painter\Tool;
 
   use Funivan\Gallery\App\Image\Painter\Tool\PreviewTool;
-  use Funivan\Gallery\FileStorage\File\File;
+  use Funivan\CabbageFs\File\File;
   use Intervention\Image\ImageManager;
   use PHPUnit\Framework\TestCase;
 

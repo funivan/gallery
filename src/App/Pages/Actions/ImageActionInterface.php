@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\Actions;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
 
   /**
    *

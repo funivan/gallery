@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\ListPage;
 
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\PathInterface;
   use Funivan\CabbageFramework\Http\Request\Parameters;
   use Funivan\CabbageFramework\Router\RegexRoute\RegexRouteBuilder;
   use Funivan\CabbageFramework\Router\UrlInterface;

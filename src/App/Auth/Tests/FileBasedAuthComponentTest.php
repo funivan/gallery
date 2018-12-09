@@ -8,7 +8,7 @@
   use Funivan\Gallery\App\Auth\UserUidDispatcher;
   use Funivan\Gallery\App\Users\User;
   use Funivan\Gallery\App\Users\UsersInMemory;
-  use Funivan\Gallery\FileStorage\Fs\Memory\MemoryStorage;
+  use Funivan\CabbageFs\Fs\Memory\MemoryStorage;
   use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookie;
   use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookies;
   use PHPUnit\Framework\TestCase;

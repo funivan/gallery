@@ -5,7 +5,7 @@
   namespace Funivan\Gallery\App\Pages\Download;
 
 
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\PathInterface;
   use Funivan\CabbageFramework\Http\Request\Parameters;
   use Funivan\CabbageFramework\Router\PathRoute\PathUrl;
 

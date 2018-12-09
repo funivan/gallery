@@ -4,9 +4,9 @@
 
   namespace Funivan\Gallery\App\Image;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\File\FileInterface;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\PathInterface;
 
   /**
    *

@@ -9,7 +9,7 @@
   use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutUrl;
   use Funivan\Gallery\App\Pages\DeleteQueue\ShowDeleteQueueUrl;
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
 
   $auth = $auth ?? null;
 ?>

@@ -3,7 +3,7 @@
 
   namespace Funivan\Gallery\App\Image\Painter\Tool;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
   use Intervention\Image\Image;
   use Intervention\Image\ImageManager;
 

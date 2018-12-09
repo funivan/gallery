@@ -6,12 +6,12 @@
 
   use Funivan\CabbageFramework\Auth\AuthComponentInterface;
   use Funivan\Gallery\App\Users\User;
-  use Funivan\Gallery\FileStorage\File\File;
-  use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Finder\FilteredByTypeFilesList;
-  use Funivan\Gallery\FileStorage\Finder\NameFilter;
-  use Funivan\Gallery\FileStorage\Finder\OrderByName;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\File\File;
+  use Funivan\CabbageFs\FileStorageInterface;
+  use Funivan\CabbageFs\Finder\FilteredByTypeFilesList;
+  use Funivan\CabbageFs\Finder\NameFilter;
+  use Funivan\CabbageFs\Finder\OrderByName;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
   use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
   use Funivan\CabbageFramework\Http\Request\RequestInterface;
   use Funivan\CabbageFramework\Http\Response\ResponseInterface;

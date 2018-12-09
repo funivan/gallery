@@ -4,7 +4,7 @@
   namespace Funivan\Gallery\App\Image\Painter;
 
   use Funivan\Gallery\App\Image\Painter\Tool\PainterToolInterface;
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
   use Intervention\Image\ImageManager;
 
   /**

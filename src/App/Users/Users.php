@@ -5,7 +5,7 @@
   namespace Funivan\Gallery\App\Users;
 
   use Funivan\CabbageFramework\Auth\UserInterface;
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
 
   /**
    *

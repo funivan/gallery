@@ -6,7 +6,7 @@
 
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
   use Funivan\Gallery\App\Photo\Flag\Flags;
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
 
   /**
    *

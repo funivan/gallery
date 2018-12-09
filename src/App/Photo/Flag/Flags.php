@@ -4,8 +4,8 @@
 
   namespace Funivan\Gallery\App\Photo\Flag;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\File\FileInterface;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
   use Funivan\CabbageFramework\DataStructures\ParsedString\ParsedString;
 
   /**

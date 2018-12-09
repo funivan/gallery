@@ -9,9 +9,9 @@
   use Funivan\Gallery\App\Image\Painter\Tool\RotateTool;
   use Funivan\Gallery\App\Image\PreviewLocation;
   use Funivan\Gallery\App\Pages\Actions\ImageActionInterface;
-  use Funivan\Gallery\FileStorage\File\File;
-  use Funivan\Gallery\FileStorage\File\FileInterface;
-  use Funivan\Gallery\FileStorage\FileStorageInterface;
+  use Funivan\CabbageFs\File\File;
+  use Funivan\CabbageFs\File\FileInterface;
+  use Funivan\CabbageFs\FileStorageInterface;
   use Intervention\Image\ImageManager;
 
   /**

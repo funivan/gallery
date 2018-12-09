@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Image;
 
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\PathInterface;
 
 
   /**

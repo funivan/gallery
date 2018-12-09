@@ -18,7 +18,7 @@
   use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
   use Funivan\Gallery\App\Photo\Flag\Flags;
   use Funivan\Gallery\App\Photo\Flag\FlagsInterface;
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\PathInterface;
   use Funivan\CabbageFramework\Templating\View;
 
 
@@ -42,7 +42,7 @@
   </div>
   <div class="col m12 l9">
     <div class="row">
-      <?php /** @var \Funivan\Gallery\FileStorage\File\FileInterface[] $photos */ ?>
+      <?php /** @var \Funivan\CabbageFs\File\FileInterface[] $photos */ ?>
       <?php foreach ($photos as $index => $file) { ?>
         <?php $filePath = $file->path() ?>
         <div class="col s12 m6 l4 xl3">

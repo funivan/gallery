@@ -3,7 +3,7 @@
   /** @var View $this */
 
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
   use Funivan\CabbageFramework\Templating\View;
 
 ?>

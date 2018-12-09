@@ -4,7 +4,7 @@
 
   namespace Funivan\CabbageFramework\Http\Response\FileResponse;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
   use Funivan\CabbageFramework\Http\Response\Body\BodyInterface;
   use Funivan\CabbageFramework\Http\Response\Headers\Field;
   use Funivan\CabbageFramework\Http\Response\Headers\Headers;

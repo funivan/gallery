@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Photo\Flag;
 
-  use Funivan\Gallery\FileStorage\File\FileInterface;
+  use Funivan\CabbageFs\File\FileInterface;
 
 
   /**

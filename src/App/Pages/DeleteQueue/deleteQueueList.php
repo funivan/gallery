@@ -12,10 +12,10 @@
   use Funivan\CabbageFramework\Auth\UserInterface;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
-  use Funivan\Gallery\FileStorage\PathInterface;
+  use Funivan\CabbageFs\PathInterface;
   use Funivan\CabbageFramework\Templating\View;
 
-  /** @var \Funivan\Gallery\FileStorage\File\FileInterface[] $photos */
+  /** @var \Funivan\CabbageFs\File\FileInterface[] $photos */
 ?>
 <div class="row">
   <div class="col m12 l12">

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ff5c28a19cd3d877e9c0d55e92eafbc",
+    "content-hash": "927f2c16c77d449bb65d4fb85b39d742",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -74,6 +74,28 @@
             "autoload": {
                 "psr-4": {
                     "Funivan\\CabbageFramework\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Ivan Shcherbak",
+                    "email": "alotofall@gmail.com"
+                }
+            ]
+        },
+        {
+            "name": "funivan/cabbage-fs",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./Cabbage/Fs",
+                "reference": "5ea81cf7ee92bb8b164783b7edac13b6dee4591c",
+                "shasum": null
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Funivan\\CabbageFs\\": "src"
                 }
             },
             "authors": [
@@ -2223,6 +2245,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "funivan/cabbage-framework": 20,
+        "funivan/cabbage-fs": 20,
         "phploc/phploc": 20
     },
     "prefer-stable": false,

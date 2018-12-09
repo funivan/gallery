@@ -7,11 +7,11 @@
   use Funivan\CabbageFramework\Auth\AuthComponentInterface;
   use Funivan\CabbageFramework\Auth\UserInterface;
   use Funivan\Gallery\App\Users\UsersInterface;
-  use Funivan\Gallery\FileStorage\File\File;
-  use Funivan\Gallery\FileStorage\File\FileInterface;
-  use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\File\File;
+  use Funivan\CabbageFs\File\FileInterface;
+  use Funivan\CabbageFs\FileStorageInterface;
+  use Funivan\CabbageFs\Fs\BlackHole\BlackHoleStorage;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
   use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookiesInterface;
 
   class FileBasedAuthComponent implements AuthComponentInterface {

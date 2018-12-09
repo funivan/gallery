@@ -33,10 +33,10 @@
   use Funivan\Gallery\App\Photo\Flag\FlagsInterface;
   use Funivan\Gallery\App\SafeDispatcher;
   use Funivan\Gallery\App\Users\Users;
-  use Funivan\Gallery\FileStorage\File\File;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalFsStorage;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryAutomaticCreation;
+  use Funivan\CabbageFs\File\File;
+  use Funivan\CabbageFs\Fs\Local\LocalFsStorage;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\Fs\Local\Operation\DirectoryAutomaticCreation;
   use Funivan\CabbageFramework\Dispatcher\App;
   use Funivan\CabbageFramework\Dispatcher\StaticDispatcher;
   use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookies;

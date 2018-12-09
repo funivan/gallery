@@ -5,9 +5,9 @@
   namespace Funivan\Gallery\App\Pages\Download;
 
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
-  use Funivan\Gallery\FileStorage\File\File;
-  use Funivan\Gallery\FileStorage\FileStorageInterface;
-  use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
+  use Funivan\CabbageFs\File\File;
+  use Funivan\CabbageFs\FileStorageInterface;
+  use Funivan\CabbageFs\Fs\Local\LocalPath;
   use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
   use Funivan\CabbageFramework\Http\Request\RequestInterface;
   use Funivan\CabbageFramework\Http\Response\FileResponse\FileResponse;
