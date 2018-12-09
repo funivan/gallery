@@ -1,0 +1,16 @@
+{
+    "name": "funivan/cabbage-framework",
+    "authors": [
+        {
+            "name": "Ivan Shcherbak",
+            "email": "alotofall@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Funivan\\CabbageFramework\\" : "src"
+        }
+    }
+}

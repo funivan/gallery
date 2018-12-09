@@ -1,10 +1,10 @@
 <?php
 
+  use Funivan\CabbageFramework\Auth\AuthComponentInterface;
   use Funivan\Gallery\App\Pages\Auth\LoginPage\LoginUrl;
   use Funivan\Gallery\App\Pages\Auth\LogoutPage\LogoutUrl;
-  use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
 
-  /** @var AuthComponentInterface $auth */
+  /** @var \Funivan\CabbageFramework\Auth\AuthComponentInterface $auth */
   /** @var string[] $errors */
 ?>
 <div class="row" style="margin-top: 150px;">

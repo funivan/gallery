@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\DeleteQueue;
 
-  use Funivan\Gallery\Framework\Router\UrlInterface;
+  use Funivan\CabbageFramework\Router\UrlInterface;
 
   class ShowDeleteQueueUrl implements UrlInterface {
 

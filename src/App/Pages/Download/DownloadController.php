@@ -8,10 +8,10 @@
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\FileResponse\FileResponse;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Response\FileResponse\FileResponse;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
 
   /**
    *

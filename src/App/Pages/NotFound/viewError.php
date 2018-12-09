@@ -1,6 +1,6 @@
 <?php
 
-  use Funivan\Gallery\Framework\Templating\View;
+  use Funivan\CabbageFramework\Templating\View;
 
   /** @var View $this */
   /** @var string $phrase */

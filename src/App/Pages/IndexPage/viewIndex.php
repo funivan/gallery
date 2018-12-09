@@ -4,7 +4,7 @@
 
   use Funivan\Gallery\App\Pages\ListPage\ListUrl;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\Framework\Templating\View;
+  use Funivan\CabbageFramework\Templating\View;
 
 ?>
 <div class="container">

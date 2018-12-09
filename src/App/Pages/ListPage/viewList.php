@@ -9,6 +9,7 @@
   /** @var UserInterface $user */
 
 
+  use Funivan\CabbageFramework\Auth\UserInterface;
   use Funivan\Gallery\App\Pages\Actions\Rotate\ImageRotateUrl;
   use Funivan\Gallery\App\Pages\Actions\RuleIds;
   use Funivan\Gallery\App\Pages\Actions\ToggleFlag\ChangeFlagUrl;
@@ -18,8 +19,7 @@
   use Funivan\Gallery\App\Photo\Flag\Flags;
   use Funivan\Gallery\App\Photo\Flag\FlagsInterface;
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Funivan\Gallery\Framework\Auth\UserInterface;
-  use Funivan\Gallery\Framework\Templating\View;
+  use Funivan\CabbageFramework\Templating\View;
 
 
 ?>

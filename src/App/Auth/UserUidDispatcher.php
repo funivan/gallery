@@ -4,11 +4,11 @@
 
   namespace Funivan\Gallery\App\Auth;
 
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\Cookie\ResponseCookie;
-  use Funivan\Gallery\Framework\Http\Response\Cookie\ResponseWithCookie;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Response\Cookie\ResponseCookie;
+  use Funivan\CabbageFramework\Http\Response\Cookie\ResponseWithCookie;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
 
   /**
    * Generate custom UID for the client.

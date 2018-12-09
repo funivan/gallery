@@ -5,9 +5,9 @@
   namespace Funivan\Gallery\App;
 
   use Funivan\Gallery\App\Pages\NotFound\ErrorResponse;
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
 
   /**
    * Catch error from the original dispatcher and show nice response error

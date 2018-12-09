@@ -5,8 +5,8 @@
   namespace Funivan\Gallery\App\Pages\ThumbPage;
 
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
+  use Funivan\CabbageFramework\Http\Request\Parameters;
+  use Funivan\CabbageFramework\Router\PathRoute\PathUrl;
 
   /**
    *

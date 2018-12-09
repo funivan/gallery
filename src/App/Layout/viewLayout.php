@@ -1,5 +1,5 @@
 <?php
-  /** @var \Funivan\Gallery\Framework\Auth\AuthComponentInterface $auth */
+  /** @var \Funivan\CabbageFramework\Auth\AuthComponentInterface $auth */
   /** @var string $title */
 
   /** @var string $content */

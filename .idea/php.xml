@@ -2,7 +2,7 @@
 <project version="4">
   <component name="MessDetector">
     <phpmd_settings>
-      <MessDetectorConfiguration max_messages_per_file="100" timeout="10000" tool_path="/usr/bin/phpmd" />
+      <MessDetectorConfiguration max_messages_per_file="100" tool_path="/usr/bin/phpmd" timeout="10000" />
     </phpmd_settings>
   </component>
   <component name="PhpCodeSniffer">
@@ -53,6 +53,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/sebastian/finder-facade" />
       <path value="$PROJECT_DIR$/vendor/scriptfusion/phpunit-immediate-exception-printer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/funivan/cabbage-framework" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

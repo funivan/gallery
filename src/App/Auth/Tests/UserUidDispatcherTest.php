@@ -4,15 +4,15 @@
   namespace Funivan\Gallery\App\Auth\Tests;
 
   use Funivan\Gallery\App\Auth\UserUidDispatcher;
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
-  use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookie;
-  use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
-  use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookiesInterface;
-  use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Http\Request\Request;
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\Plain\PlainResponse;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
+  use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookie;
+  use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookies;
+  use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookiesInterface;
+  use Funivan\CabbageFramework\Http\Request\Parameters;
+  use Funivan\CabbageFramework\Http\Request\Request;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Response\Plain\PlainResponse;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
   use PHPUnit\Framework\TestCase;
 
   /**
@@ -43,7 +43,7 @@
 
 
     /**
-     * @param \Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookiesInterface $cookies
+     * @param \Funivan\CabbageFramework\Http\Request\Cookie\RequestCookiesInterface $cookies
      * @return RequestInterface
      */
     private function createRequest(RequestCookiesInterface $cookies): RequestInterface {

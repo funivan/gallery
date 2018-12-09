@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Users;
 
-  use Funivan\Gallery\Framework\Auth\UserInterface;
+  use Funivan\CabbageFramework\Auth\UserInterface;
 
 
   /**

@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage\Form;
 
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
 
 
   /**

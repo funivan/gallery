@@ -4,9 +4,9 @@
 
   namespace Funivan\Gallery\App\Pages\Actions\ToggleFlag;
 
-  use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
-  use Funivan\Gallery\Framework\Router\UrlInterface;
+  use Funivan\CabbageFramework\Http\Request\Parameters;
+  use Funivan\CabbageFramework\Router\PathRoute\PathUrl;
+  use Funivan\CabbageFramework\Router\UrlInterface;
 
   /**
    *

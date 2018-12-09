@@ -4,12 +4,12 @@
 
   namespace Funivan\Gallery\App\Pages\Auth\LogoutPage;
 
+  use Funivan\CabbageFramework\Auth\AuthComponentInterface;
   use Funivan\Gallery\App\Pages\IndexPage\IndexUrl;
-  use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Response\Redirect\RedirectResponse;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
 
   /**
    *
@@ -17,7 +17,7 @@
   class LogoutController implements DispatcherInterface {
 
     /**
-     * @var AuthComponentInterface
+     * @var \Funivan\CabbageFramework\Auth\AuthComponentInterface
      */
     private $authComponent;
 

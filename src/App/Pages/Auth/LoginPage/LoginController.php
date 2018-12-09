@@ -4,15 +4,15 @@
 
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage;
 
+  use Funivan\CabbageFramework\Auth\AuthComponentInterface;
   use Funivan\Gallery\App\Users\UsersInterface;
-  use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
-  use Funivan\Gallery\Framework\Dispatcher\DispatcherInterface;
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
-  use Funivan\Gallery\Framework\Http\Response\ViewResponse\ViewResponse;
-  use Funivan\Gallery\Framework\Templating\View;
-  use Funivan\Gallery\Framework\Templating\ViewInterface;
+  use Funivan\CabbageFramework\Dispatcher\DispatcherInterface;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Http\Response\Redirect\RedirectResponse;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Http\Response\ViewResponse\ViewResponse;
+  use Funivan\CabbageFramework\Templating\View;
+  use Funivan\CabbageFramework\Templating\ViewInterface;
 
   /**
    *
@@ -20,7 +20,7 @@
   class LoginController implements DispatcherInterface {
 
     /**
-     * @var AuthComponentInterface
+     * @var \Funivan\CabbageFramework\Auth\AuthComponentInterface
      */
     private $authComponent;
 

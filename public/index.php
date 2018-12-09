@@ -2,6 +2,8 @@
 
   declare(strict_types = 1);
 
+  use Funivan\CabbageFramework\Auth\AuthenticationDispatcher;
+  use Funivan\CabbageFramework\Auth\AuthorizationDispatcher;
   use Funivan\Gallery\App\Auth\FileBasedAuthComponent;
   use Funivan\Gallery\App\Auth\UserUidDispatcher;
   use Funivan\Gallery\App\Configuration;
@@ -35,20 +37,18 @@
   use Funivan\Gallery\FileStorage\Fs\Local\LocalFsStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
   use Funivan\Gallery\FileStorage\Fs\Local\Operation\DirectoryAutomaticCreation;
-  use Funivan\Gallery\Framework\Auth\AuthenticationDispatcher;
-  use Funivan\Gallery\Framework\Auth\AuthorizationDispatcher;
-  use Funivan\Gallery\Framework\Dispatcher\App;
-  use Funivan\Gallery\Framework\Dispatcher\StaticDispatcher;
-  use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookies;
-  use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Http\Request\Request;
-  use Funivan\Gallery\Framework\Http\Response\Redirect\RedirectResponse;
-  use Funivan\Gallery\Framework\Router\ParameterRoute\HasParameterConstrain;
-  use Funivan\Gallery\Framework\Router\ParameterRoute\ParameterRoutMatch;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteMatch;
-  use Funivan\Gallery\Framework\Router\RegexRoute\RegexRouteMatch;
-  use Funivan\Gallery\Framework\Router\Route;
-  use Funivan\Gallery\Framework\Router\RouterDispatcher;
+  use Funivan\CabbageFramework\Dispatcher\App;
+  use Funivan\CabbageFramework\Dispatcher\StaticDispatcher;
+  use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookies;
+  use Funivan\CabbageFramework\Http\Request\Parameters;
+  use Funivan\CabbageFramework\Http\Request\Request;
+  use Funivan\CabbageFramework\Http\Response\Redirect\RedirectResponse;
+  use Funivan\CabbageFramework\Router\ParameterRoute\HasParameterConstrain;
+  use Funivan\CabbageFramework\Router\ParameterRoute\ParameterRoutMatch;
+  use Funivan\CabbageFramework\Router\PathRoute\PathRouteMatch;
+  use Funivan\CabbageFramework\Router\RegexRoute\RegexRouteMatch;
+  use Funivan\CabbageFramework\Router\Route;
+  use Funivan\CabbageFramework\Router\RouterDispatcher;
 
   require_once __DIR__ . '/../vendor/autoload.php';
 

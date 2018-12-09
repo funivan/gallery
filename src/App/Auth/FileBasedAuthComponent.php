@@ -4,15 +4,15 @@
 
   namespace Funivan\Gallery\App\Auth;
 
+  use Funivan\CabbageFramework\Auth\AuthComponentInterface;
+  use Funivan\CabbageFramework\Auth\UserInterface;
   use Funivan\Gallery\App\Users\UsersInterface;
   use Funivan\Gallery\FileStorage\File\File;
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\FileStorageInterface;
   use Funivan\Gallery\FileStorage\Fs\BlackHole\BlackHoleStorage;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
-  use Funivan\Gallery\Framework\Auth\UserInterface;
-  use Funivan\Gallery\Framework\Http\Request\Cookie\RequestCookiesInterface;
+  use Funivan\CabbageFramework\Http\Request\Cookie\RequestCookiesInterface;
 
   class FileBasedAuthComponent implements AuthComponentInterface {
 
@@ -60,7 +60,7 @@
     /**
      * @return UserInterface
      */
-    final public function user(): UserInterface {
+    final public function user(): \Funivan\CabbageFramework\Auth\UserInterface {
       if (!$this->authenticated()) {
         throw new \RuntimeException('User is not authenticated');
       }

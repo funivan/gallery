@@ -7,7 +7,14 @@
       "email": "alotofall@gmail.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./Cabbage/Framework"
+    }
+  ],
   "require": {
+    "funivan/cabbage-framework": "dev-master",
     "catfan/Medoo": "1.2.*",
     "intervention/image": "2.3.*",
     "ralouphie/mimey": "1.0.*"

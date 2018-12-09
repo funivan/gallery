@@ -6,14 +6,14 @@
   /** @var PathInterface $currentPath */
   /** @var PathInterface[] $directories */
 
-  /** @var UserInterface $user */
+  /** @var \Funivan\CabbageFramework\Auth\UserInterface $user */
 
 
+  use Funivan\CabbageFramework\Auth\UserInterface;
   use Funivan\Gallery\App\Pages\Download\DownloadUrl;
   use Funivan\Gallery\App\Pages\ThumbPage\PreviewUrl;
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Funivan\Gallery\Framework\Auth\UserInterface;
-  use Funivan\Gallery\Framework\Templating\View;
+  use Funivan\CabbageFramework\Templating\View;
 
   /** @var \Funivan\Gallery\FileStorage\File\FileInterface[] $photos */
 ?>

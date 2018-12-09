@@ -4,12 +4,12 @@
 
   namespace Funivan\Gallery\App\Pages\Actions;
 
-  use Funivan\Gallery\Framework\Http\Request\RequestInterface;
-  use Funivan\Gallery\Framework\Router\Match\Result\MatchResultInterface;
-  use Funivan\Gallery\Framework\Router\Match\RouteMatchInterface;
-  use Funivan\Gallery\Framework\Router\ParameterRoute\ParameterRoutMatch;
-  use Funivan\Gallery\Framework\Router\ParameterRoute\SameParameterConstrain;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathRouteMatch;
+  use Funivan\CabbageFramework\Http\Request\RequestInterface;
+  use Funivan\CabbageFramework\Router\Match\Result\MatchResultInterface;
+  use Funivan\CabbageFramework\Router\Match\RouteMatchInterface;
+  use Funivan\CabbageFramework\Router\ParameterRoute\ParameterRoutMatch;
+  use Funivan\CabbageFramework\Router\ParameterRoute\SameParameterConstrain;
+  use Funivan\CabbageFramework\Router\PathRoute\PathRouteMatch;
 
   /**
    *

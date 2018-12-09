@@ -4,7 +4,7 @@
 
   namespace Funivan\Gallery\App\Users;
 
-  use Funivan\Gallery\Framework\Auth\UserInterface;
+  use Funivan\CabbageFramework\Auth\UserInterface;
 
   /**
    *
@@ -12,7 +12,7 @@
   class UsersInMemory implements UsersInterface {
 
     /**
-     * @var UserInterface[]
+     * @var \Funivan\CabbageFramework\Auth\UserInterface[]
      */
     private $users;
 
@@ -43,7 +43,7 @@
 
     /**
      * @param string $uid
-     * @return UserInterface
+     * @return \Funivan\CabbageFramework\Auth\UserInterface
      */
     final public function get(string $uid): UserInterface {
       foreach ($this->users as $user) {

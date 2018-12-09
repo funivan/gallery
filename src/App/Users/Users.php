@@ -4,8 +4,8 @@
 
   namespace Funivan\Gallery\App\Users;
 
+  use Funivan\CabbageFramework\Auth\UserInterface;
   use Funivan\Gallery\FileStorage\File\FileInterface;
-  use Funivan\Gallery\Framework\Auth\UserInterface;
 
   /**
    *
@@ -38,7 +38,7 @@
 
     /**
      * @param string $uid
-     * @return UserInterface
+     * @return \Funivan\CabbageFramework\Auth\UserInterface
      */
     final public function get(string $uid): UserInterface {
       $rawUsers = json_decode($this->file->read(), true);

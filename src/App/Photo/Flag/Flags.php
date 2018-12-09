@@ -6,7 +6,7 @@
 
   use Funivan\Gallery\FileStorage\File\FileInterface;
   use Funivan\Gallery\FileStorage\Fs\Local\LocalPath;
-  use Funivan\Gallery\Framework\DataStructures\ParsedString\ParsedString;
+  use Funivan\CabbageFramework\DataStructures\ParsedString\ParsedString;
 
   /**
    *

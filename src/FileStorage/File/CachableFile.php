@@ -5,8 +5,8 @@
   namespace Funivan\Gallery\FileStorage\File;
 
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Funivan\Gallery\Framework\DataStructures\BufferedString\BufferedString;
-  use Funivan\Gallery\Framework\DataStructures\BufferedString\BufferedStringInterface;
+  use Funivan\CabbageFramework\DataStructures\BufferedString\BufferedString;
+  use Funivan\CabbageFramework\DataStructures\BufferedString\BufferedStringInterface;
 
   /**
    *

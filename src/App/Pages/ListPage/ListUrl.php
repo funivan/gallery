@@ -5,9 +5,9 @@
   namespace Funivan\Gallery\App\Pages\ListPage;
 
   use Funivan\Gallery\FileStorage\PathInterface;
-  use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\RegexRoute\RegexRouteBuilder;
-  use Funivan\Gallery\Framework\Router\UrlInterface;
+  use Funivan\CabbageFramework\Http\Request\Parameters;
+  use Funivan\CabbageFramework\Router\RegexRoute\RegexRouteBuilder;
+  use Funivan\CabbageFramework\Router\UrlInterface;
 
   /**
    *

@@ -4,8 +4,8 @@
 
   namespace Funivan\Gallery\App\Pages\Auth\LoginPage;
 
-  use Funivan\Gallery\Framework\Http\Request\Parameters;
-  use Funivan\Gallery\Framework\Router\PathRoute\PathUrl;
+  use Funivan\CabbageFramework\Http\Request\Parameters;
+  use Funivan\CabbageFramework\Router\PathRoute\PathUrl;
 
   /**
    *

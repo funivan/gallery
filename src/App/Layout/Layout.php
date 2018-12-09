@@ -4,9 +4,9 @@
 
   namespace Funivan\Gallery\App\Layout;
 
-  use Funivan\Gallery\Framework\Auth\AuthComponentInterface;
-  use Funivan\Gallery\Framework\Templating\View;
-  use Funivan\Gallery\Framework\Templating\ViewInterface;
+  use Funivan\CabbageFramework\Auth\AuthComponentInterface;
+  use Funivan\CabbageFramework\Templating\View;
+  use Funivan\CabbageFramework\Templating\ViewInterface;
 
   /**
    *
@@ -14,7 +14,7 @@
   class Layout extends View {
 
     /**
-     * @param AuthComponentInterface $auth
+     * @param \Funivan\CabbageFramework\Auth\AuthComponentInterface $auth
      * @return ViewInterface
      */
     final public static function createDefault(AuthComponentInterface $auth): ViewInterface {

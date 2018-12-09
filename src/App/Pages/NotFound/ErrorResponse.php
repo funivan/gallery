@@ -4,14 +4,14 @@
 
   namespace Funivan\Gallery\App\Pages\NotFound;
 
-  use Funivan\Gallery\Framework\Http\Response\Body\BodyInterface;
-  use Funivan\Gallery\Framework\Http\Response\Headers\Headers;
-  use Funivan\Gallery\Framework\Http\Response\HeadersInterface;
-  use Funivan\Gallery\Framework\Http\Response\ResponseInterface;
-  use Funivan\Gallery\Framework\Http\Response\Status\ResponseStatus;
-  use Funivan\Gallery\Framework\Http\Response\StatusInterface;
-  use Funivan\Gallery\Framework\Http\Response\ViewResponse\ViewBody;
-  use Funivan\Gallery\Framework\Templating\View;
+  use Funivan\CabbageFramework\Http\Response\Body\BodyInterface;
+  use Funivan\CabbageFramework\Http\Response\Headers\Headers;
+  use Funivan\CabbageFramework\Http\Response\HeadersInterface;
+  use Funivan\CabbageFramework\Http\Response\ResponseInterface;
+  use Funivan\CabbageFramework\Http\Response\Status\ResponseStatus;
+  use Funivan\CabbageFramework\Http\Response\StatusInterface;
+  use Funivan\CabbageFramework\Http\Response\ViewResponse\ViewBody;
+  use Funivan\CabbageFramework\Templating\View;
 
   /**
    *
@@ -70,7 +70,7 @@
 
 
     /**
-     * @return \Funivan\Gallery\Framework\Http\Response\StatusInterface
+     * @return \Funivan\CabbageFramework\Http\Response\StatusInterface
      */
     final public function status(): StatusInterface {
       return new ResponseStatus($this->code);
@@ -86,7 +86,7 @@
 
 
     /**
-     * @return \Funivan\Gallery\Framework\Http\Response\Body\BodyInterface
+     * @return \Funivan\CabbageFramework\Http\Response\Body\BodyInterface
      */
     final public function body(): BodyInterface {
       $view = View::create(__DIR__ . '/../../Layout/viewLayout.php', ['title' => 'Error'])
